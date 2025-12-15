@@ -1,0 +1,19 @@
+
+<mujoco model="bridge_platform">
+  <asset>
+    <texture name="tex_platform" type="2d" builtin="checker" rgb1="0.1 0.1 0.1" rgb2="0.2 0.2 0.2" width="512" height="512"/>
+    <material name="mat_platform" texture="tex_platform" shininess="0.1" specular="0.1" texrepeat="2 2"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="platform_geom" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+              density="5000" friction="1.0 0.005 0.0001" solref="0.01 1" solimp="0.95 0.99 0.001"
+              condim="4" group="1"/>
+        <geom name="platform_vis" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+              contype="0" conaffinity="0" group="0"/>
+        <site name="top_site" pos="0 0 0.05" size="0.002" rgba="0 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

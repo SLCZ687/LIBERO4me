@@ -1,0 +1,74 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the brick and place it across the gap)
+    (:regions
+      (left_platform_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.060000000000000005 -0.20500000000000002 -0.04 -0.185)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (right_platform_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.060000000000000005 0.185 -0.04 0.20500000000000002)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (brick_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.32 -0.245 -0.27999999999999997 -0.14500000000000002)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (bridge_gap_target_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.1 -0.075 0.0 0.075)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    bridge_platform_1 bridge_platform_2 - bridge_platform
+    bridge_brick_1 - bridge_brick
+  )
+
+  (:obj_of_interest
+    bridge_brick_1
+  )
+
+  (:init
+    (On bridge_platform_1 kitchen_table_left_platform_init_region)
+    (On bridge_platform_2 kitchen_table_right_platform_init_region)
+    (On bridge_brick_1 kitchen_table_brick_init_region)
+  )
+
+  (:goal
+    (And (On bridge_brick_1 kitchen_table_bridge_gap_target_region))
+  )
+
+)
