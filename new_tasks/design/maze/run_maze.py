@@ -7,9 +7,9 @@ import my_maze_task
 
 # 设置环境变量，防止 EGL 报错
 os.environ["MUJOCO_GL"] = "egl"
-# VIEW = "frontview"
+VIEW = "frontview"
 # VIEW = "agentview"
-VIEW = "birdview"
+# VIEW = "birdview"
 
 print("正在初始化迷宫环境...")
 
@@ -46,7 +46,7 @@ video_frames = []
 
 # --- 2. 循环运行 ---
 # 建议运行步数多一点，50步对于视频来说只有2.5秒，这里改为 100 步演示
-run_steps = 50 
+run_steps = 20
 
 for i in range(run_steps):
     # 生成随机动作
