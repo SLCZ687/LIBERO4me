@@ -1,0 +1,62 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Push the ball to the goal)
+    (:regions
+      (maze_center_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.21000000000000002 -0.01 -0.19 0.01)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (ball_start_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24 0.255 -0.20999999999999996 0.28500000000000003)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (ball_target_region
+          (:target kitchen_table)
+          (:ranges (
+              (0.25 -0.29000000000000004 0.29000000000000004 -0.25)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    maze_structure_1 - maze_structure
+    maze_ball_1 - maze_ball
+  )
+
+  (:obj_of_interest
+    maze_ball_1
+  )
+
+  (:init
+    (On maze_structure_1 kitchen_table_maze_center_region)
+    (On maze_ball_1 kitchen_table_ball_start_region)
+  )
+
+  (:goal
+    (And (On maze_ball_1 kitchen_table_ball_target_region))
+  )
+
+)

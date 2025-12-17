@@ -87,4 +87,67 @@ class BridgePlatform(CustomXmlObject):
 OBJECTS_DICT["bridge_brick"] = BridgeBrick
 OBJECTS_DICT["bridge_platform"] = BridgePlatform
 
-print("✅ Custom objects registered: Safe Drop Height + Moderate Damping.")
+# =========================================================
+#  Maze Task Objects (Appended)
+# =========================================================
+
+# --- 迷宫球 ---
+@register_object
+class MazeBall(CustomXmlObject):
+    def __init__(self, name="maze_ball", obj_name="maze_ball"):
+        super().__init__(
+            folder_name="maze_ball",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 极小阻尼，保证球能顺滑滚动
+            joints=[dict(type="free", damping="0.001")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 球半径 0.015
+        return 0.015
+    
+    @property
+    def bottom_offset(self):
+        # 稍微抬高 0.1mm 防止生成时穿模
+        return np.array([0, 0, -0.0151])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.015])
+
+
+# --- 迷宫本体 ---
+@register_object
+class MazeStructure(CustomXmlObject):
+    def __init__(self, name="maze_structure", obj_name="maze_structure"):
+        super().__init__(
+            folder_name="maze_structure",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 巨大阻尼，让迷宫像固定在桌子上一样不动
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # [关键] 欺骗采样器：虽然迷宫很大，但告诉系统它只有 1cm
+        # 这样可以防止放置采样器报 "RandomizationError"
+        return 0.01 
+    
+    @property
+    def bottom_offset(self):
+        # 迷宫地板很薄，稍微抬高 0.1mm
+        return np.array([0, 0, -0.001])
+    
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.05])
+
+# [关键] 手动注册 Snake Case 名字映射
+# 这样 BDDL 中的 "maze_ball" 和 "maze_structure" 才能被识别
+OBJECTS_DICT["maze_ball"] = MazeBall
+OBJECTS_DICT["maze_structure"] = MazeStructure
