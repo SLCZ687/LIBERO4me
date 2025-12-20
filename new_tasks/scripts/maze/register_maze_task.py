@@ -1,23 +1,25 @@
 import os
 import numpy as np
-# 导入你的对象库
 import libero.libero.envs.objects.custom_objects
 from libero.libero.utils.mu_utils import register_mu, InitialSceneTemplates
 from libero.libero.utils.task_generation_utils import register_task_info, generate_bddl_from_task_info
 from libero.libero.utils.bddl_generation_utils import get_xy_region_kwargs_list_from_regions_info
 
 # ==========================================
-# 辅助函数：解析迷宫坐标 (必须与生成脚本一致)
+# 1. 参数同步
 # ==========================================
-BALL_RADIUS = 0.015
-CELL_SIZE = BALL_RADIUS * 2 * 1.5
+BALL_RADIUS = 0.02
+CELL_SIZE = BALL_RADIUS * 2 * 1.3
+
+maze_offset_x = -0.20
 
 def parse_maze_def(filename="maze_def.txt"):
+    if not os.path.exists(filename): return np.zeros((15,15)), (1,1), (13,13)
     with open(filename, 'r') as f:
         lines = [l.strip() for l in f.readlines() if l.strip()]
     
-    start_pos = (1, 1) # 默认
-    end_pos = (13, 13) # 默认
+    start_pos = (1, 1)
+    end_pos = (13, 13)
     matrix = []
     reading_layout = False
     
@@ -42,9 +44,6 @@ def grid_to_world(r, c, rows, cols, cell_size):
     pos_y = ((rows - 1) / 2.0 - r) * cell_size
     return pos_x, pos_y
 
-# ==========================================
-# 场景定义
-# ==========================================
 @register_mu(scene_type="kitchen")
 class MazeScene(InitialSceneTemplates):
     def __init__(self):
@@ -61,7 +60,6 @@ class MazeScene(InitialSceneTemplates):
             object_num_info=object_num_info,
         )
 
-    # 包含你之前的 get_region_dict 修复
     def get_region_dict(self, region_centroid_xy, region_name, target_name=None, region_half_len=0.02, yaw_rotation=(0.0, 0.0)):
         if isinstance(region_half_len, (list, tuple)):
             hx, hy = region_half_len
@@ -77,36 +75,34 @@ class MazeScene(InitialSceneTemplates):
             return super().get_region_dict(region_centroid_xy, region_name, target_name, region_half_len, yaw_rotation)
 
     def define_regions(self):
-        # 1. 解析迷宫，获取关键点
         matrix, start_node, end_node = parse_maze_def()
         rows, cols = matrix.shape
         
-        # 2. 计算世界坐标
         start_x, start_y = grid_to_world(start_node[0], start_node[1], rows, cols, CELL_SIZE)
         end_x, end_y = grid_to_world(end_node[0], end_node[1], rows, cols, CELL_SIZE)
         
-        # 3. 定义迷宫本体区域 (桌子正中心)
+        # 迷宫中心
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[-0.2, 0.0],
+            region_centroid_xy=[maze_offset_x, 0.0],
             region_name="maze_center_region",
             target_name=self.workspace_name,
-            region_half_len=0.01
+            region_half_len=0.005
         ))
         
-        # 4. 定义球的初始区域 (Start Node)
+        # Start Node
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[start_x, start_y],
+            region_centroid_xy=[start_x + maze_offset_x, start_y],
             region_name="ball_start_region",
             target_name=self.workspace_name,
-            region_half_len=0.015 # 稍大一点允许随机扰动
+            region_half_len=0.001 
         ))
 
-        # 5. 定义目标区域 (End Node)
+        # End Node
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[end_x, end_y],
+            region_centroid_xy=[end_x + maze_offset_x, end_y],
             region_name="ball_target_region",
             target_name=self.workspace_name,
-            region_half_len=0.02 # 只要进格子就算赢
+            region_half_len=0.02 
         ))
         
         self.xy_region_kwargs_list = get_xy_region_kwargs_list_from_regions_info(self.regions)
@@ -114,9 +110,7 @@ class MazeScene(InitialSceneTemplates):
     @property
     def init_states(self):
         states = [
-            # 迷宫放在中间
             ("On", "maze_structure_1", "kitchen_table_maze_center_region"),
-            # 球放在起点
             ("On", "maze_ball_1", "kitchen_table_ball_start_region")
         ]
         return states

@@ -100,23 +100,23 @@ class MazeBall(CustomXmlObject):
             name=name,
             obj_name=obj_name,
             # [物理属性] 极小阻尼，保证球能顺滑滚动
-            joints=[dict(type="free", damping="0.001")]
+            joints=[dict(type="free", damping="0.00")]
         )
         self.rotation = (0, 0)
         
     @property
     def horizontal_radius(self):
-        # 球半径 0.015
-        return 0.015
+        # 球半径 0.02
+        return 0.02
     
     @property
     def bottom_offset(self):
         # 稍微抬高 0.1mm 防止生成时穿模
-        return np.array([0, 0, -0.0151])
+        return np.array([0, 0, -0.021])
 
     @property
     def top_offset(self):
-        return np.array([0, 0, 0.015])
+        return np.array([0, 0, 0.02])
 
 
 # --- 迷宫本体 ---
@@ -141,7 +141,7 @@ class MazeStructure(CustomXmlObject):
     @property
     def bottom_offset(self):
         # 迷宫地板很薄，稍微抬高 0.1mm
-        return np.array([0, 0, -0.001])
+        return np.array([0, 0, -0.0021])
     
     @property
     def top_offset(self):
