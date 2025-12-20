@@ -15,6 +15,9 @@ from robosuite.utils.input_utils import input2action
 import libero.libero.envs.bddl_utils as BDDLUtils
 from libero.libero.envs import *
 from termcolor import colored
+import datetime
+
+WINDOW_SIZE = 768
 
 # Robosuite 1.4.0 的 OpenCVRenderer 没有回调函数
 # 我们需要在主循环中手动捕获按键
@@ -63,7 +66,7 @@ def collect_human_trajectory(
     try:
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL) 
         # 两个 512x512 的图像拼接，宽 1024，高 512
-        cv2.resizeWindow(window_name, 1024, 512)
+        cv2.resizeWindow(window_name, WINDOW_SIZE*2, WINDOW_SIZE)
         cv2.moveWindow(window_name, 100, 100)
     except Exception as e:
         print(f"窗口调整失败: {e}")
@@ -209,7 +212,7 @@ if __name__ == "__main__":
     # parser.add_argument("--camera2", type=str, default="robot0_robotview", help="辅助视角，用于提供空间关系")
     # Available "camera" names = ('frontview', 'birdview', 'agentview', 
     # 'sideview', 'galleryview', 'paperview', 'robot0_robotview', 'robot0_eye_in_hand').
-    parser.add_argument("--camera2", type=str, default="robot0_eye_in_hand", help="辅助视角，用于提供空间关系")
+    parser.add_argument("--camera2", type=str, default="sideview", help="辅助视角，用于提供空间关系")
     
     parser.add_argument("--controller", type=str, default="OSC_POSE")
     parser.add_argument("--device", type=str, default="spacemouse")
@@ -258,7 +261,7 @@ if __name__ == "__main__":
 
     env = VisualizationWrapper(env)
     env_info = json.dumps(config)
-    tmp_directory = "test/demonstration_data/tmp/{}_ln_{}/{}".format(
+    tmp_directory = "data/{}_ln_{}/{}".format(
         problem_name,
         language_instruction.replace(" ", "_").strip('""'),
         str(time.time()).replace(".", "_"),

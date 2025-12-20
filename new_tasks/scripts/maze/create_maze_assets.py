@@ -91,7 +91,7 @@ for r in range(rows):
               pos="{wx:.4f} {wy:.4f} 0"
               rgba="{rgba_str}"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         """
 
         # 2. 视觉地板 (Group 0): 负责颜色，无碰撞 (contype=0, conaffinity=0)

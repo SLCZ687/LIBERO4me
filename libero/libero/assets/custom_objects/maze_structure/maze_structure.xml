@@ -13,700 +13,700 @@
               pos="-0.2340 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_0_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 0.1820 0"
               rgba="0.8 0.2 0.2 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_1_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_2_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_3_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_4_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_5_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 -0.0260 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_6_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 -0.0780 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_7_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 -0.1300 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 -0.1820 0"
               rgba="0.2 0.8 0.2 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_8_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 -0.1820 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_0" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.2340 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_1" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1820 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_2" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.1300 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_3" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0780 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_4" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="-0.0260 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_5" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0260 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_6" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.0780 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_7" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1300 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_8" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.1820 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="floor_col_9_9" type="box" group="1" 
               size="0.0260 0.0260 0.0020" 
               pos="0.2340 -0.2340 0"
               rgba="0.7 0.7 0.7 1"
               condim="3" contype="1" conaffinity="1"
-              friction="0.1 0.005 0.0001" solref="0.002 1"/>
+              friction="0.01 0.005 0.0001" solref="0.002 1"/>
         
         <geom name="wall_0_0" type="box" group="1" 
               size="0.0260 0.0260 0.0160" 
