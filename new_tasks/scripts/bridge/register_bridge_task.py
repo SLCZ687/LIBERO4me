@@ -22,7 +22,6 @@ class BridgeConstructionScene(InitialSceneTemplates):
             object_num_info=object_num_info,
         )
 
-    # 保持这个重写函数不变
     def get_region_dict(self, region_centroid_xy, region_name, target_name=None, region_half_len=0.02, yaw_rotation=(0.0, 0.0)):
         if isinstance(region_half_len, (list, tuple)):
             hx, hy = region_half_len
@@ -47,15 +46,10 @@ class BridgeConstructionScene(InitialSceneTemplates):
             return super().get_region_dict(region_centroid_xy, region_name, target_name, region_half_len, yaw_rotation)
 
     def define_regions(self):
-        # --- 物理布局参数调整 ---
         gap_size = 0.09
+        platform_len_x = 0.20
         platform_len_y = 0.30 
-        y_offset = (gap_size / 2) + (platform_len_y / 2) # 左右偏移量
-        
-        # [关键修改] X轴坐标调整
-        # X=0 是桌子中心。
-        # Robot 在负 X 方向 (大约 -0.6 的位置)。
-        # 为了让物体容易够到，我们把它们都设为负值。
+        y_offset = (gap_size / 2) + (platform_len_y / 2)
         
         bridge_x = -0.05  
         brick_x  = -0.30  
@@ -66,7 +60,7 @@ class BridgeConstructionScene(InitialSceneTemplates):
                 region_centroid_xy=[bridge_x, -y_offset], 
                 region_name="left_platform_init_region", 
                 target_name=self.workspace_name, 
-                region_half_len=0.01,
+                region_half_len=0.001,
             )
         )
 
@@ -76,11 +70,11 @@ class BridgeConstructionScene(InitialSceneTemplates):
                 region_centroid_xy=[bridge_x, y_offset], 
                 region_name="right_platform_init_region", 
                 target_name=self.workspace_name, 
-                region_half_len=0.01,
+                region_half_len=0.001,
             )
         )
 
-        # 3. 砖块初始位置 (放在左平台的前方，靠近机器人)
+        # 3. 砖块初始位置
         self.regions.update(
             self.get_region_dict(
                 region_centroid_xy=[brick_x, -y_offset], 
@@ -90,13 +84,13 @@ class BridgeConstructionScene(InitialSceneTemplates):
             )
         )
 
-        # 4. 目标区域 (桥中间)
+        # 4. [关键] 目标区域 (悬浮的 3D 盒子)
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[bridge_x, 0.0],  # 目标跟平台保持同一 X 轴
+                region_centroid_xy=[bridge_x, 0.0],
                 region_name="bridge_gap_target_region", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.05, 0.075] 
+                region_half_len=[platform_len_x/2, gap_size/2]
             )
         )
         
@@ -119,8 +113,9 @@ if __name__ == "__main__":
                     scene_name=scene_name,
                     objects_of_interest=["bridge_brick_1"],
                     goal_states=[
-                        ("On", "bridge_brick_1", "kitchen_table_bridge_gap_target_region")
-                        ],
+                        ("incontact", "bridge_brick_1", "bridge_platform_1"),
+                        ("incontact", "bridge_brick_1", "bridge_platform_2")
+                    ],
     )
 
     BDDL_FOLDER = "./custom_pddl"

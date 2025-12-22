@@ -50,7 +50,7 @@ class BridgeBrick(CustomXmlObject):
     def bottom_offset(self):
         # 砖块半高 0.02
         # 设置为 -0.03 (抬高 1cm)
-        return np.array([0, 0, -0.03])
+        return np.array([0, 0, -0.02])
 
     @property
     def top_offset(self):
@@ -72,13 +72,12 @@ class BridgePlatform(CustomXmlObject):
         
     @property
     def horizontal_radius(self):
-        return 0.01  
+        return 0.18
     
     @property
     def bottom_offset(self):
         # 平台半高 0.05
-        # 设置为 -0.06 (抬高 1cm，确保完全不穿模)
-        return np.array([0, 0, -0.06])
+        return np.array([0, 0, -0.051])
     
     @property
     def top_offset(self):
@@ -111,7 +110,7 @@ class MazeBall(CustomXmlObject):
     
     @property
     def bottom_offset(self):
-        # 稍微抬高 0.1mm 防止生成时穿模
+        # 稍微抬高 1mm 防止生成时穿模
         return np.array([0, 0, -0.021])
 
     @property

@@ -264,7 +264,7 @@ if __name__ == "__main__":
     tmp_directory = "data/{}_ln_{}/{}".format(
         problem_name,
         language_instruction.replace(" ", "_").strip('""'),
-        str(time.time()).replace(".", "_"),
+        str(datetime.datetime.now()).replace(".", "_").replace(" ", "_"),
     )
     env = DataCollectionWrapper(env, tmp_directory)
 

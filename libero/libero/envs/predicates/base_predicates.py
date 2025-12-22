@@ -51,6 +51,7 @@ class FalsePredicateFn(MultiarayAtomic):
 
 class InContactPredicateFn(BinaryAtomic):
     def __call__(self, arg1, arg2):
+        print("check_contact called.")
         return arg1.check_contact(arg2)
 
 

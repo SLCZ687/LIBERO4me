@@ -5,7 +5,7 @@
       (left_platform_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.060000000000000005 -0.20500000000000002 -0.04 -0.185)
+              (-0.051000000000000004 -0.196 -0.049 -0.194)
             )
           )
           (:yaw_rotation (
@@ -16,7 +16,7 @@
       (right_platform_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.060000000000000005 0.185 -0.04 0.20500000000000002)
+              (-0.051000000000000004 0.194 -0.049 0.196)
             )
           )
           (:yaw_rotation (
@@ -38,7 +38,7 @@
       (bridge_gap_target_region
           (:target kitchen_table)
           (:ranges (
-              (-0.1 -0.075 0.0 0.075)
+              (-0.15000000000000002 -0.045 0.05 0.045)
             )
           )
           (:yaw_rotation (
@@ -68,7 +68,7 @@
   )
 
   (:goal
-    (And (On bridge_brick_1 kitchen_table_bridge_gap_target_region))
+    (And (incontact bridge_brick_1 bridge_platform_1) (incontact bridge_brick_1 bridge_platform_2))
   )
 
 )
