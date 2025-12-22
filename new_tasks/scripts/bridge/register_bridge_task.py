@@ -22,23 +22,40 @@ class BridgeConstructionScene(InitialSceneTemplates):
             object_num_info=object_num_info,
         )
 
-    def get_region_dict(self, region_centroid_xy, region_name, target_name=None, region_half_len=0.02, yaw_rotation=(0.0, 0.0)):
+    def get_region_dict(self, region_centroid_xy, region_name, target_name=None, region_half_len=0.02, yaw_rotation=(0.0, 0.0), z_range=None):
         if isinstance(region_half_len, (list, tuple)):
             hx, hy = region_half_len
             if target_name is None:
                 target_name = self.workspace_name
-            
+                
+            # 构建范围列表
+            if z_range is not None:
+                # 3D 区域: (x_min, y_min, z_min, x_max, y_max, z_max)
+                ranges = [
+                    (
+                        region_centroid_xy[0] - hx, 
+                        region_centroid_xy[1] - hy, 
+                        z_range[0], # z_min
+                        region_centroid_xy[0] + hx, 
+                        region_centroid_xy[1] + hy,
+                        z_range[1]  # z_max
+                    )
+                ]
+            else:
+                # 2D 区域 (保持原样)
+                ranges = [
+                    (
+                        region_centroid_xy[0] - hx, 
+                        region_centroid_xy[1] - hy, 
+                        region_centroid_xy[0] + hx, 
+                        region_centroid_xy[1] + hy, 
+                    )
+                ]
+
             return {
                 region_name: {
                     "target": target_name,
-                    "ranges": [
-                        (
-                            region_centroid_xy[0] - hx, 
-                            region_centroid_xy[1] - hy, 
-                            region_centroid_xy[0] + hx, 
-                            region_centroid_xy[1] + hy, 
-                        )
-                    ],
+                    "ranges": ranges,
                     "yaw_rotation": [yaw_rotation],
                 }
             }
@@ -47,6 +64,7 @@ class BridgeConstructionScene(InitialSceneTemplates):
 
     def define_regions(self):
         gap_size = 0.09
+        buffer_size = 0.05
         platform_len_x = 0.20
         platform_len_y = 0.30 
         y_offset = (gap_size / 2) + (platform_len_y / 2)
@@ -84,16 +102,20 @@ class BridgeConstructionScene(InitialSceneTemplates):
             )
         )
 
-        # 4. [关键] 目标区域 (悬浮的 3D 盒子)
+        # 4. [关键] 目标区域
+        target_z_min = 0.10
+        target_z_max = 0.13
+        
         self.regions.update(
             self.get_region_dict(
                 region_centroid_xy=[bridge_x, 0.0],
                 region_name="bridge_gap_target_region", 
                 target_name=self.workspace_name, 
-                region_half_len=[platform_len_x/2, gap_size/2]
+                region_half_len=[(platform_len_x - 0.06)/2, buffer_size+gap_size/2],
             )
         )
         
+        # 生成默认的 2D 配置列表
         self.xy_region_kwargs_list = get_xy_region_kwargs_list_from_regions_info(self.regions)
 
     @property
@@ -111,10 +133,12 @@ if __name__ == "__main__":
     
     register_task_info(language,
                     scene_name=scene_name,
-                    objects_of_interest=["bridge_brick_1"],
+                    objects_of_interest=["bridge_brick_1", "bridge_platform_1", "bridge_platform_2"],
                     goal_states=[
                         ("incontact", "bridge_brick_1", "bridge_platform_1"),
-                        ("incontact", "bridge_brick_1", "bridge_platform_2")
+                        ("incontact", "bridge_brick_1", "bridge_platform_2"),
+                        ("inregion", "bridge_brick_1", "kitchen_table_bridge_gap_target_region"),
+                        ("up", "bridge_brick_1"),
                     ],
     )
 

@@ -51,12 +51,12 @@ class FalsePredicateFn(MultiarayAtomic):
 
 class InContactPredicateFn(BinaryAtomic):
     def __call__(self, arg1, arg2):
-        print("check_contact called.")
         return arg1.check_contact(arg2)
 
 
 class In(BinaryAtomic):
     def __call__(self, arg1, arg2):
+        # print("predicate In")
         return arg2.check_contact(arg1) and arg2.check_contain(arg1)
 
 
@@ -79,6 +79,9 @@ class On(BinaryAtomic):
 
 class Up(BinaryAtomic):
     def __call__(self, arg1):
+        # print("Predicate Up called")
+        # print(f"height:")
+        # print(arg1.get_geom_state()["pos"][2])
         return arg1.get_geom_state()["pos"][2] >= 1.0
 
 
@@ -117,3 +120,7 @@ class TurnOn(UnaryAtomic):
 class TurnOff(UnaryAtomic):
     def __call__(self, arg):
         return arg.turn_off()
+    
+class InRegion(BinaryAtomic):
+    def __call__(self, arg1, arg2):
+        return arg2.check_contain_xy(arg1)

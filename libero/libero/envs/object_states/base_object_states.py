@@ -165,6 +165,8 @@ class SiteObjectState(BaseObjectState):
         other_object_position = self.env.sim.data.body_xpos[
             self.env.obj_body_id[other.object_name]
         ]
+        
+        # print(f"other_object_position: {other_object_position}")
         return this_object.in_box(
             this_object_position, this_object_mat, other_object_position
         )
@@ -218,3 +220,22 @@ class SiteObjectState(BaseObjectState):
             if not (self.env.get_object(self.parent_name).is_close(qpos)):
                 return False
         return True
+
+    def check_contain_xy(self, other):
+        this_object = self.env.object_sites_dict[self.object_name]
+        this_position = self.env.sim.data.get_site_xpos(self.object_name)
+
+        other_position = self.env.sim.data.body_xpos[
+            self.env.obj_body_id[other.object_name]
+        ]
+        
+        total_size = this_object.size
+
+        ub = this_position + total_size
+        lb = this_position - total_size
+
+        pos = other_position[0:2]
+        ub = ub[0:2]
+        lb = lb[0:2]
+        
+        return np.all(pos > lb) and np.all(pos < ub)
