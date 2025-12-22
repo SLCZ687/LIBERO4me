@@ -56,6 +56,7 @@ class BridgeBrick(CustomXmlObject):
     def top_offset(self):
         return np.array([0, 0, 0.02])
 
+
 # --- 平台 ---
 @register_object
 class BridgePlatform(CustomXmlObject):
@@ -151,3 +152,32 @@ class MazeStructure(CustomXmlObject):
 # 这样 BDDL 中的 "maze_ball" 和 "maze_structure" 才能被识别
 OBJECTS_DICT["maze_ball"] = MazeBall
 OBJECTS_DICT["maze_structure"] = MazeStructure
+
+
+# --- 立方砖 ---
+@register_object
+class BrickCube(CustomXmlObject):
+    def __init__(self, name="brick_cube", obj_name="brick_cube"):
+        super().__init__(
+            folder_name="brick_cube",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.05")]
+        )
+        self.rotation = (0, 0)
+
+    @property
+    def horizontal_radius(self):
+        # 立方体边长的一半（例如 4cm）
+        return 0.02
+
+    @property
+    def bottom_offset(self):
+        # 半高 + 微抬，防止穿模
+        return np.array([0, 0, -0.021])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+OBJECTS_DICT["brick_cube"] = BrickCube
+
