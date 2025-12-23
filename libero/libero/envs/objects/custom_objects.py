@@ -162,22 +162,45 @@ class BrickCube(CustomXmlObject):
             folder_name="brick_cube",
             name=name,
             obj_name=obj_name,
-            joints=[dict(type="free", damping="0.05")]
+            joints=[dict(type="free", damping="0.0005")]
         )
+
+        # === 根据实例名选择颜色 ===
+        if name.endswith("_1"):
+            rgba = [0.9, 0.2, 0.2, 1.0]   # 红
+        elif name.endswith("_2"):
+            rgba = [0.2, 0.9, 0.2, 1.0]   # 绿
+        elif name.endswith("_3"):
+            rgba = [0.2, 0.2, 0.9, 1.0]   # 蓝
+        else:
+            rgba = [0.7, 0.7, 0.7, 1.0]
+
+        self._set_color(rgba)
+
+
+        # placement 需要的属性（你之前已经踩过坑）
         self.rotation = (0, 0)
+
+    def _set_color(self, rgba):
+        """
+        rgba: list or tuple, e.g. [1, 0, 0, 1]
+        """
+        for geom in self._obj.findall(".//geom"):
+            geom.set("rgba", " ".join(map(str, rgba)))
+
 
     @property
     def horizontal_radius(self):
-        # 立方体边长的一半（例如 4cm）
-        return 0.02
+        return 0.025
 
     @property
     def bottom_offset(self):
-        # 半高 + 微抬，防止穿模
-        return np.array([0, 0, -0.021])
+        return np.array([0, 0, -0.025])
 
     @property
     def top_offset(self):
-        return np.array([0, 0, 0.02])
+        return np.array([0, 0, 0.025])
+
+
 OBJECTS_DICT["brick_cube"] = BrickCube
 

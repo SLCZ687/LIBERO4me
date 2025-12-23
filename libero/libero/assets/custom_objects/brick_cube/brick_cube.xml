@@ -1,12 +1,5 @@
 <mujoco model="brick_cube">
-  <asset>
-    <texture name="tex_brick" type="cube" builtin="flat"
-             rgb1="1 0.8 0.8" width="512" height="512"/>
-    <material name="mat_brick" texture="tex_brick"
-              shininess="0.5" specular="0.5"/>
-  </asset>
-
-  <worldbody>
+   <worldbody>
     <body>
     <body name="object">
 
@@ -17,7 +10,6 @@
       <geom name="brick_cube_col"
             type="box"
             size="0.025 0.025 0.025"
-            material="mat_brick"
             friction="1.2 0.005 0.0001"
             condim="6"
             group="1"/>
@@ -25,10 +17,10 @@
       <geom name="brick_cube_vis"
             type="box"
             size="0.025 0.025 0.025"
-            material="mat_brick"
             contype="0"
             conaffinity="0"
             group="0"/>
+
 
       <site name="bottom_site"
             pos="0 0 -0.025"

@@ -20,8 +20,7 @@ class ThreeBrickScene(InitialSceneTemplates):
         )
 
     def define_regions(self):
-        # 给足空间，避免 RandomizationError
-        xs = [-0.18, 0.00, 0.18]
+        xs = [-0.06, 0.0, 0.06]
         y = 0.0
 
         for i, x in enumerate(xs, start=1):
@@ -30,9 +29,10 @@ class ThreeBrickScene(InitialSceneTemplates):
                     region_centroid_xy=[x, y],
                     region_name=f"brick_cube_{i}_init_region",
                     target_name=self.workspace_name,
-                    region_half_len=0.06,   # 够大，防止采样失败
+                    region_half_len=0.03,
                 )
             )
+
 
         self.xy_region_kwargs_list = get_xy_region_kwargs_list_from_regions_info(self.regions)
 

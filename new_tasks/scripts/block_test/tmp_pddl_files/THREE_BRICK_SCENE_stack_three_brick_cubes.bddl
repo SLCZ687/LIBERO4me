@@ -5,7 +5,7 @@
       (brick_cube_1_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.24 -0.06 -0.12 0.06)
+              (-0.09 -0.03 -0.03 0.03)
             )
           )
           (:yaw_rotation (
@@ -16,7 +16,7 @@
       (brick_cube_2_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.06 -0.06 0.06 0.06)
+              (-0.03 -0.03 0.03 0.03)
             )
           )
           (:yaw_rotation (
@@ -27,7 +27,7 @@
       (brick_cube_3_init_region
           (:target kitchen_table)
           (:ranges (
-              (0.12 -0.06 0.24 0.06)
+              (0.03 -0.03 0.09 0.03)
             )
           )
           (:yaw_rotation (
