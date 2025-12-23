@@ -1,0 +1,65 @@
+
+<mujoco model="torus_ring">
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- 组合几何体生成圆环 -->
+        <geom name="ring_seg_0" type="capsule" fromto="0.04 0.0 0 0.038637033051562734 0.01035276180410083 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_0" type="capsule" fromto="0.04 0.0 0 0.038637033051562734 0.01035276180410083 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_1" type="capsule" fromto="0.038637033051562734 0.01035276180410083 0 0.034641016151377546 0.019999999999999997 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_1" type="capsule" fromto="0.038637033051562734 0.01035276180410083 0 0.034641016151377546 0.019999999999999997 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_2" type="capsule" fromto="0.034641016151377546 0.019999999999999997 0 0.028284271247461905 0.028284271247461898 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_2" type="capsule" fromto="0.034641016151377546 0.019999999999999997 0 0.028284271247461905 0.028284271247461898 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_3" type="capsule" fromto="0.028284271247461905 0.028284271247461898 0 0.020000000000000004 0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_3" type="capsule" fromto="0.028284271247461905 0.028284271247461898 0 0.020000000000000004 0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_4" type="capsule" fromto="0.020000000000000004 0.034641016151377546 0 0.01035276180410083 0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_4" type="capsule" fromto="0.020000000000000004 0.034641016151377546 0 0.01035276180410083 0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_5" type="capsule" fromto="0.01035276180410083 0.038637033051562734 0 2.4492935982947064e-18 0.04 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_5" type="capsule" fromto="0.01035276180410083 0.038637033051562734 0 2.4492935982947064e-18 0.04 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_6" type="capsule" fromto="2.4492935982947064e-18 0.04 0 -0.010352761804100826 0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_6" type="capsule" fromto="2.4492935982947064e-18 0.04 0 -0.010352761804100826 0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_7" type="capsule" fromto="-0.010352761804100826 0.038637033051562734 0 -0.01999999999999999 0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_7" type="capsule" fromto="-0.010352761804100826 0.038637033051562734 0 -0.01999999999999999 0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_8" type="capsule" fromto="-0.01999999999999999 0.034641016151377546 0 -0.028284271247461898 0.028284271247461905 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_8" type="capsule" fromto="-0.01999999999999999 0.034641016151377546 0 -0.028284271247461898 0.028284271247461905 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_9" type="capsule" fromto="-0.028284271247461898 0.028284271247461905 0 -0.034641016151377546 0.019999999999999997 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_9" type="capsule" fromto="-0.028284271247461898 0.028284271247461905 0 -0.034641016151377546 0.019999999999999997 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_10" type="capsule" fromto="-0.034641016151377546 0.019999999999999997 0 -0.03863703305156273 0.010352761804100842 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_10" type="capsule" fromto="-0.034641016151377546 0.019999999999999997 0 -0.03863703305156273 0.010352761804100842 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_11" type="capsule" fromto="-0.03863703305156273 0.010352761804100842 0 -0.04 4.898587196589413e-18 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_11" type="capsule" fromto="-0.03863703305156273 0.010352761804100842 0 -0.04 4.898587196589413e-18 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_12" type="capsule" fromto="-0.04 4.898587196589413e-18 0 -0.038637033051562734 -0.010352761804100831 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_12" type="capsule" fromto="-0.04 4.898587196589413e-18 0 -0.038637033051562734 -0.010352761804100831 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_13" type="capsule" fromto="-0.038637033051562734 -0.010352761804100831 0 -0.03464101615137755 -0.01999999999999999 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_13" type="capsule" fromto="-0.038637033051562734 -0.010352761804100831 0 -0.03464101615137755 -0.01999999999999999 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_14" type="capsule" fromto="-0.03464101615137755 -0.01999999999999999 0 -0.028284271247461915 -0.028284271247461884 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_14" type="capsule" fromto="-0.03464101615137755 -0.01999999999999999 0 -0.028284271247461915 -0.028284271247461884 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_15" type="capsule" fromto="-0.028284271247461915 -0.028284271247461884 0 -0.020000000000000018 -0.03464101615137754 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_15" type="capsule" fromto="-0.028284271247461915 -0.028284271247461884 0 -0.020000000000000018 -0.03464101615137754 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_16" type="capsule" fromto="-0.020000000000000018 -0.03464101615137754 0 -0.010352761804100826 -0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_16" type="capsule" fromto="-0.020000000000000018 -0.03464101615137754 0 -0.010352761804100826 -0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_17" type="capsule" fromto="-0.010352761804100826 -0.038637033051562734 0 -7.347880794884118e-18 -0.04 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_17" type="capsule" fromto="-0.010352761804100826 -0.038637033051562734 0 -7.347880794884118e-18 -0.04 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_18" type="capsule" fromto="-7.347880794884118e-18 -0.04 0 0.010352761804100812 -0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_18" type="capsule" fromto="-7.347880794884118e-18 -0.04 0 0.010352761804100812 -0.038637033051562734 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_19" type="capsule" fromto="0.010352761804100812 -0.038637033051562734 0 0.020000000000000004 -0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_19" type="capsule" fromto="0.010352761804100812 -0.038637033051562734 0 0.020000000000000004 -0.034641016151377546 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_20" type="capsule" fromto="0.020000000000000004 -0.034641016151377546 0 0.028284271247461894 -0.02828427124746191 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_20" type="capsule" fromto="0.020000000000000004 -0.034641016151377546 0 0.028284271247461894 -0.02828427124746191 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_21" type="capsule" fromto="0.028284271247461894 -0.02828427124746191 0 0.03464101615137754 -0.020000000000000018 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_21" type="capsule" fromto="0.028284271247461894 -0.02828427124746191 0 0.03464101615137754 -0.020000000000000018 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_22" type="capsule" fromto="0.03464101615137754 -0.020000000000000018 0 0.03863703305156273 -0.010352761804100863 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_22" type="capsule" fromto="0.03464101615137754 -0.020000000000000018 0 0.03863703305156273 -0.010352761804100863 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        <geom name="ring_seg_23" type="capsule" fromto="0.03863703305156273 -0.010352761804100863 0 0.04 0.0 0" size="0.008" rgba="0.8 0.2 0.2 1" density="500" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>
+        <geom name="ring_seg_vis_23" type="capsule" fromto="0.03863703305156273 -0.010352761804100863 0 0.04 0.0 0" size="0.008" rgba="0.8 0.2 0.2 1" contype="0" conaffinity="0" group="1"/>
+        
+        <!-- Sites -->
+        <!-- bottom_site 用于抓取逻辑，放在环的一侧实体上 -->
+        <site name="bottom_site" pos="0.04 0 -0.008" size="0.002" rgba="0 0 0 0"/>
+        <site name="top_site" pos="0.04 0 0.008" size="0.002" rgba="0 0 0 0"/>
+        <!-- center_site 用于判断圆环是否套进了杆子 (位于圆心) -->
+        <site name="center_site" pos="0 0 0" size="0.002" rgba="1 0 0 0.5"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

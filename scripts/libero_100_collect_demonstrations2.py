@@ -261,8 +261,7 @@ if __name__ == "__main__":
 
     env = VisualizationWrapper(env)
     env_info = json.dumps(config)
-    tmp_directory = "data/{}_ln_{}/{}".format(
-        problem_name,
+    tmp_directory = "data/{}/{}".format(
         language_instruction.replace(" ", "_").strip('""'),
         str(datetime.datetime.now()).replace(".", "_").replace(" ", "_"),
     )

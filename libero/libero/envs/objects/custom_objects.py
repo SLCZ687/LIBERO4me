@@ -150,3 +150,72 @@ class MazeStructure(CustomXmlObject):
 # 这样 BDDL 中的 "maze_ball" 和 "maze_structure" 才能被识别
 OBJECTS_DICT["maze_ball"] = MazeBall
 OBJECTS_DICT["maze_structure"] = MazeStructure
+
+# =========================================================
+#  Ring Task Objects
+# =========================================================
+
+# --- 套圈圆环 ---
+@register_object
+class TorusRing(CustomXmlObject):
+    def __init__(self, name="torus_ring", obj_name="torus_ring"):
+        super().__init__(
+            folder_name="torus_ring",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+# --- 套圈杆子 ---
+@register_object
+class RingStand(CustomXmlObject):
+    def __init__(self, name="ring_stand", obj_name="ring_stand"):
+        super().__init__(
+            folder_name="ring_stand",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
+            # 这样机械臂不小心碰到时，它不会轻易飞出去，但从物理引擎角度它仍是可移动物体
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 底座是 16cm x 16cm 的方块
+        # 半径取 0.08 左右
+        return 0.08
+    
+    @property
+    def bottom_offset(self):
+        # 底座高度是 0.02 (半高 0.01)
+        # 所以底部偏移是 -0.01
+        return np.array([0, 0, -0.01])
+    
+    @property
+    def top_offset(self):
+        # 杆子高度是 0.15
+        return np.array([0, 0, 0.15])
+
+# [关键] 注册到全局字典
+# 确保名称与 XML 文件夹及 BDDL 中的名称一致
+OBJECTS_DICT["torus_ring"] = TorusRing
+OBJECTS_DICT["ring_stand"] = RingStand

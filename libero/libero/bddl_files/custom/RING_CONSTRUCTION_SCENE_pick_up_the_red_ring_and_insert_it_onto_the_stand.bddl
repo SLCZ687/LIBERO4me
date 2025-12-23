@@ -1,0 +1,63 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the red ring and insert it onto the stand)
+    (:regions
+      (stand_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.16 0.09000000000000001 -0.13999999999999999 0.11)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (ring_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.05 -0.15000000000000002 0.05 -0.05)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (ring_target_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.19 0.060000000000000005 -0.10999999999999999 0.14)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    ring_stand_1 - ring_stand
+    torus_ring_1 - torus_ring
+  )
+
+  (:obj_of_interest
+    torus_ring_1
+    ring_stand_1
+  )
+
+  (:init
+    (On ring_stand_1 kitchen_table_stand_init_region)
+    (On torus_ring_1 kitchen_table_ring_init_region)
+  )
+
+  (:goal
+    (And (on torus_ring_1 kitchen_table_ring_target_region) (on torus_ring_1 ring_stand_1))
+  )
+
+)
