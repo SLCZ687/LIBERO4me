@@ -1,7 +1,7 @@
 import numpy as np
 
 # 关键：先 import 注册文件，确保 @register_object 已经执行
-import new_tasks.scripts.block_test.brick_cube_object  # noqa: F401
+import libero.libero.envs.objects.custom_objects  # noqa: F401
 
 from libero.libero.utils.mu_utils import register_mu, InitialSceneTemplates
 from libero.libero.utils.bddl_generation_utils import get_xy_region_kwargs_list_from_regions_info
@@ -47,10 +47,13 @@ class ThreeBrickScene(InitialSceneTemplates):
 if __name__ == "__main__":
     scene_name = "three_brick_scene"
     register_task_info(
-        "spawn three brick cubes equally spaced on the table",
+        "stack three brick cubes",
         scene_name=scene_name,
         objects_of_interest=["brick_cube_1", "brick_cube_2", "brick_cube_3"],
-        goal_states=[],  # 先空：只测 reset + render
+        goal_states=[
+            ("On", "brick_cube_1", "brick_cube_2"),
+            ("On", "brick_cube_2", "brick_cube_3"),
+        ],
     )
 
     out_dir = "new_tasks/scripts/block_test/tmp_pddl_files"

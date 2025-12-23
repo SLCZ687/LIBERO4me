@@ -1,0 +1,64 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language stack three brick cubes)
+    (:regions
+      (brick_cube_1_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24 -0.06 -0.12 0.06)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (brick_cube_2_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.06 -0.06 0.06 0.06)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (brick_cube_3_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (0.12 -0.06 0.24 0.06)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    brick_cube_1 brick_cube_2 brick_cube_3 - brick_cube
+  )
+
+  (:obj_of_interest
+    brick_cube_1
+    brick_cube_2
+    brick_cube_3
+  )
+
+  (:init
+    (On brick_cube_1 kitchen_table_brick_cube_1_init_region)
+    (On brick_cube_2 kitchen_table_brick_cube_2_init_region)
+    (On brick_cube_3 kitchen_table_brick_cube_3_init_region)
+  )
+
+  (:goal
+    (And (On brick_cube_1 brick_cube_2) (On brick_cube_2 brick_cube_3))
+  )
+
+)
