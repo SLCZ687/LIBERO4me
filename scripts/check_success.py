@@ -1,5 +1,5 @@
 # scripts/check_success.py
-
+import libero.libero.envs.objects.custom_objects
 from libero.libero.envs import OffScreenRenderEnv
 
 # 改成你当前要检查的 BDDL

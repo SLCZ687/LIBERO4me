@@ -1,3 +1,5 @@
+import libero.libero.envs.objects.custom_objects
+
 import argparse
 import os
 import time
@@ -8,7 +10,6 @@ from robosuite import load_controller_config
 
 import libero.libero.envs.bddl_utils as BDDLUtils
 from libero.libero.envs import TASK_MAPPING
-
 
 def to_uint8(img):
     """Ensure HWC uint8 for video writing."""

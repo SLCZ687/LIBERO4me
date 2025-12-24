@@ -32,7 +32,7 @@ from libero.libero.envs import *  # TASK_MAPPING, etc.
 from termcolor import colored
 
 # 你的宽松成功检测函数（你已经写好了）
-from scripts.check_success_stack3 import check_stack3_loose
+from scripts.check_success_stack3 import check_stack3_strict
 
 
 # ============= Robosuite 1.4.0 OpenCVRenderer: 手动捕获键盘 =============
@@ -93,7 +93,7 @@ def collect_human_trajectory(env, device, arm, env_configuration, problem_info, 
             manual_keyboard_capture(env, device)
 
         # 选择 active_robot（单臂基本就是 env.robots[0]）
-        active_robot = env.robots[0] if env_configuration != "bimanual" else env.robots[0]
+        active_robot = env.robots[0]
 
         action, grasp = input2action(
             device=device,
@@ -112,12 +112,17 @@ def collect_human_trajectory(env, device, arm, env_configuration, problem_info, 
         env.render()
 
         # ====== 自定义成功检测（宽松版）======
-        ok = check_stack3_loose(
+        from scripts.check_success_stack3 import check_stack3_strict
+
+        ok = check_stack3_strict(
             env,
-            hold_steps=args.loose_hold,   # 这个是 check_stack3_loose 自己的连续帧要求
             xy_tol=args.xy_tol,
             min_z_gap=args.min_z_gap,
+            max_z_gap=args.max_z_gap,
+            vel_tol=args.vel_tol,
+            hold_steps=args.loose_hold,
         )
+
         if ok:
             success_hold += 1
             if success_hold >= SUCCESS_HOLD_N:
@@ -236,6 +241,8 @@ def main():
     parser.add_argument("--loose-hold", type=int, default=15)     # check_stack3_loose 内部 hold_steps
     parser.add_argument("--success-hold", type=int, default=10)   # 外层再 hold 一次
     parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--max-z-gap", dest="max_z_gap", type=float, default=0.090)
+    parser.add_argument("--vel-tol", dest="vel_tol", type=float, default=0.030)
 
     args = parser.parse_args()
 
