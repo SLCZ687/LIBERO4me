@@ -219,3 +219,126 @@ class RingStand(CustomXmlObject):
 # 确保名称与 XML 文件夹及 BDDL 中的名称一致
 OBJECTS_DICT["torus_ring"] = TorusRing
 OBJECTS_DICT["ring_stand"] = RingStand
+
+# =========================================================
+#  Seesaw Task Objects (Appended)
+# =========================================================
+
+# --- 跷跷板本体 ---
+@register_object
+class Seesaw(CustomXmlObject):
+    def __init__(self, name="seesaw", obj_name="seesaw"):
+        super().__init__(
+            folder_name="seesaw",
+            name=name,
+            obj_name=obj_name,
+            # [关键] 阻尼大一点，防止整个底座被推走
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (np.pi/2, np.pi/2)
+        self.rotation_axis = "x"
+
+    @property
+    def horizontal_radius(self):
+        return 0.25 
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.06]) 
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.12]) 
+
+# --- 1. 小方块 (Yellow) ---
+@register_object
+class WeightSmall(CustomXmlObject):
+    def __init__(self, name="weight_small", obj_name="weight_small"):
+        super().__init__(
+            folder_name="weight_small",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.001")]
+        )
+        self.rotation = (0, 0)
+
+    @property
+    def horizontal_radius(self):
+        return 0.0225 # 0.015 * 1.5
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.015])
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.015])
+
+# --- 2. 中方块参考物 (Orange) ---
+@register_object
+class WeightMediumRef(CustomXmlObject):
+    def __init__(self, name="weight_medium_ref", obj_name="weight_medium_ref"):
+        super().__init__(
+            folder_name="weight_medium_ref",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.001")]
+        )
+        self.rotation = (0, 0)
+
+    @property
+    def horizontal_radius(self):
+        return 0.03 # 0.02 * 1.5
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+# --- 3. 中方块目标物 (Cyan) ---
+@register_object
+class WeightMediumTarget(CustomXmlObject):
+    def __init__(self, name="weight_medium_target", obj_name="weight_medium_target"):
+        super().__init__(
+            folder_name="weight_medium_target",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.001")]
+        )
+        self.rotation = (0, 0)
+
+    @property
+    def horizontal_radius(self):
+        return 0.03 # 0.02 * 1.5
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+# --- 4. 大方块 (Purple) ---
+@register_object
+class WeightLarge(CustomXmlObject):
+    def __init__(self, name="weight_large", obj_name="weight_large"):
+        super().__init__(
+            folder_name="weight_large",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.001")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        return 0.0375 # 0.025 * 1.5
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.025])
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.025])
+
+# 手动注册到字典 (虽然 @register_object 做了，但为了保险起见保持对应关系)
+OBJECTS_DICT["seesaw"] = Seesaw
+OBJECTS_DICT["weight_small"] = WeightSmall
+OBJECTS_DICT["weight_medium_ref"] = WeightMediumRef
+OBJECTS_DICT["weight_medium_target"] = WeightMediumTarget
+OBJECTS_DICT["weight_large"] = WeightLarge

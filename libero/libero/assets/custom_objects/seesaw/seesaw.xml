@@ -1,0 +1,43 @@
+
+<mujoco model="seesaw">
+  <asset>
+    <texture name="tex_wood" type="2d" builtin="flat" rgb1="0.6 0.5 0.3" width="512" height="512"/>
+    <material name="mat_wood" texture="tex_wood"/>
+    <texture name="tex_base" type="2d" builtin="flat" rgb1="0.2 0.2 0.2" width="512" height="512"/>
+    <material name="mat_base" texture="tex_base"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- 1. 底座 (固定，重) -->
+        <geom name="base_geom" type="box" size="0.05 0.1 0.06" pos="0 0 0.06" material="mat_base" 
+              density="50000" friction="2.0 0.005 0.0001" group="0"/>
+        <geom name="base_vis" type="box" size="0.05 0.1 0.06" pos="0 0 0.06" material="mat_base" 
+              contype="0" conaffinity="0" group="1"/>
+
+        <!-- 2. 跷跷板本体 (Hinge Joint) -->
+        <!-- 支点高度在 base_h * 2 处，即 0.12m -->
+        <body name="seesaw_board" pos="0 0 0.12">
+            <!-- 关键：Hinge 关节，绕 Y 轴旋转，限制角度 +/- 25度 (约0.4弧度) -->
+            <!-- damping=1.0 稍微大一点，防止晃个不停 -->
+            <joint name="seesaw_joint" type="hinge" axis="0 1 0" range="-0.2 0.2" damping="0.0" frictionloss="0.1" limited="true"/>
+            
+            <!-- 板子 -->
+            <geom name="board_geom" type="box" size="0.2 0.04 0.01" material="mat_wood" 
+                  density="800" friction="1.5 0.005 0.0001" group="0"/>
+            <geom name="board_vis" type="box" size="0.2 0.04 0.01" material="mat_wood" 
+                  contype="0" conaffinity="0" group="1"/>
+            
+            <!-- 围栏 -->
+            
+
+            <!-- Sites 用于定位 -->
+            <site name="left_tray_site" pos="-0.16 0 0.01" size="0.01" rgba="1 0 0 0.5"/>
+            <site name="right_tray_site" pos="0.16 0 0.01" size="0.01" rgba="0 1 0 0.5"/>
+        </body>
+        
+        <site name="bottom_site" pos="0 0 -0.01" size="0.002" rgba="0 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,77 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the two cyan blocks and place them on the ends of the seesaw to make the seesaw low on the left and high on the right)
+    (:regions
+      (seesaw_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.21000000000000002 0.19 -0.19 0.21000000000000002)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (left_tray_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.23 0.010000000000000009 -0.17 0.07)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (right_tray_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24000000000000002 0.32 -0.16 0.39999999999999997)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (weights_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.35 -0.25 -0.05000000000000002 -0.15000000000000002)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    seesaw_1 - seesaw
+    weight_medium_target_1 - weight_medium_target
+    weight_large_1 - weight_large
+  )
+
+  (:obj_of_interest
+    weight_medium_target_1
+    seesaw_1
+    weight_large_1
+  )
+
+  (:init
+    (On seesaw_1 kitchen_table_seesaw_init_region)
+    (On weight_medium_target_1 kitchen_table_weights_init_region)
+    (On weight_large_1 kitchen_table_weights_init_region)
+  )
+
+  (:goal
+    (And (incontact weight_medium_target_1 seesaw_1) (incontact weight_large_1 seesaw_1) (inregion weight_medium_target_1 kitchen_table_right_tray_region) (inregion weight_large_1 kitchen_table_left_tray_init_region))
+  )
+
+)
