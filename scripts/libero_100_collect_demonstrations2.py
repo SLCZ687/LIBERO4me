@@ -16,8 +16,11 @@ import libero.libero.envs.bddl_utils as BDDLUtils
 from libero.libero.envs import *
 from termcolor import colored
 import datetime
+import shutil
 
 WINDOW_SIZE = 768
+WINDOW_POS_X = 200
+WINDOW_POS_Y = 200
 
 # Robosuite 1.4.0 的 OpenCVRenderer 没有回调函数
 # 我们需要在主循环中手动捕获按键
@@ -67,7 +70,7 @@ def collect_human_trajectory(
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL) 
         # 两个 512x512 的图像拼接，宽 1024，高 512
         cv2.resizeWindow(window_name, WINDOW_SIZE*2, WINDOW_SIZE)
-        cv2.moveWindow(window_name, 100, 100)
+        cv2.moveWindow(window_name, WINDOW_POS_X, WINDOW_POS_Y)
     except Exception as e:
         print(f"窗口调整失败: {e}")
     # ==============================================
@@ -159,9 +162,11 @@ def gather_demonstrations_as_hdf5(directory, out_dir, env_info, args, remove_dir
     num_eps = 0
     env_name = None
 
+    for dir in remove_directory:
+        shutil.rmtree(f"{directory}/{dir}")
+        print(f"removed {directory}/{dir}")
+
     for ep_directory in os.listdir(directory):
-        if ep_directory in remove_directory:
-            continue
         state_paths = os.path.join(directory, ep_directory, "state_*.npz")
         states = []
         actions = []
@@ -261,11 +266,11 @@ if __name__ == "__main__":
 
     env = VisualizationWrapper(env)
     env_info = json.dumps(config)
-    tmp_directory = "data/{}/{}".format(
+    data_directory = "data/{}/{}".format(
         language_instruction.replace(" ", "_").strip('""'),
         str(datetime.datetime.now()).replace(".", "_").replace(" ", "_"),
     )
-    env = DataCollectionWrapper(env, tmp_directory)
+    env = DataCollectionWrapper(env, data_directory)
 
     env.reset()
     # env.render() # 已移除，我们在主循环中处理
@@ -281,20 +286,22 @@ if __name__ == "__main__":
         raise Exception("Invalid device choice")
 
     t1, t2 = str(time.time()).split(".")
-    new_dir = os.path.join(
-        args.directory,
-        f"{domain_name}_ln_{problem_name}_{t1}_{t2}_" + language_instruction.replace(" ", "_").strip('""'),
+    demo_dir = os.path.join(
+        data_directory,
+        "demo",
     )
-    os.makedirs(new_dir)
+    os.makedirs(demo_dir)
 
     remove_directory = []
     i = 0
     while i < args.num_demonstration:
         print(f"Collection Demo {i}...")
         # 将 args 传入函数，以便读取 camera2 配置
+        
         saving = collect_human_trajectory(
             env, device, args.arm, args.config, problem_info, args, remove_directory
         )
         if saving:
-            gather_demonstrations_as_hdf5(tmp_directory, new_dir, env_info, args, remove_directory)
+            gather_demonstrations_as_hdf5(data_directory, demo_dir, env_info, args, remove_directory)
+            remove_directory = []
             i += 1
