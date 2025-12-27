@@ -22,12 +22,17 @@ WINDOW_SIZE = 768
 WINDOW_POS_X = 200
 WINDOW_POS_Y = 200
 
+# =================【新增：定义目标频率】=================
+control_freq = 20  # 必须与 env 初始化时的 control_freq 一致
+target_dt_ms = int(1000 / control_freq)  # 50ms
+# ====================================================
+
 # Robosuite 1.4.0 的 OpenCVRenderer 没有回调函数
 # 我们需要在主循环中手动捕获按键
 def manual_keyboard_capture(env, device):
     # 捕获 OpenCV 窗口的按键 (等待 1ms)
     # 注意：必须有窗口焦点
-    key = cv2.waitKey(1) & 0xFF
+    key = cv2.waitKey(target_dt_ms) & 0xFF
     if key != 255: # 255 表示没有按键
         # 模拟按下和松开
         try:
@@ -105,7 +110,7 @@ def collect_human_trajectory(
             manual_keyboard_capture(env, device)
         else:
             # 如果是 SpaceMouse，也必须调用 waitKey 来刷新 OpenCV 窗口
-            cv2.waitKey(1)
+            cv2.waitKey(target_dt_ms)
         # ==============================================
 
         active_robot = (

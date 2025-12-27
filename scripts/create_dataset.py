@@ -17,6 +17,9 @@ from robosuite.utils import camera_utils
 from libero.libero.envs import *
 from libero.libero import get_libero_path
 
+CAMERA_HEIGHT = 256
+CAMERA_WIDTH = 256
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--demo-file", default="demo.hdf5")
@@ -65,9 +68,10 @@ def main():
     bddl_file_name = f["data"].attrs["bddl_file_name"]
 
     bddl_file_dir = os.path.dirname(bddl_file_name)
-    replace_bddl_prefix = "/".join(bddl_file_dir.split("bddl_files/")[:-1] + "bddl_files")
+    # replace_bddl_prefix = "/".join(bddl_file_dir.split("bddl_files/")[:-1] + "bddl_files")
 
-    hdf5_path = os.path.join(get_libero_path("datasets"), bddl_file_dir.split("bddl_files/")[-1].replace(".bddl", "_demo.hdf5"))
+    # hdf5_path = os.path.join(get_libero_path("datasets"), bddl_file_dir.split("bddl_files/")[-1].replace(".bddl", "_demo.hdf5"))
+    hdf5_path = os.path.join(args.dataset_path,args.dataset_name,f"{args.dataset_name}.hdf5")
 
     output_parent_dir = Path(hdf5_path).parent
     output_parent_dir.mkdir(parents=True, exist_ok=True)
@@ -94,8 +98,8 @@ def main():
         ],
         reward_shaping=True,
         control_freq=20,
-        camera_heights=128,
-        camera_widths=128,
+        camera_heights=CAMERA_HEIGHT,
+        camera_widths=CAMERA_WIDTH,
         camera_segmentations=None,
     )
 
