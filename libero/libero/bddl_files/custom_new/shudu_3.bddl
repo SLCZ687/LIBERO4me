@@ -7,235 +7,16 @@
     (frame_center_region
         (:target kitchen_table)
         (:ranges (
-            (-0.00001 -0.00001 0.00001 0.00001)
+            (-0.10001 -0.00001 -0.09999 0.00001)
           )
         )
         (:yaw_rotation ((0.0 0.0)))
     )
     
-    (frame_region_1
-        (:target kitchen_table)
-        (:ranges (
-            (-0.101 -0.101 -0.099 -0.099)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_1_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.12 -0.12 -0.08 -0.08)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_2
-        (:target kitchen_table)
-        (:ranges (
-            (-0.101 -0.001 -0.099 0.001)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_2_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.12 -0.02 -0.08 0.02)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_3
-        (:target kitchen_table)
-        (:ranges (
-            (-0.101 0.099 -0.099 0.101)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_3_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.12 0.08 -0.08 0.12)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_4
-        (:target kitchen_table)
-        (:ranges (
-            (-0.001 -0.101 0.001 -0.099)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_4_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.02 -0.12 0.02 -0.08)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_5
-        (:target kitchen_table)
-        (:ranges (
-            (-0.001 -0.001 0.001 0.001)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_5_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.02 -0.02 0.02 0.02)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_6
-        (:target kitchen_table)
-        (:ranges (
-            (-0.001 0.099 0.001 0.101)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_6_target
-        (:target kitchen_table)
-        (:ranges (
-            (-0.02 0.08 0.02 0.12)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_7
-        (:target kitchen_table)
-        (:ranges (
-            (0.099 -0.101 0.101 -0.099)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-     (frame_region_7_target
-        (:target kitchen_table)
-        (:ranges (
-            (0.08 -0.12 0.12 -0.08)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_8
-        (:target kitchen_table)
-        (:ranges (
-            (0.099 -0.001 0.101 0.001)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_8_target
-        (:target kitchen_table)
-        (:ranges (
-            (0.08 -0.02 0.12 0.02)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_9
-        (:target kitchen_table)
-        (:ranges (
-            (0.099 0.099 0.101 0.101)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-    (frame_region_9_target
-        (:target kitchen_table)
-        (:ranges (
-            (0.08 0.08 0.12 0.12)
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
-    )
-
-
-
-
     (block_outside_1
         (:target kitchen_table)
         (:ranges (
-            (-0.12 0.2499999 -0.06 0.2500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+            (-0.27 0.2499999 -0.21 0.2500001) ;; x: -0.22 -> -0.27, -0.16 -> -0.21
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -244,7 +25,7 @@
     (block_outside_2
         (:target kitchen_table)
         (:ranges (
-            (-0.03 0.2499999 0.03 0.2500001)
+            (-0.18 0.2499999 -0.12 0.2500001) ;; x: -0.13 -> -0.18, -0.07 -> -0.12
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -253,7 +34,7 @@
     (block_outside_3
         (:target kitchen_table)
         (:ranges (
-            (0.06 0.2499999 0.12 0.2500001)
+            (-0.09 0.2499999 -0.03 0.2500001) ;; x: -0.04 -> -0.09, 0.02 -> -0.03
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -262,7 +43,7 @@
     (block_outside_4
         (:target kitchen_table)
         (:ranges (
-            (-0.12 0.3499999 -0.06 0.3500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+            (-0.27 0.3499999 -0.21 0.3500001) ;; x: -0.22 -> -0.27, -0.16 -> -0.21
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -271,7 +52,7 @@
     (block_outside_5
         (:target kitchen_table)
         (:ranges (
-            (-0.03 0.3499999 0.03 0.3500001)
+            (-0.18 0.3499999 -0.12 0.3500001) ;; x: -0.13 -> -0.18, -0.07 -> -0.12
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -280,7 +61,7 @@
     (block_outside_6
         (:target kitchen_table)
         (:ranges (
-            (0.06 0.3499999 0.12 0.3500001)
+            (-0.09 0.3499999 -0.03 0.3500001) ;; x: -0.04 -> -0.09, 0.02 -> -0.03
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -289,7 +70,7 @@
     (block_outside_7
         (:target kitchen_table)
         (:ranges (
-            (-0.12 0.4499999 -0.06 0.4500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+            (-0.27 0.4499999 -0.21 0.4500001) ;; x: -0.22 -> -0.27, -0.16 -> -0.21
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -298,7 +79,7 @@
     (block_outside_8
         (:target kitchen_table)
         (:ranges (
-            (-0.03 0.4499999 0.03 0.4500001)
+            (-0.18 0.4499999 -0.12 0.4500001) ;; x: -0.13 -> -0.18, -0.07 -> -0.12
           )
         )
         (:yaw_rotation ((0.0 0.0)))
@@ -307,105 +88,113 @@
     (block_outside_9
         (:target kitchen_table)
         (:ranges (
-            (0.06 0.4499999 0.12 0.4500001)
+            (-0.09 0.4499999 -0.03 0.4500001) ;; x: -0.04 -> -0.09, 0.02 -> -0.03
           )
         )
         (:yaw_rotation ((0.0 0.0)))
     )
 
-    ;; 3. 目标区域 (对齐原来的命名风格)
 
-    (slot_center_1
+
+    ;; 3. 目标区域 (frame_region_x 保持原位，target 扩大 2.5 倍并保持中心)
+    ;; 尺寸从 0.04x0.04 变为 0.1x0.1
+    (frame_region_1
         (:target kitchen_table)
-        (:ranges (
-            (0.07 -0.03 0.13 0.03)
-          )
-        )
+        (:ranges ((-0.201 -0.101 -0.199 -0.099)))
         (:yaw_rotation ((0.0 0.0)))
-    )  
-
-    (slot_center_2
+    )
+    (frame_region_1_target
         (:target kitchen_table)
-        (:ranges (
-            (-0.13 -0.13 -0.07 -0.07)
-          )
-        )
-        (:yaw_rotation ((0.0 0.0)))
-    )   
-
-    (slot_center_3
-        (:target kitchen_table)
-        (:ranges (
-            (-0.03 0.07 0.03 0.13)
-          )
-        )
-        (:yaw_rotation ((0.0 0.0)))
-    )  
-
-    (slot_center_4
-        (:target kitchen_table)
-        (:ranges (
-            (-0.13 0.07 -0.07 0.13)
-          )
-        )
-        (:yaw_rotation ((0.0 0.0)))
-    )  
-
-    (slot_center_5
-        (:target kitchen_table)
-        (:ranges (
-            (-0.03 -0.03 0.03 0.03)
-          )
-        )
+        (:ranges ((-0.25 -0.15 -0.15 -0.05))) ;; 中心 (-0.2, -0.1)
         (:yaw_rotation ((0.0 0.0)))
     )
 
-    (slot_center_6
+    (frame_region_2
         (:target kitchen_table)
-        (:ranges (
-            (0.07 -0.13 0.13 -0.07)
-          )
-        )
+        (:ranges ((-0.201 -0.001 -0.199 0.001)))
         (:yaw_rotation ((0.0 0.0)))
-    )  
-
-    (slot_center_7
+    )
+    (frame_region_2_target
         (:target kitchen_table)
-        (:ranges (
-            (-0.03 -0.13 0.03 -0.07)
-          )
-        )
+        (:ranges ((-0.25 -0.05 -0.15 0.05)))  ;; 中心 (-0.2, 0.0)
         (:yaw_rotation ((0.0 0.0)))
-    )  
+    )
 
-    (slot_center_8
+    (frame_region_3
         (:target kitchen_table)
-        (:ranges (
-            (0.07 0.07 0.13 0.13)
-          )
-        )
+        (:ranges ((-0.201 0.099 -0.199 0.101)))
         (:yaw_rotation ((0.0 0.0)))
-    )  
-
-    (slot_center_9
+    )
+    (frame_region_3_target
         (:target kitchen_table)
-        (:ranges (
-            (-0.13 -0.03 -0.07 0.03)
-          )
-        )
+        (:ranges ((-0.25 0.05 -0.15 0.15)))   ;; 中心 (-0.2, 0.1)
         (:yaw_rotation ((0.0 0.0)))
-    )  
+    )
 
-    (block_target_region
+    (frame_region_4
         (:target kitchen_table)
-        (:ranges (
-            (0.099 -0.101 0.101 -0.099) ;; 右下角格子作为示例目标
-          )
-        )
-        (:yaw_rotation (
-            (0.0 0.0)
-          )
-        )
+        (:ranges ((-0.101 -0.101 -0.099 -0.099)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_4_target
+        (:target kitchen_table)
+        (:ranges ((-0.15 -0.15 -0.05 -0.05))) ;; 中心 (-0.1, -0.1)
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (frame_region_5
+        (:target kitchen_table)
+        (:ranges ((-0.101 -0.001 -0.099 0.001)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_5_target
+        (:target kitchen_table)
+        (:ranges ((-0.15 -0.05 -0.05 0.05)))  ;; 中心 (-0.1, 0.0)
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (frame_region_6
+        (:target kitchen_table)
+        (:ranges ((-0.101 0.099 -0.099 0.101)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_6_target
+        (:target kitchen_table)
+        (:ranges ((-0.15 0.05 -0.05 0.15)))   ;; 中心 (-0.1, 0.1)
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (frame_region_7
+        (:target kitchen_table)
+        (:ranges ((-0.001 -0.101 0.001 -0.099)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_7_target
+        (:target kitchen_table)
+        (:ranges ((-0.05 -0.15 0.05 -0.05)))  ;; 中心 (0.0, -0.1)
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (frame_region_8
+        (:target kitchen_table)
+        (:ranges ((-0.001 -0.001 0.001 0.001)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_8_target
+        (:target kitchen_table)
+        (:ranges ((-0.05 -0.05 0.05 0.05)))   ;; 中心 (0.0, 0.0)
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (frame_region_9
+        (:target kitchen_table)
+        (:ranges ((-0.001 0.099 0.001 0.101)))
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    (frame_region_9_target
+        (:target kitchen_table)
+        (:ranges ((-0.05 0.05 0.05 0.15)))    ;; 中心 (0.0, 0.1)
+        (:yaw_rotation ((0.0 0.0)))
     )
   )
 
