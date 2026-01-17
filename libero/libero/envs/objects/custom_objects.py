@@ -28,8 +28,420 @@ class CustomXmlObject(MujocoXMLObject):
         self.category_name = "_".join(
             re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
         ).lower()
-        
 
+#----------------------------------------------------------------------------------------------------------------------
+#新的类和外围框架和方块
+class CustomXmlObjectNew(MujocoXMLObject):
+    def __init__(self, folder_name, name, joints=[dict(type="free", damping="0.0005")]):
+        xml_path = os.path.join(
+                str(absolute_path),
+                "assets/custom_object_new",
+                folder_name,
+                f"{folder_name}.xml",
+            )
+        
+        super().__init__(
+            xml_path,
+            name=name,
+            joints=joints,
+            obj_type="all",
+            duplicate_collision_geoms=False,
+        )
+        
+        self.object_properties = {"vis_site_names": {}}
+        self.rotation_axis = 'z'
+        self.category_name = "_".join(
+            re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
+        ).lower()
+
+    @property
+    def rotation(self):
+        return [0, 0, 0]
+
+#----------------------------------------------------------------------------------------------------------------
+#华容道
+@register_object
+class ExternalFrameHuarongdao(CustomXmlObjectNew):
+    def __init__(self, name="external_frame_huarongdao"):
+        # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
+        super().__init__(
+            folder_name="external_frame_huarongdao",
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def horizontal_radius(self):
+        return 0.12
+
+@register_object
+class NumberBlock1(CustomXmlObjectNew):
+    def __init__(self, name="number_1"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_1", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+@register_object
+class NumberBlock2(CustomXmlObjectNew):
+    def __init__(self, name="number_2"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_2", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+@register_object
+class NumberBlock3(CustomXmlObjectNew):
+    def __init__(self, name="number_3"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_3", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+#--------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------------
+#幻方
+@register_object
+class ExternalFrameHuanfang(CustomXmlObjectNew):
+    def __init__(self, name="external_frame_huanfang"):
+        # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
+        super().__init__(
+            folder_name="external_frame_huanfang",
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def horizontal_radius(self):
+        return 0.15
+
+
+@register_object
+class NumberBlock4(CustomXmlObjectNew):
+    def __init__(self, name="number_4"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_4", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+@register_object
+class NumberBlock5(CustomXmlObjectNew):
+    def __init__(self, name="number_5"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_5", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+@register_object
+class NumberBlock6(CustomXmlObjectNew):
+    def __init__(self, name="number_6"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_6", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+
+@register_object
+class NumberBlock7(CustomXmlObjectNew):
+    def __init__(self, name="number_7"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_7", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+
+@register_object
+class NumberBlock8(CustomXmlObjectNew):
+    def __init__(self, name="number_8"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_8", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+
+
+@register_object
+class NumberBlock9(CustomXmlObjectNew):
+    def __init__(self, name="number_9"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="number_9", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+#-------------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------
+#井字棋
+@register_object
+class ExternalFrameTicTacToe(CustomXmlObjectNew):
+    def __init__(self, name="external_frame_tic_tac_toe"):
+        # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
+        super().__init__(
+            folder_name="external_frame_tic_tac_toe",
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0])
+
+    @property
+    def horizontal_radius(self):
+        return 0.15
+
+
+@register_object
+class BlockO(CustomXmlObjectNew):
+    def __init__(self, name="block_o"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="block_o", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+@register_object
+class BlockX(CustomXmlObjectNew):
+    def __init__(self, name="block_x"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="block_x", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+#-----------------------------------------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------------------------------------
+#找不同
+@register_object
+class BlockRed(CustomXmlObjectNew):
+    def __init__(self, name="block_red"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="block_red", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+
+@register_object
+class BlockBlue(CustomXmlObjectNew):
+    def __init__(self, name="block_blue"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="block_blue", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.032
+
+
+@register_object
+class Basket_my(CustomXmlObjectNew):
+    def __init__(self, name="basket_my"):
+        # 对应 assets/custom_object_new/number_1/number_1.xml
+        super().__init__(
+            folder_name="basket_my", 
+            name=name
+        )
+
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+    @property
+    def horizontal_radius(self):
+        return 0.08
+#----------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------
 # --- 砖块 ---
 @register_object
 class BridgeBrick(CustomXmlObject):

@@ -81,6 +81,7 @@ class SlideCabinet(ArticulatedObject):
         self,
         name="slide_cabinet",
         obj_name="slide_cabinet",
+        #joints=[dict(type="free", damping="5000")],
         joints=[dict(type="free", damping="0.0005")],
     ):
         super().__init__(name, obj_name, joints)

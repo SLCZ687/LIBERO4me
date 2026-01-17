@@ -1,0 +1,28 @@
+<mujoco model="external_frame_tic_tac_toe">
+  <asset>
+    <texture name="tex_frame" type="2d" builtin="flat" rgb1="0.2 0.2 0.2" width="512" height="512"/>
+    <material name="mat_frame" texture="tex_frame" shininess="0.1" specular="0.1"/>
+    <material name="mat_grid" texture="tex_frame" rgba="0.5 0.5 0.5 1"/>
+  </asset>
+  <worldbody>
+   <body>
+    <body name="object">
+      <inertial pos="0 0 0" mass="100" diaginertia="1 1 1" />
+      
+      <geom name="wall_back" type="box" size="0.15 0.005 0.03" pos="0 0.145 0.01" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_front" type="box" size="0.15 0.005 0.03" pos="0 -0.145 0.01" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_left" type="box" size="0.005 0.14 0.03" pos="-0.145 0 0.01" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_right" type="box" size="0.005 0.14 0.03" pos="0.145 0 0.01" material="mat_frame" group="1" density="10000"/>
+      
+      <geom name="frame_base" type="box" size="0.15 0.15 0.002" pos="0 0 -0.002" material="mat_frame" group="1" density="10000"/>
+      
+      <geom name="grid_v1" type="box" size="0.002 0.145 0.0011" pos="-0.05 0 0" material="mat_grid" group="1" conaffinity="0" contype="0"/>
+      <geom name="grid_v2" type="box" size="0.002 0.145 0.0011" pos="0.05 0 0" material="mat_grid" group="1" conaffinity="0" contype="0"/>
+      <geom name="grid_h1" type="box" size="0.145 0.002 0.0011" pos="0 -0.05 0" material="mat_grid" group="1" conaffinity="0" contype="0"/>
+      <geom name="grid_h2" type="box" size="0.145 0.002 0.0011" pos="0 0.05 0" material="mat_grid" group="1" conaffinity="0" contype="0"/>
+
+      <site name="bottom_site" pos="0 0 0" size="0.002" rgba="0 0 0 0"/>
+    </body>
+   </body>
+  </worldbody>
+</mujoco>

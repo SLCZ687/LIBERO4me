@@ -1,0 +1,251 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Push the number block into the frame)
+
+  (:regions
+    ;; 1. 外部框架放置区域 (固定在桌面中心)
+    (frame_center_region
+        (:target kitchen_table)
+        (:ranges (
+            (-0.00001 -0.00001 0.00001 0.00001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+    
+    (block_outside_1
+        (:target kitchen_table)
+        (:ranges (
+            (-0.12 0.2499999 -0.06 0.2500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_2
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 0.2499999 0.03 0.2500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_3
+        (:target kitchen_table)
+        (:ranges (
+            (0.06 0.2499999 0.12 0.2500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_4
+        (:target kitchen_table)
+        (:ranges (
+            (-0.12 0.3499999 -0.06 0.3500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_5
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 0.3499999 0.03 0.3500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_6
+        (:target kitchen_table)
+        (:ranges (
+            (0.06 0.3499999 0.12 0.3500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_7
+        (:target kitchen_table)
+        (:ranges (
+            (-0.12 0.4499999 -0.06 0.4500001) ;; 原本是点，现在给 4cm x 4cm 的范围
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_8
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 0.4499999 0.03 0.4500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (block_outside_9
+        (:target kitchen_table)
+        (:ranges (
+            (0.06 0.4499999 0.12 0.4500001)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    ;; 3. 目标区域 (对齐原来的命名风格)
+
+    (slot_center_1
+        (:target kitchen_table)
+        (:ranges (
+            (0.07 -0.03 0.13 0.03)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_2
+        (:target kitchen_table)
+        (:ranges (
+            (-0.13 -0.13 -0.07 -0.07)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )   
+
+    (slot_center_3
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 0.07 0.03 0.13)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_4
+        (:target kitchen_table)
+        (:ranges (
+            (-0.13 0.07 -0.07 0.13)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_5
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 -0.03 0.03 0.03)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )
+
+    (slot_center_6
+        (:target kitchen_table)
+        (:ranges (
+            (0.07 -0.13 0.13 -0.07)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_7
+        (:target kitchen_table)
+        (:ranges (
+            (-0.03 -0.13 0.03 -0.07)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_8
+        (:target kitchen_table)
+        (:ranges (
+            (0.07 0.07 0.13 0.13)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (slot_center_9
+        (:target kitchen_table)
+        (:ranges (
+            (-0.13 -0.03 -0.07 0.03)
+          )
+        )
+        (:yaw_rotation ((0.0 0.0)))
+    )  
+
+    (block_target_region
+        (:target kitchen_table)
+        (:ranges (
+            (0.099 -0.101 0.101 -0.099) ;; 右下角格子作为示例目标
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+    )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    ;; 确保这里的类型名与你在 objects.py 注册的一致
+    frame_1 - external_frame_huanfang
+    n1 - number_block_1
+    n2 - number_block_2
+    n3 - number_block_3
+    n4 - number_block_4
+    n5 - number_block_5
+    n6 - number_block_6
+    n7 - number_block_7
+    n8 - number_block_8
+    n9 - number_block_9
+  )
+
+  (:obj_of_interest
+    n1
+    n2
+    n3
+    n4
+    n5
+    n6
+    n7
+    n8
+    n9
+  )
+
+  (:init
+    (On frame_1 kitchen_table_frame_center_region)
+    ;; 将三个方块初始化在框架外面
+    (On n1 kitchen_table_block_outside_1)
+    (On n2 kitchen_table_block_outside_2)
+    (On n3 kitchen_table_block_outside_3)
+    (On n4 kitchen_table_block_outside_4)
+    (On n5 kitchen_table_block_outside_5)
+    (On n6 kitchen_table_block_outside_6)
+    (On n7 kitchen_table_block_outside_7)
+    (On n8 kitchen_table_block_outside_8)
+    (On n9 kitchen_table_block_outside_9)
+  )
+
+  (:goal
+
+        (And (On n5 kitchen_table_slot_center_5)
+             (On n2 kitchen_table_slot_center_2)
+             (On n4 kitchen_table_slot_center_4)
+
+        
+        
+        )
+
+
+
+    
+  )
+)

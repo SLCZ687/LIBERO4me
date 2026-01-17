@@ -1,0 +1,23 @@
+<mujoco model="simple_basket">
+  <asset>
+    <material name="mat_basket" rgba="0.5 0.5 0.5 1" shininess="0.1" specular="0.1"/>
+  </asset>
+  <worldbody>
+    <body>
+     <body name="object">
+      <!-- 篮子底座 -->
+      <geom name="bottom" type="box" size="0.08 0.08 0.005" pos="0 0 0" material="mat_basket" group="1"/>
+      <geom name="wall_1" type="box" size="0.08 0.005 0.02" pos="0 0.075 0.02" material="mat_basket" group="1"/>
+      <geom name="wall_2" type="box" size="0.08 0.005 0.02" pos="0 -0.075 0.02" material="mat_basket" group="1"/>
+      <geom name="wall_3" type="box" size="0.005 0.075 0.02" pos="0.075 0 0.02" material="mat_basket" group="1"/>
+      <geom name="wall_4" type="box" size="0.005 0.075 0.02" pos="-0.075 0 0.02" material="mat_basket" group="1"/>
+      
+      <!-- 判定点：BDDL的 "In" 判定通常依赖这个 site -->
+      <site name="bin_site" pos="0 0 0.01" size="0.01" rgba="0 0 0 0"/>
+     </body>
+
+    </body>
+  </worldbody>
+</mujoco>
+
+    

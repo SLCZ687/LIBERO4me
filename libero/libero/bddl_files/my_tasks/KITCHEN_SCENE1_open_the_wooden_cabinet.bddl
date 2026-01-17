@@ -1,0 +1,41 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language open the wooden cabinet)
+
+  (:regions
+    ;; ！！！这里保留黑书原来那个成功的 region 定义，不要改数字 ！！！
+    (wooden_cabinet_init_region
+      (:target kitchen_table)
+      (:ranges (
+          (-0.05 -0.35 0.05 -0.25) 
+        )
+      )
+      (:yaw_rotation (
+          (3.141592653589793 3.141592653589793)
+        )
+      )
+    )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    ;; 把原来的 black_book 换成 wooden_cabinet
+    wooden_cabinet_1 - wooden_cabinet
+  )
+
+  (:obj_of_interest
+    wooden_cabinet_1
+  )
+
+  (:init
+    (On wooden_cabinet_1 kitchen_table_wooden_cabinet_init_region)
+  )
+
+  (:goal
+    ;; 目标永远设为 true，保证能录制
+    (And (true))
+  )
+)

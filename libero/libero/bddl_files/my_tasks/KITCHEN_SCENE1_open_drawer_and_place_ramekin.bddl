@@ -1,0 +1,44 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language open the drawer and place the porcelain ramekin inside)
+
+  (:regions
+    ;; 柜子初始化位置
+    (cabinet_init_region
+      (:target kitchen_table)
+      (:ranges ((-0.01 -0.31 0.01 -0.29)))
+      (:yaw_rotation ((3.14 3.14)))
+    )
+    ;; Ramekin 初始化位置 (放在机器人正前方容易抓取的地方)
+    (ramekin_init_region
+      (:target kitchen_table)
+      (:ranges ((0.15 -0.05 0.20 0.05)))
+      (:yaw_rotation ((0 0)))
+    )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    wooden_cabinet_1 - wooden_cabinet
+    ramekin_1 - glazed_rim_porcelain_ramekin 
+  )
+
+  (:obj_of_interest
+    wooden_cabinet_1 ramekin_1
+  )
+
+  (:init
+    (On wooden_cabinet_1 kitchen_table_cabinet_init_region)
+    (On ramekin_1 kitchen_table_ramekin_init_region)
+  )
+
+  (:goal
+    (And 
+      (Open wooden_cabinet_1_drawer1)
+      (In ramekin_1 wooden_cabinet_1_drawer1)
+    )
+  )
+)

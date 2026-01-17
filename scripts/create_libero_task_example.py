@@ -7,23 +7,22 @@ from libero.libero.utils.bddl_generation_utils import (
 from libero.libero.utils.mu_utils import register_mu, InitialSceneTemplates
 from libero.libero.utils.task_generation_utils import (
     register_task_info,
-    get_task_info,
     generate_bddl_from_task_info,
 )
-
 
 @register_mu(scene_type="kitchen")
 class KitchenScene1(InitialSceneTemplates):
     def __init__(self):
-
+        # 场景中的固定家具
         fixture_num_info = {
             "kitchen_table": 1,
             "wooden_cabinet": 1,
         }
 
+        # 场景中的物体：改为书和托盘
         object_num_info = {
-            "akita_black_bowl": 1,
-            "plate": 1,
+            "black_book": 1,
+            "wooden_tray": 1,
         }
 
         super().__init__(
@@ -33,31 +32,23 @@ class KitchenScene1(InitialSceneTemplates):
         )
 
     def define_regions(self):
+        # 定义书的初始位置（桌子左侧）
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[0.0, -0.30],
-                region_name="wooden_cabinet_init_region",
+                region_centroid_xy=[-0.15, -0.1],
+                region_name="black_book_init_region",
                 target_name=self.workspace_name,
-                region_half_len=0.01,
-                yaw_rotation=(np.pi, np.pi),
+                region_half_len=0.03,
             )
         )
 
+        # 定义托盘的初始位置（桌子右侧）
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[0.0, 0.0],
-                region_name="akita_black_bowl_init_region",
+                region_centroid_xy=[0.15, 0.1],
+                region_name="wooden_tray_init_region",
                 target_name=self.workspace_name,
-                region_half_len=0.025,
-            )
-        )
-
-        self.regions.update(
-            self.get_region_dict(
-                region_centroid_xy=[0.0, 0.25],
-                region_name="plate_init_region",
-                target_name=self.workspace_name,
-                region_half_len=0.025,
+                region_half_len=0.03,
             )
         )
         self.xy_region_kwargs_list = get_xy_region_kwargs_list_from_regions_info(
@@ -66,42 +57,34 @@ class KitchenScene1(InitialSceneTemplates):
 
     @property
     def init_states(self):
+        # 初始状态：书和托盘都在各自的区域
         states = [
-            ("On", "akita_black_bowl_1", "kitchen_table_akita_black_bowl_init_region"),
-            ("On", "plate_1", "kitchen_table_plate_init_region"),
-            ("On", "wooden_cabinet_1", "kitchen_table_wooden_cabinet_init_region"),
+            ("On", "black_book_1", "kitchen_table_black_book_init_region"),
+            ("On", "wooden_tray_1", "kitchen_table_wooden_tray_init_region"),
         ]
         return states
 
 
 def main():
-    # kitchen_scene_1
     scene_name = "kitchen_scene1"
-    language = "Your Language 1"
+    # 这里定义机器人要执行的任务语言
+    language = "put the black book in the wooden tray"
+    
     register_task_info(
         language,
         scene_name=scene_name,
-        objects_of_interest=["wooden_cabinet_1", "akita_black_bowl_1"],
+        objects_of_interest=["black_book_1", "wooden_tray_1"],
         goal_states=[
-            ("Open", "wooden_cabinet_1_top_region"),
-            ("In", "akita_black_bowl_1", "wooden_cabinet_1_top_region"),
+            # 目标状态：书被放进托盘的堆叠区域
+            ("On", "black_book_1", "wooden_tray_1_tray_stack_region"),
         ],
     )
-
-    scene_name = "kitchen_scene1"
-    language = "Your Language 2"
-    register_task_info(
-        language,
-        scene_name=scene_name,
-        objects_of_interest=["wooden_cabinet_1", "akita_black_bowl_1"],
-        goal_states=[
-            ("Open", "wooden_cabinet_1_top_region"),
-            ("In", "akita_black_bowl_1", "wooden_cabinet_1_bottom_region"),
-        ],
-    )
+    
+    # 核心步骤：运行后会自动生成对应的 .bddl 文件
     bddl_file_names, failures = generate_bddl_from_task_info()
-    print(bddl_file_names)
-
+    print(f"成功创建任务 BDDL: {bddl_file_names}")
+    if failures:
+        print(f"创建失败: {failures}")
 
 if __name__ == "__main__":
     main()

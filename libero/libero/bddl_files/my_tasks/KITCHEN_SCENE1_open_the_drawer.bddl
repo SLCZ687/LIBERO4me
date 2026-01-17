@@ -1,0 +1,41 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language open the slide cabinet drawer)
+
+  (:regions
+    (cabinet_init_region
+      (:target kitchen_table)
+      (:ranges (
+          ;; 这里我们给一个稍微偏一点的位置，避开机器人底座
+          ;; (x_min y_min x_max y_max)
+          (-0.02 -0.02 -0.019 -0.019) 
+        )
+      )
+      (:yaw_rotation (
+          (0.0 0.0)
+        )
+      )
+    )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    slide_cabinet_1 - slide_cabinet
+  )
+
+  (:obj_of_interest
+    slide_cabinet_1
+  )
+
+  (:init
+    ;; 核心：尝试把柜子稍微“拿高”一点点点，防止它插在桌子里
+    (On slide_cabinet_1 kitchen_table_cabinet_init_region)
+  )
+
+  (:goal
+    (And (true))
+  )
+)

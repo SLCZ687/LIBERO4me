@@ -1,0 +1,38 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language test the custom door lock appearance)
+
+  (:regions
+    (door_lock_init_region
+      (:target kitchen_table)
+      (:ranges (
+          (-0.02 -0.02 -0.019 -0.019) 
+        )
+      )
+      (:yaw_rotation (
+          (0.0 0.0)
+        )
+      )
+    )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    my_door_lock_1 - my_door_lock
+  )
+
+  (:obj_of_interest
+    my_door_lock_1
+  )
+
+  (:init
+    (On my_door_lock_1 kitchen_table_door_lock_init_region)
+  )
+
+  (:goal
+    (And (true))
+  )
+)

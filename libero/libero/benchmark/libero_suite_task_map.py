@@ -139,4 +139,10 @@ libero_task_map = {
         "STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_on_the_cabinet_shelf",
         "STUDY_SCENE4_pick_up_the_book_on_the_right_and_place_it_under_the_cabinet_shelf",
     ],
+    "my_custom_benchmark": [
+        "KITCHEN_SCENE1_put_book_in_tray",
+        "KITCHEN_SCENE1_put_the_black_book_in_the_wooden_tray",
+        "KITCHEN_SCENE1_open_the_drawer",
+        "KITCHEN_SCENE1_test_my_door",
+    ],
 }
