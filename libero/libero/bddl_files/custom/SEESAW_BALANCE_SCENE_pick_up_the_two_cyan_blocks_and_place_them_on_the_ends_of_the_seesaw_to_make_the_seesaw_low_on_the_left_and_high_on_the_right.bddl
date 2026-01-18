@@ -35,10 +35,21 @@
             )
           )
       )
-      (weights_init_region
+      (medium_weights_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.35 -0.25 -0.05000000000000002 -0.15000000000000002)
+              (-0.28 -0.23 -0.22 -0.17)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (large_weights_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.18000000000000002 -0.23 -0.12000000000000002 -0.17)
             )
           )
           (:yaw_rotation (
@@ -66,8 +77,8 @@
 
   (:init
     (On seesaw_1 kitchen_table_seesaw_init_region)
-    (On weight_medium_target_1 kitchen_table_weights_init_region)
-    (On weight_large_1 kitchen_table_weights_init_region)
+    (On weight_medium_target_1 kitchen_table_medium_weights_init_region)
+    (On weight_large_1 kitchen_table_large_weights_init_region)
   )
 
   (:goal
