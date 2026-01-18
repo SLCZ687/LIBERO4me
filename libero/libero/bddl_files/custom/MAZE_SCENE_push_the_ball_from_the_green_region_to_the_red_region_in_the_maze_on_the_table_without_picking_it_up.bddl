@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Push the ball to the goal)
+  (:language Push the ball from the green region to the red region in the maze on the table without picking it up)
     (:regions
       (maze_center_region
           (:target kitchen_table)

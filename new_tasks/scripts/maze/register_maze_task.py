@@ -117,7 +117,7 @@ class MazeScene(InitialSceneTemplates):
 
 if __name__ == "__main__":
     scene_name = "maze_scene"
-    language = "Push the ball to the goal"
+    language = "Push the ball from the green region to the red region in the maze on the table without picking it up"
     
     register_task_info(language,
                     scene_name=scene_name,
