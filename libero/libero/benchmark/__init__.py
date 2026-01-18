@@ -5,8 +5,8 @@ import random
 import torch
 
 from typing import List, NamedTuple, Type
-from libero.libero import get_libero_path
-from libero.libero.benchmark.libero_suite_task_map import libero_task_map
+from libero import get_libero_path
+from libero.benchmark.libero_suite_task_map import libero_task_map
 
 BENCHMARK_MAPPING = {}
 
@@ -78,6 +78,34 @@ for libero_suite in libero_suites:
 
         # print(language, "\n", f"{task}.bddl", "\n")
         # print("")
+
+# -------------------------
+# Custom suite: test_bridge
+# -------------------------
+custom_suite = "test_bridge"
+
+# 你把 test_bridge 的 bddl 放在这里（推荐）
+#   <get_libero_path("bddl_files")>/test_bridge/*.bddl
+custom_bddl_dir = os.path.join(get_libero_path("bddl_files"), custom_suite)
+
+task_maps[custom_suite] = {}
+
+if os.path.isdir(custom_bddl_dir):
+    for bddl_path in sorted(glob.glob(os.path.join(custom_bddl_dir, "*.bddl"))):
+        fname = os.path.basename(bddl_path)           # e.g. pick_up_xxx.bddl
+        task = fname[:-5]                             # remove ".bddl"
+        language = grab_language_from_filename(fname) # 复用现有函数
+
+        task_maps[custom_suite][task] = Task(
+            name=task,
+            language=language,
+            problem="Libero",
+            problem_folder=custom_suite,              # 关键：suite 名就是文件夹名
+            bddl_file=f"{task}.bddl",
+            init_states_file=f"{task}.pruned_init",   # 如果你没有 init_states，后面也可以不调用
+        )
+else:
+    print(f"[warning] custom bddl dir not found: {custom_bddl_dir}")
 
 
 task_orders = [
@@ -217,3 +245,22 @@ class LIBERO_100(Benchmark):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_100"
         self._make_benchmark()
+
+@register_benchmark
+class TEST_BRIDGE(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "test_bridge"
+
+        # 不使用 task_orders，直接按文件顺序全跑
+        self.tasks = list(task_maps[self.name].values())
+        self.n_tasks = len(self.tasks)
+        print(f"[info] test_bridge: {self.n_tasks} tasks loaded from bddl_files/test_bridge")
+
+@register_benchmark
+class TEST_BRIDGE_SANITY_CHECK(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        self.name = "test_bridge"  # 仍然指向 test_bridge 文件夹获取 BDDL
+        self.tasks = list(task_maps[self.name].values())
+        self.n_tasks = len(self.tasks)

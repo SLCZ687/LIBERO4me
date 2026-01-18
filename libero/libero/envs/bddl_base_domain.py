@@ -12,7 +12,7 @@ import robosuite.macros as macros
 
 import mujoco
 
-import libero.libero.envs.bddl_utils as BDDLUtils
+from . import bddl_utils as BDDLUtils
 from libero.libero.envs.robots import *
 from libero.libero.envs.utils import *
 from libero.libero.envs.object_states import *

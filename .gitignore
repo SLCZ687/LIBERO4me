@@ -19,3 +19,4 @@ libero.egg-info/
 test
 data
 demonstration_data
+*.log

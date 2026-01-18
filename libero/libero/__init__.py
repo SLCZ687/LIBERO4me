@@ -1,6 +1,11 @@
 import os
 import yaml
 
+
+# --- Compatibility shim for code expecting "libero.libero.*" layout ---
+import sys as _sys
+
+
 # This is a default path for localizing all the benchmark related files
 libero_config_path = os.environ.get(
     "LIBERO_CONFIG_PATH", os.path.expanduser("~/.libero")
@@ -94,3 +99,38 @@ if not os.path.exists(config_file):
         yaml.dump(default_path_dict, f)
     for key, value in default_path_dict.items():
         print(f"{key}: {value}")
+
+# Make "libero.libero" point to the top-level "libero" package
+_sys.modules.setdefault("libero.libero", _sys.modules[__name__])
+
+# Expose common subpackages under the old path
+try:
+    from . import envs as _envs
+    _sys.modules.setdefault("libero.libero.envs", _envs)
+except Exception:
+    pass
+
+try:
+    from . import benchmark as _benchmark
+    _sys.modules.setdefault("libero.libero.benchmark", _benchmark)
+except Exception:
+    pass
+# --- end shim ---
+
+
+# --- Compatibility shim for code expecting "libero.libero.*" layout ---
+import sys as _sys
+_sys.modules.setdefault("libero.libero", _sys.modules[__name__])
+
+try:
+    from . import envs as _envs
+    _sys.modules.setdefault("libero.libero.envs", _envs)
+except Exception:
+    pass
+
+try:
+    from . import benchmark as _benchmark
+    _sys.modules.setdefault("libero.libero.benchmark", _benchmark)
+except Exception:
+    pass
+# --- end shim ---
