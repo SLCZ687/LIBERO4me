@@ -55,10 +55,18 @@ class BridgeConstructionScene(InitialSceneTemplates):
     def define_regions(self):
         brick_x_offset = -0.3
         platform_x_offset = -0.05
+        
+        gap_size = 0.18
+        buffer_size = 0.05
+        platform_len_x = 0.20
+        platform_len_y = 0.30 
+        y_offset = (gap_size / 2) + (platform_len_y / 2)
+        
+        
         # 1. Left Platform Region
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[platform_x_offset, -0.195], 
+                region_centroid_xy=[platform_x_offset, -y_offset], 
                 region_name="left_platform_init_region", 
                 target_name=self.workspace_name, 
                 region_half_len=0.002, # Adjust as needed
@@ -68,7 +76,7 @@ class BridgeConstructionScene(InitialSceneTemplates):
         # 2. Right Platform Region
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[platform_x_offset, 0.195], 
+                region_centroid_xy=[platform_x_offset, y_offset], 
                 region_name="right_platform_init_region", 
                 target_name=self.workspace_name, 
                 region_half_len=0.002,
@@ -89,7 +97,7 @@ class BridgeConstructionScene(InitialSceneTemplates):
         # Brick 2 Region
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[brick_x_offset, -0.0], 
+                region_centroid_xy=[brick_x_offset, 0.0], 
                 region_name="brick_init_region_2", 
                 target_name=self.workspace_name, 
                 region_half_len=0.02,
@@ -112,7 +120,7 @@ class BridgeConstructionScene(InitialSceneTemplates):
                 region_centroid_xy=[-0.05, 0.0], 
                 region_name="bridge_gap_target_region", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.07, 0.09], # Approx from BDDL
+                region_half_len=[(platform_len_x - 0.06)/2, buffer_size+gap_size/2],
             )
         )
 

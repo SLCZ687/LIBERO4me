@@ -7,10 +7,10 @@
   <worldbody>
     <body>
       <body name="object">
-        <geom name="platform_geom" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+        <geom name="platform_geom" type="box" size="0.1 0.15 0.05" material="mat_platform" 
               density="5000" friction="1.0 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001"
               condim="4" group="0"/>
-        <geom name="platform_vis" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+        <geom name="platform_vis" type="box" size="0.1 0.15 0.05" material="mat_platform" 
               contype="0" conaffinity="0" group="1"/>
         
         <site name="top_site" pos="0 0 0.05" size="0.002" rgba="0 0 0 0"/>

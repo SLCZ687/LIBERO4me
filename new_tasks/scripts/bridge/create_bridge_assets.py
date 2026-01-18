@@ -7,12 +7,20 @@ def create_folder(path):
 ASSET_ROOT = "custom_assets"
 create_folder(ASSET_ROOT)
 
+brick_length = 0.15
+brick_width = 0.06
+brick_height = 0.04
+
+platform_length = 0.20
+platform_width = 0.30
+platform_height = 0.10
+
 # ==========================================
 # 1. Bridge Brick XML
 # ==========================================
 # [修正] Collision group=0, Visual group=1
 # [修正] bottom_site 回归物理底面 -0.02
-brick_xml_content = """
+brick_xml_content = f"""
 <mujoco model="bridge_brick">
   <asset>
     <texture name="tex_brick" type="2d" builtin="flat" rgb1="1 0.8 0.8" width="512" height="512"/>
@@ -21,10 +29,10 @@ brick_xml_content = """
   <worldbody>
     <body>
       <body name="object">
-        <geom name="brick_geom" type="box" size="0.075 0.015 0.02" material="mat_brick" 
+        <geom name="brick_geom" type="box" size="{brick_length/2} {brick_width/2} {brick_height/2}" material="mat_brick" 
               density="800" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001"
               condim="4" group="0"/>
-        <geom name="brick_vis" type="box" size="0.075 0.015 0.02" material="mat_brick" 
+        <geom name="brick_vis" type="box" size="{brick_length/2} {brick_width/2} {brick_height/2}" material="mat_brick" 
               contype="0" conaffinity="0" group="1"/>
         
         <site name="bottom_site" pos="0 0 -0.02" size="0.002" rgba="0 0 0 0"/>
@@ -40,7 +48,7 @@ brick_xml_content = """
 # 2. Bridge Platform XML
 # ==========================================
 # [修正] Collision group=0, Visual group=1
-platform_xml_content = """
+platform_xml_content = f"""
 <mujoco model="bridge_platform">
   <asset>
     <texture name="tex_platform" type="2d" builtin="checker" rgb1="0.1 0.1 0.1" rgb2="0.2 0.2 0.2" width="512" height="512"/>
@@ -49,10 +57,10 @@ platform_xml_content = """
   <worldbody>
     <body>
       <body name="object">
-        <geom name="platform_geom" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+        <geom name="platform_geom" type="box" size="{platform_length/2} {platform_width/2} {platform_height/2}" material="mat_platform" 
               density="5000" friction="1.0 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001"
               condim="4" group="0"/>
-        <geom name="platform_vis" type="box" size="0.10 0.15 0.05" material="mat_platform" 
+        <geom name="platform_vis" type="box" size="{platform_length/2} {platform_width/2} {platform_height/2}" material="mat_platform" 
               contype="0" conaffinity="0" group="1"/>
         
         <site name="top_site" pos="0 0 0.05" size="0.002" rgba="0 0 0 0"/>

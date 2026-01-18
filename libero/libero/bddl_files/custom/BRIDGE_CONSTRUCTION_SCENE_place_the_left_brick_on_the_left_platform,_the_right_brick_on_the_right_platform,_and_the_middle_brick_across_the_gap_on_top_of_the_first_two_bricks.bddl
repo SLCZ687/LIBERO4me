@@ -5,7 +5,7 @@
       (left_platform_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.052000000000000005 -0.197 -0.048 -0.193)
+              (-0.052000000000000005 -0.242 -0.048 -0.238)
             )
           )
           (:yaw_rotation (
@@ -16,7 +16,7 @@
       (right_platform_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.052000000000000005 0.193 -0.048 0.197)
+              (-0.052000000000000005 0.238 -0.048 0.242)
             )
           )
           (:yaw_rotation (
@@ -60,7 +60,7 @@
       (bridge_gap_target_region
           (:target kitchen_table)
           (:ranges (
-              (-0.12000000000000001 -0.09 0.020000000000000004 0.09)
+              (-0.12000000000000001 -0.14 0.020000000000000004 0.14)
             )
           )
           (:yaw_rotation (
