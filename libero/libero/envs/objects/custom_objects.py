@@ -29,6 +29,92 @@ class CustomXmlObject(MujocoXMLObject):
             re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
         ).lower()
         
+#-----------------------------------------------------------------------------------------------------------------
+# new class added
+class CustomXmlObjectNew(MujocoXMLObject):
+    def __init__(self, folder_name, name, obj_name, joints=[dict(type="free", damping="0.0005")]):
+        xml_path = os.path.join(
+                str(absolute_path),
+                f"assets/custom_object_new/{obj_name}/{obj_name}.xml",
+            )
+        
+        super().__init__(
+            xml_path,
+            name=name,
+            joints=joints,
+            obj_type="all",
+            duplicate_collision_geoms=False,
+        )
+        
+        self.object_properties = {"vis_site_names": {}}
+        self.rotation_axis = 'z'
+        self.category_name = "_".join(
+            re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
+        ).lower()
+        
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------------------------------------
+#new part for more bricks
+@register_object
+class BridgeBrickTwo(CustomXmlObjectNew):
+    def __init__(self, name="bridge_brick2", obj_name="bridge_brick2"):
+        super().__init__(
+            folder_name="bridge_brick2",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.05")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        return 0.075
+    
+    @property
+    def bottom_offset(self):
+        # 砖块半高 0.02
+        # 设置为 -0.03 (抬高 1cm)
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+
+@register_object
+class BridgeBrickThree(CustomXmlObjectNew):
+    def __init__(self, name="bridge_brick3", obj_name="bridge_brick3"):
+        super().__init__(
+            folder_name="bridge_brick3",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="0.05")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        return 0.075
+    
+    @property
+    def bottom_offset(self):
+        # 砖块半高 0.02
+        # 设置为 -0.03 (抬高 1cm)
+        return np.array([0, 0, -0.02])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.02])
+
+
+
+#-------------------------------------------------------------------------------------------------------------------
 
 # --- 砖块 ---
 @register_object
@@ -215,10 +301,284 @@ class RingStand(CustomXmlObject):
         # 杆子高度是 0.15
         return np.array([0, 0, 0.15])
 
+
+
+#------------------------------------------------------------------------------------------------------------
+#new part for more rings
+# --- 套圈圆环 ---
+@register_object
+class TorusRingGreen(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_green", obj_name="torus_ring_green"):
+        super().__init__(
+            folder_name="torus_ring_green",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+@register_object
+class TorusRingBlue(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_blue", obj_name="torus_ring_blue"):
+        super().__init__(
+            folder_name="torus_ring_blue",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+@register_object
+class TorusRingYellow(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_yellow", obj_name="torus_ring_yellow"):
+        super().__init__(
+            folder_name="torus_ring_yellow",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+
+@register_object
+class TorusRingPurple(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_purple", obj_name="torus_ring_purple"):
+        super().__init__(
+            folder_name="torus_ring_purple",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+
+@register_object
+class TorusRingPink(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_pink", obj_name="torus_ring_pink"):
+        super().__init__(
+            folder_name="torus_ring_pink",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+    
+
+@register_object
+class TorusRingOrange(CustomXmlObjectNew):
+    def __init__(self, name="torus_ring_orange", obj_name="torus_ring_orange"):
+        super().__init__(
+            folder_name="torus_ring_orange",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+#-------------------------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------------------------
+#new part for more stands
+# --- 套圈杆子 ---
+@register_object
+class RingStandTwo(CustomXmlObjectNew):
+    def __init__(self, name="ring_stand_two", obj_name="ring_stand2"):
+        super().__init__(
+            folder_name="ring_stand2",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
+            # 这样机械臂不小心碰到时，它不会轻易飞出去，但从物理引擎角度它仍是可移动物体
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 底座是 16cm x 16cm 的方块
+        # 半径取 0.08 左右
+        return 0.08
+    
+    @property
+    def bottom_offset(self):
+        # 底座高度是 0.02 (半高 0.01)
+        # 所以底部偏移是 -0.01
+        return np.array([0, 0, -0.01])
+    
+    @property
+    def top_offset(self):
+        # 杆子高度是 0.15
+        return np.array([0, 0, 0.15])
+    
+
+@register_object
+class RingStandThree(CustomXmlObjectNew):
+    def __init__(self, name="ring_stand_three", obj_name="ring_stand3"):
+        super().__init__(
+            folder_name="ring_stand3",
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
+            # 这样机械臂不小心碰到时，它不会轻易飞出去，但从物理引擎角度它仍是可移动物体
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 底座是 16cm x 16cm 的方块
+        # 半径取 0.08 左右
+        return 0.08
+    
+    @property
+    def bottom_offset(self):
+        # 底座高度是 0.02 (半高 0.01)
+        # 所以底部偏移是 -0.01
+        return np.array([0, 0, -0.01])
+    
+    @property
+    def top_offset(self):
+        # 杆子高度是 0.15
+        return np.array([0, 0, 0.15])
+
+#-------------------------------------------------------------------------------------------------------
+
 # [关键] 注册到全局字典
 # 确保名称与 XML 文件夹及 BDDL 中的名称一致
 OBJECTS_DICT["torus_ring"] = TorusRing
 OBJECTS_DICT["ring_stand"] = RingStand
+OBJECTS_DICT["torus_ring_green"]=TorusRingGreen
+OBJECTS_DICT["ring_stand_two"]=RingStandTwo
+OBJECTS_DICT["ring_stand_three"]=RingStandThree
+OBJECTS_DICT["torus_ring_blue"]=TorusRingBlue
+
+#--------------------------------------------------------------------------------------------------------------------------
+#---Rectangualr Obstacle
+@register_object
+class RectangularObstacle(CustomXmlObjectNew):
+    def __init__(self, name="rectangular_obstacle", obj_name="rectangular_obstacle"):
+        super().__init__(
+            folder_name="rectangular_obstacle",
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="5.0")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        return 0.05
+    
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.002])
+    
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.002])
+
+#---------------------------------------------------------------------------------------------------------------------
 
 # =========================================================
 #  Seesaw Task Objects (Appended)
@@ -342,3 +702,4 @@ OBJECTS_DICT["weight_small"] = WeightSmall
 OBJECTS_DICT["weight_medium_ref"] = WeightMediumRef
 OBJECTS_DICT["weight_medium_target"] = WeightMediumTarget
 OBJECTS_DICT["weight_large"] = WeightLarge
+
