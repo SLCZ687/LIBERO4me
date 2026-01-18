@@ -1,0 +1,82 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Pick up the brick and place it across the gap)
+    (:regions
+      (left_platform_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.051000000000000004 -0.196 -0.049 -0.194)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (right_platform_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.051000000000000004 0.194 -0.049 0.196)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (brick_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.32 -0.245 -0.27999999999999997 -0.14500000000000002)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (brick_init_region_2 (:target kitchen_table) (:ranges ((-0.38 -0.06 -0.23 0.06))) (:yaw_rotation ((0.0 0.0))))
+      (brick_init_region_3 (:target kitchen_table) (:ranges ((-0.38 0.16 -0.23 0.28))) (:yaw_rotation ((0.0 0.0))))
+      (bridge_gap_target_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.12000000000000001 -0.095 0.020000000000000004 0.095)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    bridge_platform_1 bridge_platform_2 - bridge_platform
+    bridge_brick_1 bridge_brick_2 bridge_brick_3 - bridge_brick
+  )
+
+  (:obj_of_interest
+    bridge_brick_1
+    bridge_brick_2
+    bridge_brick_3
+    bridge_platform_1
+    bridge_platform_2
+  )
+
+  (:init
+    (On bridge_platform_1 kitchen_table_left_platform_init_region)
+    (On bridge_platform_2 kitchen_table_right_platform_init_region)
+    (On bridge_brick_1 kitchen_table_brick_init_region)
+    (On bridge_brick_2 kitchen_table_brick_init_region_2)
+    (On bridge_brick_3 kitchen_table_brick_init_region_3)
+  )
+
+  (:goal
+    (And (incontact bridge_brick_1 bridge_platform_1) (incontact bridge_brick_1 bridge_platform_2) (inregion bridge_brick_1 kitchen_table_bridge_gap_target_region) (up bridge_brick_1))
+  )
+
+)
