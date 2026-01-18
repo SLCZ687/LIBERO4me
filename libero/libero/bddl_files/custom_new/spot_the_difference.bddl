@@ -1,0 +1,38 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language spot_the_difference)
+
+    ;; 1. 定义物体列表
+    (:objects
+        red_block_1 red_block_2 red_block_3 - block_red
+        blue_block_1 - block_blue
+        basket - basket_my
+        table - surface
+    )
+
+    ;; 2. 定义初始状态
+    (:init
+        ;; 所有的方块最初都在桌子上
+        (On red_block_1 table)
+        (On red_block_2 table)
+        (On red_block_3 table)
+        (On blue_block_1 table)
+        
+        ;; 容器（篮子/筐）也在桌子上
+        (On basket table)
+    )
+
+    ;; 3. 定义成功的目标状态 (Goal)
+    (:goal
+        (and
+            ;; 核心目标：唯一的蓝色方块必须在篮子里
+            (In blue_block_1 basket)
+
+            ;; 辅助约束：确保机器人没有把红方块也扔进去（保证“找不同”的准确性）
+            ;; 只有蓝方块进去了才算赢，红方块应该留在桌子上
+            (On red_block_1 table)
+            (On red_block_2 table)
+            (On red_block_3 table)
+        )
+    )
+)

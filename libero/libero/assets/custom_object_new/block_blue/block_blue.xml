@@ -1,0 +1,26 @@
+<mujoco model="blue_block">
+  <asset>
+    <!-- 这里使用了对应的蓝色系数值：R=0.2, G=0.3, B=0.8 -->
+    <!-- 同样不需要 texture, builtin, width, height -->
+    <material name="mat_blue" rgba="0.2 0.3 0.8 1" shininess="0.3" specular="0.3"/>
+  </asset>
+  
+  <worldbody>
+    <body>
+      <body name="object">
+        <!-- 物理碰撞几何体 -->
+        <geom name="blue_geom" type="box" size="0.032 0.032 0.02" material="mat_blue" 
+              density="1000" friction="0.1 0.005 0.0001" solref="0.002 1" solimp="0.99 0.99 0.001"
+              condim="4" group="1"/>
+        <!-- 视觉显示几何体 -->
+        <geom name="blue_vis" type="box" size="0.032 0.032 0.02" material="mat_blue" 
+              contype="0" conaffinity="0" group="0"/>
+        
+        <!-- 这里的 site 位置和大小必须和红色方块完全一样，确保抓取逻辑通用 -->
+        <site name="bottom_site" pos="0 0 -0.02" size="0.002" rgba="0 0 0 0"/>
+        <site name="top_site" pos="0 0 0.02" size="0.002" rgba="0 0 0 0"/>
+        <site name="horizontal_radius_site" pos="0.032 0 0" size="0.002" rgba="0 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

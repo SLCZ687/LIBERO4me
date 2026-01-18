@@ -1,0 +1,42 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language put the black book in the wooden tray)
+    (:regions
+      (book_init_region
+          (:target kitchen_table)
+          (:ranges ((-0.1 -0.25 0.05 -0.15)))
+          (:yaw_rotation ((0.0 0.0)))
+      )
+      (tray_init_region
+          (:target kitchen_table)
+          (:ranges ((0.1 0.05 0.2 0.2)))
+          (:yaw_rotation ((0.0 0.0)))
+      )
+      (tray_stack_region
+          (:target wooden_tray_1)
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    black_book_1 - black_book
+    wooden_tray_1 - wooden_tray
+  )
+
+  (:obj_of_interest
+    black_book_1
+    wooden_tray_1
+  )
+
+  (:init
+    (On black_book_1 kitchen_table_book_init_region)
+    (On wooden_tray_1 kitchen_table_tray_init_region)
+  )
+
+  (:goal
+    (And (On black_book_1 wooden_tray_1_tray_stack_region))
+  )
+)
