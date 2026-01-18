@@ -70,30 +70,30 @@ class RingConstructionScene(InitialSceneTemplates):
         # 1. Stand 1 Region (Start)
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[x_offset, 0.25], 
+                region_centroid_xy=[x_offset, -0.25], 
                 region_name="stand_init_region", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.01, 0.05],
+                region_half_len=0.001,
             )
         )
         
         # 2. Stand 2 Region (Goal)
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[x_offset, -0.25], 
+                region_centroid_xy=[x_offset, 0.0], 
                 region_name="stand_init_region_2", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.01, 0.05],
+                region_half_len=0.001,
             )
         )
 
         # 3. Stand 3 Region (Aux)
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[x_offset, 0.0], 
+                region_centroid_xy=[x_offset, 0.25], 
                 region_name="stand_init_region_3", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.01, 0.05],
+                region_half_len=0.001,
             )
         )
 
@@ -109,20 +109,20 @@ class RingConstructionScene(InitialSceneTemplates):
 
             # Stacked Init: Stand 1 -> Ring 2 (Green) -> Ring 1 (Red)
             # Note: The bottom object is on the stand.
-            ("On", "torus_ring_green_1", "ring_stand_1"),
-            ("On", "torus_ring_1", "torus_ring_green_1"),
+            ("On", "torus_ring_1", "ring_stand_1"),
+            ("On", "torus_ring_green_1", "torus_ring_1"),
         ]
         return states
 
 if __name__ == "__main__":
     scene_name = "ring_construction_scene" 
-    language = "Move all the rings to the second stand according to the rules of the Tower of Hanoi"
+    language = "Move all the rings to the blue stand according to the rules of the Tower of Hanoi"
     
     register_task_info(language,
                     scene_name=scene_name,
                     objects_of_interest=["ring_stand_1", "ring_stand_two_1", "ring_stand_three_1", "torus_ring_1", "torus_ring_green_1"],
                     goal_states=[
-                        # Goal: Whole stack on Stand 2
+                        # Goal: Whole stack on Stand 2 (Blue)
                         ("On", "torus_ring_green_1", "ring_stand_two_1"),
                         ("On", "torus_ring_1", "torus_ring_green_1"),
                     ],

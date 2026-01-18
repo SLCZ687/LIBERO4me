@@ -1,6 +1,5 @@
 import os
 import math
-import numpy as np
 
 def create_folder(path):
     if not os.path.exists(path):
@@ -38,7 +37,7 @@ def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, c
         # Collision geom (Group 0)
         geoms.append(
             f'<geom name="ring_seg_{i}" type="capsule" fromto="{x1} {y1} 0 {x2} {y2} 0" size="{tube_radius}" '
-            f'rgba="{color}" density="500" friction="1.5 0.005 0.0001" '
+            f'rgba="{color}" density="200" friction="1.5 0.05 0.001" '
             f'solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>'
         )
         
@@ -51,22 +50,21 @@ def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, c
     return "\n        ".join(geoms)
 
 # =========================================================
-# 1. Ring Asset (套圈的圈)
+# 生成并保存 Torus Ring XML
 # =========================================================
-# 定义尺寸
-RING_RADIUS = 0.04  # 圆环整体半径
-TUBE_RADIUS = 0.008 # 环的粗细
-SEGMENTS = 24
+def create_ring_xml(name, radius, color):
+    # 定义尺寸
+    TUBE_RADIUS = 0.012 # 环的粗细
+    SEGMENTS = 24 # 统一用24让它更圆滑
 
-ring_body_str = generate_torus_body(RING_RADIUS, TUBE_RADIUS, SEGMENTS, "0.8 0.2 0.2 1")
+    ring_body_str = generate_torus_body(radius, TUBE_RADIUS, SEGMENTS, color)
 
-# 抓取点 Site 的位置：放在圆环的“实体”上，而不是圆心空气处
-# 选在 X 轴正方向的那个点上
-grasp_site_x = RING_RADIUS
-grasp_site_z = 0
-
-ring_xml_content = f"""
-<mujoco model="torus_ring">
+    # 抓取点 Site 的位置：放在圆环的“实体”上，而不是圆心空气处
+    # 选在 X 轴正方向的那个点上
+    grasp_site_x = radius
+    
+    xml_content = f"""
+<mujoco model="{name}">
   <worldbody>
     <body>
       <body name="object">
@@ -84,19 +82,36 @@ ring_xml_content = f"""
   </worldbody>
 </mujoco>
 """
+    
+    # 保存文件
+    ring_dir = os.path.join(ASSET_ROOT, name)
+    create_folder(ring_dir)
+    file_path = os.path.join(ring_dir, f"{name}.xml")
+    with open(file_path, "w") as f:
+        f.write(xml_content.strip())
+    print(f"Generated: {file_path}")
 
 # =========================================================
-# 2. Stand Asset (杆子)
+# 生成并保存 Stand XML
 # =========================================================
-# 底座 + 竖杆
-BASE_SIZE = "0.08 0.08 0.005" # 宽底座
-POLE_HEIGHT = 0.15
-POLE_RADIUS = 0.012
+def create_stand_xml(name, rgb, pole_height):
+    # 底座 + 竖杆
+    BASE_SIZE = "0.08 0.08 0.005" # 宽底座
+    POLE_RADIUS = 0.008
+    
+    # 计算杆子相关参数
+    # Mujoco cylinder size 是半高 (h/2)
+    # Pos Z 是中心点。
+    # Base 厚度 0.01 (半高0.005)
+    # Pole 底部在 Base 顶上 (Z=0.01)
+    # Pole center Z = 0.01 + pole_height/2
+    pole_half_height = pole_height / 2.0
+    pole_pos_z = 0.01 + pole_half_height
 
-stand_xml_content = f"""
+    xml_content = f"""
 <mujoco model="ring_stand">
   <asset>
-    <texture name="tex_stand" type="2d" builtin="flat" rgb1="0.3 0.3 0.3" width="512" height="512"/>
+    <texture name="tex_stand" type="2d" builtin="flat" rgb1="{rgb}" width="512" height="512"/>
     <material name="mat_stand" texture="tex_stand" shininess="0.5" specular="0.5"/>
   </asset>
   <worldbody>
@@ -109,9 +124,9 @@ stand_xml_content = f"""
               contype="0" conaffinity="0" group="1"/>
               
         <!-- 竖杆 -->
-        <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {POLE_HEIGHT/2}" pos="0 0 {POLE_HEIGHT/2 + 0.01}" material="mat_stand"
+        <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
               density="1000" friction="0.5 0.005 0.0001" group="0"/>
-        <geom name="pole_vis" type="cylinder" size="{POLE_RADIUS} {POLE_HEIGHT/2}" pos="0 0 {POLE_HEIGHT/2 + 0.01}" material="mat_stand"
+        <geom name="pole_vis" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
               contype="0" conaffinity="0" group="1"/>
 
         <!-- 关键 Site: 用于判断圆环是否套到底部 -->
@@ -119,22 +134,48 @@ stand_xml_content = f"""
         <site name="target_site" pos="0 0 0.02" size="0.002" rgba="0 1 0 0.5"/>
         
         <site name="bottom_site" pos="0 0 -0.01" size="0.002" rgba="0 0 0 0"/>
-        <site name="top_site" pos="0 0 {POLE_HEIGHT}" size="0.002" rgba="0 0 0 0"/>
+        <site name="top_site" pos="0 0 {pole_height} " size="0.002" rgba="0 0 0 0"/>
       </body>
     </body>
   </worldbody>
 </mujoco>
 """
+    
+    stand_dir = os.path.join(ASSET_ROOT, name)
+    create_folder(stand_dir)
+    file_path = os.path.join(stand_dir, f"{name}.xml")
+    with open(file_path, "w") as f:
+        f.write(xml_content.strip())
+    print(f"Generated: {file_path}")
 
-# 保存文件
-ring_dir = os.path.join(ASSET_ROOT, "torus_ring")
-create_folder(ring_dir)
-with open(os.path.join(ring_dir, "torus_ring.xml"), "w") as f:
-    f.write(ring_xml_content)
 
-stand_dir = os.path.join(ASSET_ROOT, "ring_stand")
-create_folder(stand_dir)
-with open(os.path.join(stand_dir, "ring_stand.xml"), "w") as f:
-    f.write(stand_xml_content)
+# =========================================================
+# Main Generation List
+# =========================================================
+RING_STAND_HEIGHT = 0.01
 
-print(f"\n✅ Assets Generated: \n1. {os.path.join(ring_dir, 'torus_ring.xml')} (Composite Capsule Ring)\n2. {os.path.join(stand_dir, 'ring_stand.xml')} (Base + Pole)")
+# 1. Ring Stands
+stands_config = [
+    {"name": "ring_stand",  "rgb": "0.3 0.3 0.3", "height": RING_STAND_HEIGHT},
+    {"name": "ring_stand2", "rgb": "0.1 0.1 0.8", "height": RING_STAND_HEIGHT},
+    {"name": "ring_stand3", "rgb": "0.8 0.1 0.1", "height": RING_STAND_HEIGHT},
+]
+
+for s in stands_config:
+    create_stand_xml(s["name"], s["rgb"], s["height"])
+
+# 2. Torus Rings
+rings_config = [
+    {"name": "torus_ring",        "radius": 0.06, "color": "0.8 0.2 0.2 1"}, # Red
+    {"name": "torus_ring_blue",   "radius": 0.04, "color": "0.2 0.2 0.8 1"},
+    {"name": "torus_ring_green",  "radius": 0.05, "color": "0.2 0.8 0.2 1"},
+    {"name": "torus_ring_orange", "radius": 0.04, "color": "0.8 0.5 0.2 1"},
+    {"name": "torus_ring_pink",   "radius": 0.04, "color": "0.8 0.4 0.6 1"},
+    {"name": "torus_ring_purple", "radius": 0.04, "color": "0.5 0.2 0.8 1"},
+    {"name": "torus_ring_yellow", "radius": 0.04, "color": "0.8 0.8 0.2 1"},
+]
+
+for r in rings_config:
+    create_ring_xml(r["name"], r["radius"], r["color"])
+
+print("\nAll assets generation complete.")

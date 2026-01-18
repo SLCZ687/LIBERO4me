@@ -1,11 +1,11 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Move all the rings to the second stand according to the rules of the Tower of Hanoi)
+  (:language Move all the rings to the blue stand according to the rules of the Tower of Hanoi)
     (:regions
       (stand_init_region
           (:target kitchen_table)
           (:ranges (
-              (-0.16 -0.3 -0.13999999999999999 -0.2)
+              (-0.151 -0.251 -0.149 -0.249)
             )
           )
           (:yaw_rotation (
@@ -16,7 +16,7 @@
       (stand_init_region_2
           (:target kitchen_table)
           (:ranges (
-              (-0.16 -0.05 -0.13999999999999999 0.05)
+              (-0.151 -0.001 -0.149 0.001)
             )
           )
           (:yaw_rotation (
@@ -27,7 +27,7 @@
       (stand_init_region_3
           (:target kitchen_table)
           (:ranges (
-              (-0.16 0.2 -0.13999999999999999 0.3)
+              (-0.151 0.249 -0.149 0.251)
             )
           )
           (:yaw_rotation (

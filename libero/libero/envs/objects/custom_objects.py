@@ -29,39 +29,10 @@ class CustomXmlObject(MujocoXMLObject):
             re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
         ).lower()
 
-#----------------------------------------------------------------------------------------------------------------------
-#新的类和外围框架和方块
-class CustomXmlObjectNew(MujocoXMLObject):
-    def __init__(self, folder_name, name, joints=[dict(type="free", damping="0.0005")]):
-        xml_path = os.path.join(
-                str(absolute_path),
-                "assets/custom_object_new",
-                folder_name,
-                f"{folder_name}.xml",
-            )
-        
-        super().__init__(
-            xml_path,
-            name=name,
-            joints=joints,
-            obj_type="all",
-            duplicate_collision_geoms=False,
-        )
-        
-        self.object_properties = {"vis_site_names": {}}
-        self.rotation_axis = 'z'
-        self.category_name = "_".join(
-            re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
-        ).lower()
-
-    @property
-    def rotation(self):
-        return [0, 0, 0]
-
 #----------------------------------------------------------------------------------------------------------------
 #华容道
 @register_object
-class ExternalFrameHuarongdao(CustomXmlObjectNew):
+class ExternalFrameHuarongdao(CustomXmlObject):
     def __init__(self, name="external_frame_huarongdao"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
@@ -82,9 +53,9 @@ class ExternalFrameHuarongdao(CustomXmlObjectNew):
         return 0.12
 
 @register_object
-class NumberBlock1(CustomXmlObjectNew):
+class NumberBlock1(CustomXmlObject):
     def __init__(self, name="number_1"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_1", 
             name=name
@@ -103,9 +74,9 @@ class NumberBlock1(CustomXmlObjectNew):
         return 0.032
 
 @register_object
-class NumberBlock2(CustomXmlObjectNew):
+class NumberBlock2(CustomXmlObject):
     def __init__(self, name="number_2"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_2", 
             name=name
@@ -125,9 +96,9 @@ class NumberBlock2(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock3(CustomXmlObjectNew):
+class NumberBlock3(CustomXmlObject):
     def __init__(self, name="number_3"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_3", 
             name=name
@@ -144,13 +115,11 @@ class NumberBlock3(CustomXmlObjectNew):
     @property
     def horizontal_radius(self):
         return 0.032
-#--------------------------------------------------------------------------------------------------------------
-
 
 #--------------------------------------------------------------------------------------------------------------------------
 #幻方
 @register_object
-class ExternalFrameHuanfang(CustomXmlObjectNew):
+class ExternalFrameHuanfang(CustomXmlObject):
     def __init__(self, name="external_frame_huanfang"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
@@ -172,9 +141,9 @@ class ExternalFrameHuanfang(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock4(CustomXmlObjectNew):
+class NumberBlock4(CustomXmlObject):
     def __init__(self, name="number_4"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_4", 
             name=name
@@ -193,9 +162,9 @@ class NumberBlock4(CustomXmlObjectNew):
         return 0.032
 
 @register_object
-class NumberBlock5(CustomXmlObjectNew):
+class NumberBlock5(CustomXmlObject):
     def __init__(self, name="number_5"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_5", 
             name=name
@@ -215,9 +184,9 @@ class NumberBlock5(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock6(CustomXmlObjectNew):
+class NumberBlock6(CustomXmlObject):
     def __init__(self, name="number_6"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_6", 
             name=name
@@ -238,9 +207,9 @@ class NumberBlock6(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock7(CustomXmlObjectNew):
+class NumberBlock7(CustomXmlObject):
     def __init__(self, name="number_7"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_7", 
             name=name
@@ -261,9 +230,9 @@ class NumberBlock7(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock8(CustomXmlObjectNew):
+class NumberBlock8(CustomXmlObject):
     def __init__(self, name="number_8"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_8", 
             name=name
@@ -285,9 +254,9 @@ class NumberBlock8(CustomXmlObjectNew):
 
 
 @register_object
-class NumberBlock9(CustomXmlObjectNew):
+class NumberBlock9(CustomXmlObject):
     def __init__(self, name="number_9"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="number_9", 
             name=name
@@ -304,11 +273,10 @@ class NumberBlock9(CustomXmlObjectNew):
     @property
     def horizontal_radius(self):
         return 0.032
+    
 #-------------------------------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------------------------------
-#井字棋
 @register_object
-class ExternalFrameTicTacToe(CustomXmlObjectNew):
+class ExternalFrameTicTacToe(CustomXmlObject):
     def __init__(self, name="external_frame_tic_tac_toe"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
@@ -330,9 +298,9 @@ class ExternalFrameTicTacToe(CustomXmlObjectNew):
 
 
 @register_object
-class BlockO(CustomXmlObjectNew):
+class BlockO(CustomXmlObject):
     def __init__(self, name="block_o"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="block_o", 
             name=name
@@ -351,9 +319,9 @@ class BlockO(CustomXmlObjectNew):
         return 0.032
 
 @register_object
-class BlockX(CustomXmlObjectNew):
+class BlockX(CustomXmlObject):
     def __init__(self, name="block_x"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="block_x", 
             name=name
@@ -370,14 +338,12 @@ class BlockX(CustomXmlObjectNew):
     @property
     def horizontal_radius(self):
         return 0.032
+    
 #-----------------------------------------------------------------------------------------------------------------------
-
-#-----------------------------------------------------------------------------------------------------------------------
-#找不同
 @register_object
-class BlockRed(CustomXmlObjectNew):
+class BlockRed(CustomXmlObject):
     def __init__(self, name="block_red"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="block_red", 
             name=name
@@ -398,9 +364,9 @@ class BlockRed(CustomXmlObjectNew):
 
 
 @register_object
-class BlockBlue(CustomXmlObjectNew):
+class BlockBlue(CustomXmlObject):
     def __init__(self, name="block_blue"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="block_blue", 
             name=name
@@ -420,9 +386,9 @@ class BlockBlue(CustomXmlObjectNew):
 
 
 @register_object
-class Basket_my(CustomXmlObjectNew):
+class Basket_my(CustomXmlObject):
     def __init__(self, name="basket_my"):
-        # 对应 assets/custom_object_new/number_1/number_1.xml
+        # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
             folder_name="basket_my", 
             name=name
@@ -439,42 +405,11 @@ class Basket_my(CustomXmlObjectNew):
     @property
     def horizontal_radius(self):
         return 0.08
-#----------------------------------------------------------------------------------------------------------------------------
-
-#---------------------------------------------------------------------------------------------------------------#-----------------------------------------------------------------------------------------------------------------
-# new class added
-class CustomXmlObjectNew(MujocoXMLObject):
-    def __init__(self, folder_name, name, obj_name, joints=[dict(type="free", damping="0.0005")]):
-        xml_path = os.path.join(
-                str(absolute_path),
-                f"assets/custom_object_new/{obj_name}/{obj_name}.xml",
-            )
-        
-        super().__init__(
-            xml_path,
-            name=name,
-            joints=joints,
-            obj_type="all",
-            duplicate_collision_geoms=False,
-        )
-        
-        self.object_properties = {"vis_site_names": {}}
-        self.rotation_axis = 'z'
-        self.category_name = "_".join(
-            re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
-        ).lower()
-        
-
-
-
-
-
-
 
 #------------------------------------------------------------------------------------------------------------------
 #new part for more bricks
 @register_object
-class BridgeBrickTwo(CustomXmlObjectNew):
+class BridgeBrickTwo(CustomXmlObject):
     def __init__(self, name="bridge_brick2", obj_name="bridge_brick2"):
         super().__init__(
             folder_name="bridge_brick2",
@@ -500,7 +435,7 @@ class BridgeBrickTwo(CustomXmlObjectNew):
 
 
 @register_object
-class BridgeBrickThree(CustomXmlObjectNew):
+class BridgeBrickThree(CustomXmlObject):
     def __init__(self, name="bridge_brick3", obj_name="bridge_brick3"):
         super().__init__(
             folder_name="bridge_brick3",
@@ -706,12 +641,12 @@ class RingStand(CustomXmlObject):
     def bottom_offset(self):
         # 底座高度是 0.02 (半高 0.01)
         # 所以底部偏移是 -0.01
-        return np.array([0, 0, -0.01])
+        return np.array([0, 0, -0.002])
     
     @property
     def top_offset(self):
         # 杆子高度是 0.15
-        return np.array([0, 0, 0.15])
+        return np.array([0, 0, 0.01])  # 处理初始化时的碰撞问题
 
 
 
@@ -719,7 +654,7 @@ class RingStand(CustomXmlObject):
 #new part for more rings
 # --- 套圈圆环 ---
 @register_object
-class TorusRingGreen(CustomXmlObjectNew):
+class TorusRingGreen(CustomXmlObject):
     def __init__(self, name="torus_ring_green", obj_name="torus_ring_green"):
         super().__init__(
             folder_name="torus_ring_green",
@@ -747,7 +682,7 @@ class TorusRingGreen(CustomXmlObjectNew):
         return np.array([0, 0, 0.008])
 
 @register_object
-class TorusRingBlue(CustomXmlObjectNew):
+class TorusRingBlue(CustomXmlObject):
     def __init__(self, name="torus_ring_blue", obj_name="torus_ring_blue"):
         super().__init__(
             folder_name="torus_ring_blue",
@@ -775,7 +710,7 @@ class TorusRingBlue(CustomXmlObjectNew):
         return np.array([0, 0, 0.008])
 
 @register_object
-class TorusRingYellow(CustomXmlObjectNew):
+class TorusRingYellow(CustomXmlObject):
     def __init__(self, name="torus_ring_yellow", obj_name="torus_ring_yellow"):
         super().__init__(
             folder_name="torus_ring_yellow",
@@ -804,7 +739,7 @@ class TorusRingYellow(CustomXmlObjectNew):
 
 
 @register_object
-class TorusRingPurple(CustomXmlObjectNew):
+class TorusRingPurple(CustomXmlObject):
     def __init__(self, name="torus_ring_purple", obj_name="torus_ring_purple"):
         super().__init__(
             folder_name="torus_ring_purple",
@@ -833,7 +768,7 @@ class TorusRingPurple(CustomXmlObjectNew):
 
 
 @register_object
-class TorusRingPink(CustomXmlObjectNew):
+class TorusRingPink(CustomXmlObject):
     def __init__(self, name="torus_ring_pink", obj_name="torus_ring_pink"):
         super().__init__(
             folder_name="torus_ring_pink",
@@ -862,7 +797,7 @@ class TorusRingPink(CustomXmlObjectNew):
     
 
 @register_object
-class TorusRingOrange(CustomXmlObjectNew):
+class TorusRingOrange(CustomXmlObject):
     def __init__(self, name="torus_ring_orange", obj_name="torus_ring_orange"):
         super().__init__(
             folder_name="torus_ring_orange",
@@ -894,7 +829,7 @@ class TorusRingOrange(CustomXmlObjectNew):
 #new part for more stands
 # --- 套圈杆子 ---
 @register_object
-class RingStandTwo(CustomXmlObjectNew):
+class RingStandTwo(CustomXmlObject):
     def __init__(self, name="ring_stand_two", obj_name="ring_stand2"):
         super().__init__(
             folder_name="ring_stand2",
@@ -916,16 +851,16 @@ class RingStandTwo(CustomXmlObjectNew):
     def bottom_offset(self):
         # 底座高度是 0.02 (半高 0.01)
         # 所以底部偏移是 -0.01
-        return np.array([0, 0, -0.01])
+        return np.array([0, 0, -0.005])
     
     @property
     def top_offset(self):
         # 杆子高度是 0.15
-        return np.array([0, 0, 0.15])
+        return np.array([0, 0, 0.01])
     
 
 @register_object
-class RingStandThree(CustomXmlObjectNew):
+class RingStandThree(CustomXmlObject):
     def __init__(self, name="ring_stand_three", obj_name="ring_stand3"):
         super().__init__(
             folder_name="ring_stand3",
@@ -947,12 +882,12 @@ class RingStandThree(CustomXmlObjectNew):
     def bottom_offset(self):
         # 底座高度是 0.02 (半高 0.01)
         # 所以底部偏移是 -0.01
-        return np.array([0, 0, -0.01])
+        return np.array([0, 0, -0.005])
     
     @property
     def top_offset(self):
         # 杆子高度是 0.15
-        return np.array([0, 0, 0.15])
+        return np.array([0, 0, 0.01])
 
 #-------------------------------------------------------------------------------------------------------
 
@@ -968,7 +903,7 @@ OBJECTS_DICT["torus_ring_blue"]=TorusRingBlue
 #--------------------------------------------------------------------------------------------------------------------------
 #---Rectangualr Obstacle
 @register_object
-class RectangularObstacle(CustomXmlObjectNew):
+class RectangularObstacle(CustomXmlObject):
     def __init__(self, name="rectangular_obstacle", obj_name="rectangular_obstacle"):
         super().__init__(
             folder_name="rectangular_obstacle",
