@@ -1,6 +1,15 @@
 import os
 import shutil
+import sys
 from pathlib import Path
+
+# 直接导入同级目录下的配置文件
+try:
+    from paths_config import SOURCE_DIR_ASSETS, SOURCE_DIR_BDDL, TARGET_DIR_ASSETS, TARGET_DIR_BDDL
+except ImportError:
+    # 尝试添加当前脚本所在目录到 path (防止某些特殊执行环境)
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    from paths_config import SOURCE_DIR_ASSETS, SOURCE_DIR_BDDL, TARGET_DIR_ASSETS, TARGET_DIR_BDDL
 
 def move_directory_contents(source_dir: str, target_dir: str, overwrite: bool = True) -> None:
     """
@@ -50,13 +59,12 @@ def move_directory_contents(source_dir: str, target_dir: str, overwrite: bool = 
 def main():
     """主函数：配置源目录和目标目录并执行移动操作"""
     # ===================== 配置区域 =====================
-    # 当前目录下的两个源子目录名称
-    source_dir1 = "custom_assets"  # 第一个源目录（可修改）
-    source_dir2 = "custom_pddl"  # 第二个源目录（可修改）
+    # 使用 paths_config.py 中的统一配置
+    source_dir1 = SOURCE_DIR_ASSETS
+    source_dir2 = SOURCE_DIR_BDDL
     
-    # 两个目标目录路径（可修改为绝对路径或相对路径）
-    target_dir1 = "/home/ubuntu/users/wyg/LIBERO4me/libero/libero/assets/custom_objects"  # 第一个源目录对应的目标目录
-    target_dir2 = "/home/ubuntu/users/wyg/LIBERO4me/libero/libero/bddl_files/custom"  # 第二个源目录对应的目标目录
+    target_dir1 = TARGET_DIR_ASSETS
+    target_dir2 = TARGET_DIR_BDDL
     # ====================================================
 
     # 获取当前工作目录
@@ -65,8 +73,9 @@ def main():
     # 拼接完整路径
     full_source1 = current_dir / source_dir1
     full_source2 = current_dir / source_dir2
-    full_target1 = current_dir / target_dir1
-    full_target2 = current_dir / target_dir2
+    # target_dir1 和 target_dir2 已经是绝对路径了，直接使用 Path 转换
+    full_target1 = Path(target_dir1)
+    full_target2 = Path(target_dir2)
 
     print("开始执行文件移动操作...")
     print("=" * 50)

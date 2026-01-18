@@ -108,13 +108,22 @@ class SeesawBalanceScene(InitialSceneTemplates):
             )
         )
 
-        # 4. 桌面方块备选区域 (长方形区域，用于放置备选方块)
+        # 4. 桌面方块备选区域 (分为两个独立区域)
         self.regions.update(
             self.get_region_dict(
-                region_centroid_xy=[0.0 + x_offset, -0.20], 
-                region_name="weights_init_region", 
+                region_centroid_xy=[-0.05 + x_offset, -0.20], 
+                region_name="medium_weights_init_region", 
                 target_name=self.workspace_name, 
-                region_half_len=[0.15, 0.05], # [x_half, y_half]
+                region_half_len=0.03, 
+            )
+        )
+
+        self.regions.update(
+            self.get_region_dict(
+                region_centroid_xy=[0.05 + x_offset, -0.20], 
+                region_name="large_weights_init_region", 
+                target_name=self.workspace_name, 
+                region_half_len=0.03, 
             )
         )
 
@@ -143,8 +152,8 @@ class SeesawBalanceScene(InitialSceneTemplates):
             
             # 其他三个放在桌面前面
             # ("On", "weight_small_1", "kitchen_table_weights_init_region"),
-            ("On", "weight_medium_target_1", "kitchen_table_weights_init_region"),
-            ("On", "weight_large_1", "kitchen_table_weights_init_region"),
+            ("On", "weight_medium_target_1", "kitchen_table_medium_weights_init_region"),
+            ("On", "weight_large_1", "kitchen_table_large_weights_init_region"),
         ]
         return states
 
