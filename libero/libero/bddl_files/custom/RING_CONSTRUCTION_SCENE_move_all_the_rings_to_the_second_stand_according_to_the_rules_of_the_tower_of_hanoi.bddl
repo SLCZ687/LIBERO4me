@@ -1,0 +1,72 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Move all the rings to the second stand according to the rules of the Tower of Hanoi)
+    (:regions
+      (stand_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.16 0.2 -0.13999999999999999 0.3)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (stand_init_region_2
+          (:target kitchen_table)
+          (:ranges (
+              (-0.16 -0.3 -0.13999999999999999 -0.2)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (stand_init_region_3
+          (:target kitchen_table)
+          (:ranges (
+              (-0.16 -0.05 -0.13999999999999999 0.05)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    ring_stand_1 - ring_stand
+    ring_stand_two_1 - ring_stand_two
+    ring_stand_three_1 - ring_stand_three
+    torus_ring_1 - torus_ring
+    torus_ring_green_1 - torus_ring_green
+  )
+
+  (:obj_of_interest
+    ring_stand_1
+    ring_stand_two_1
+    ring_stand_three_1
+    torus_ring_1
+    torus_ring_green_1
+  )
+
+  (:init
+    (On ring_stand_1 kitchen_table_stand_init_region)
+    (On ring_stand_two_1 kitchen_table_stand_init_region_2)
+    (On ring_stand_three_1 kitchen_table_stand_init_region_3)
+    (On torus_ring_green_1 ring_stand_1)
+    (On torus_ring_1 torus_ring_green_1)
+  )
+
+  (:goal
+    (And (On torus_ring_green_1 ring_stand_two_1) (On torus_ring_1 torus_ring_green_1))
+  )
+
+)
