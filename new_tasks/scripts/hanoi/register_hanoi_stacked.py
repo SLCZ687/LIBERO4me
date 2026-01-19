@@ -123,8 +123,8 @@ if __name__ == "__main__":
                     objects_of_interest=["ring_stand_1", "ring_stand_two_1", "ring_stand_three_1", "torus_ring_1", "torus_ring_green_1"],
                     goal_states=[
                         # Goal: Whole stack on Stand 2 (Blue)
-                        ("On", "torus_ring_green_1", "ring_stand_two_1"),
-                        ("On", "torus_ring_1", "torus_ring_green_1"),
+                        ("On", "torus_ring_1", "ring_stand_two_1"),
+                        ("On", "torus_ring_green_1", "torus_ring_1"),
                     ],
     )
 

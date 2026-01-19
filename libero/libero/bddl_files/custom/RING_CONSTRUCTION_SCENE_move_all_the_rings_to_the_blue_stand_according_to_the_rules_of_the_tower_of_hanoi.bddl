@@ -66,7 +66,7 @@
   )
 
   (:goal
-    (And (On torus_ring_green_1 ring_stand_two_1) (On torus_ring_1 torus_ring_green_1))
+    (And (On torus_ring_1 ring_stand_two_1) (On torus_ring_green_1 torus_ring_1))
   )
 
 )

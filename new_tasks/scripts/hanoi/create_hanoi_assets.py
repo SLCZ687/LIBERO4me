@@ -37,7 +37,7 @@ def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, c
         # Collision geom (Group 0)
         geoms.append(
             f'<geom name="ring_seg_{i}" type="capsule" fromto="{x1} {y1} 0 {x2} {y2} 0" size="{tube_radius}" '
-            f'rgba="{color}" density="200" friction="1.5 0.05 0.001" '
+            f'rgba="{color}" density="100" friction="1.5 0.5 0.01" '
             f'solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>'
         )
         
