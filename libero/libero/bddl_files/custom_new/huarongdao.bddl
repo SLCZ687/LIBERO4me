@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Push the number block into the frame)
+  (:language Put the block on the goal region)
 
   (:regions
     ;; 外部框架放置区域 (位于桌面中心稍靠前)
@@ -109,6 +109,7 @@
   (:goal
     ;; 目标：n1 进入了框架覆盖的区域
     (And (On n1 kitchen_table_block_target_region_2)
+
 
     )
   )

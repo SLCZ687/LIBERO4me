@@ -9,10 +9,10 @@
     <body name="object">
       <inertial pos="0 0 0" mass="100" diaginertia="1 1 1" />
       
-      <geom name="wall_back" type="box" size="0.15 0.005 0.03" pos="0 0.145 0.01" material="mat_frame" group="1" density="10000"/>
-      <geom name="wall_front" type="box" size="0.15 0.005 0.03" pos="0 -0.145 0.01" material="mat_frame" group="1" density="10000"/>
-      <geom name="wall_left" type="box" size="0.005 0.14 0.03" pos="-0.145 0 0.01" material="mat_frame" group="1" density="10000"/>
-      <geom name="wall_right" type="box" size="0.005 0.14 0.03" pos="0.145 0 0.01" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_back" type="box" size="0.15 0.005 0.005" pos="0 0.145 0.0025" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_front" type="box" size="0.15 0.005 0.005" pos="0 -0.145 0.0025" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_left" type="box" size="0.005 0.14 0.005" pos="-0.145 0 0.0025" material="mat_frame" group="1" density="10000"/>
+      <geom name="wall_right" type="box" size="0.005 0.14 0.005" pos="0.145 0 0.0025" material="mat_frame" group="1" density="10000"/>
       
       <geom name="frame_base" type="box" size="0.15 0.15 0.002" pos="0 0 -0.002" material="mat_frame" group="1" density="10000"/>
       
