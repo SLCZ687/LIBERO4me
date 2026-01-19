@@ -1,9 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Tic-tac-toe)
-
-
-
+  (:language Tic-tac-toe, make block_x a line)
 
   (:regions
     ;; 1. 外部框架放置区域 (固定在桌面中心)
@@ -218,16 +215,18 @@
 
   (:objects
     frame_1 - external_frame_tic_tac_toe
-    o1 o2  - block_o
-    x1 x2 x3  - block_x
+    o1 o2 o3 - block_o
+    x1 x2 x3 x4 - block_x
   )
 
   (:obj_of_interest
     o1
     o2 
+    o3
     x1
     x2
     x3
+    x4
 
   )
 
@@ -235,15 +234,17 @@
     ;; 将框架固定在中心区域
     (On frame_1 kitchen_table_frame_center_region)
     (On x1 kitchen_table_frame_region_1)
-    (On x2 kitchen_table_frame_region_5)
+    (On x2 kitchen_table_frame_region_3)
+    (On x3 kitchen_table_frame_region_5)
     (On o1 kitchen_table_frame_region_9)
-    (On o2 kitchen_table_frame_region_8)
-    (On x3 kitchen_table_arbitrary_region)
+    (On o2 kitchen_table_frame_region_7)
+    (On o3 kitchen_table_frame_region_4)
+    (On x4 kitchen_table_arbitrary_region)
   )
 
   (:goal
 
-    (And (On x3 kitchen_table_frame_region_7_target)
+    (And (On x4 kitchen_table_frame_region_2_target)
 
     )
   )
