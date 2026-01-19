@@ -9,7 +9,7 @@ import pathlib
 absolute_path = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 class CustomXmlObject(MujocoXMLObject):
-    def __init__(self, folder_name, name, obj_name, joints=[dict(type="free", damping="0.0005")]):
+    def __init__(self, name, obj_name, joints=[dict(type="free", damping="0.0005")]):
         xml_path = os.path.join(
                 str(absolute_path),
                 f"assets/custom_objects/{obj_name}/{obj_name}.xml",
@@ -25,6 +25,7 @@ class CustomXmlObject(MujocoXMLObject):
         
         self.object_properties = {"vis_site_names": {}}
         self.rotation_axis = 'z'
+        self.rotation = (0, 0)
         self.category_name = "_".join(
             re.sub(r"([A-Z])", r" \1", self.__class__.__name__).split()
         ).lower()
@@ -36,7 +37,7 @@ class ExternalFrameHuarongdao(CustomXmlObject):
     def __init__(self, name="external_frame_huarongdao"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
-            folder_name="external_frame_huarongdao",
+            obj_name="external_frame_huarongdao",
             name=name
         )
 
@@ -57,7 +58,7 @@ class NumberBlock1(CustomXmlObject):
     def __init__(self, name="number_1"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_1", 
+            obj_name="number_1", 
             name=name
         )
 
@@ -78,7 +79,7 @@ class NumberBlock2(CustomXmlObject):
     def __init__(self, name="number_2"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_2", 
+            obj_name="number_2", 
             name=name
         )
 
@@ -100,7 +101,7 @@ class NumberBlock3(CustomXmlObject):
     def __init__(self, name="number_3"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_3", 
+            obj_name="number_3", 
             name=name
         )
 
@@ -123,7 +124,7 @@ class ExternalFrameHuanfang(CustomXmlObject):
     def __init__(self, name="external_frame_huanfang"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
-            folder_name="external_frame_huanfang",
+            obj_name="external_frame_huanfang",
             name=name
         )
 
@@ -145,7 +146,7 @@ class NumberBlock4(CustomXmlObject):
     def __init__(self, name="number_4"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_4", 
+            obj_name="number_4", 
             name=name
         )
 
@@ -166,7 +167,7 @@ class NumberBlock5(CustomXmlObject):
     def __init__(self, name="number_5"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_5", 
+            obj_name="number_5", 
             name=name
         )
 
@@ -188,7 +189,7 @@ class NumberBlock6(CustomXmlObject):
     def __init__(self, name="number_6"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_6", 
+            obj_name="number_6", 
             name=name
         )
 
@@ -211,7 +212,7 @@ class NumberBlock7(CustomXmlObject):
     def __init__(self, name="number_7"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_7", 
+            obj_name="number_7", 
             name=name
         )
 
@@ -234,7 +235,7 @@ class NumberBlock8(CustomXmlObject):
     def __init__(self, name="number_8"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_8", 
+            obj_name="number_8", 
             name=name
         )
 
@@ -258,7 +259,7 @@ class NumberBlock9(CustomXmlObject):
     def __init__(self, name="number_9"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="number_9", 
+            obj_name="number_9", 
             name=name
         )
 
@@ -280,7 +281,7 @@ class ExternalFrameTicTacToe(CustomXmlObject):
     def __init__(self, name="external_frame_tic_tac_toe"):
         # 移除 joints=None，让它拥有 free 关节以便环境进行位置初始化
         super().__init__(
-            folder_name="external_frame_tic_tac_toe",
+            obj_name="external_frame_tic_tac_toe",
             name=name
         )
 
@@ -302,7 +303,7 @@ class BlockO(CustomXmlObject):
     def __init__(self, name="block_o"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="block_o", 
+            obj_name="block_o", 
             name=name
         )
 
@@ -323,7 +324,7 @@ class BlockX(CustomXmlObject):
     def __init__(self, name="block_x"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="block_x", 
+            obj_name="block_x", 
             name=name
         )
 
@@ -345,7 +346,7 @@ class BlockRed(CustomXmlObject):
     def __init__(self, name="block_red"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="block_red", 
+            obj_name="block_red", 
             name=name
         )
 
@@ -368,7 +369,7 @@ class BlockBlue(CustomXmlObject):
     def __init__(self, name="block_blue"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="block_blue", 
+            obj_name="block_blue", 
             name=name
         )
 
@@ -390,7 +391,7 @@ class Basket_my(CustomXmlObject):
     def __init__(self, name="basket_my"):
         # 对应 assets/custom_objects/number_1/number_1.xml
         super().__init__(
-            folder_name="basket_my", 
+            obj_name="basket_my", 
             name=name
         )
 
@@ -412,7 +413,6 @@ class Basket_my(CustomXmlObject):
 class BridgeBrickTwo(CustomXmlObject):
     def __init__(self, name="bridge_brick2", obj_name="bridge_brick2"):
         super().__init__(
-            folder_name="bridge_brick2",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.05")]
@@ -438,7 +438,6 @@ class BridgeBrickTwo(CustomXmlObject):
 class BridgeBrickThree(CustomXmlObject):
     def __init__(self, name="bridge_brick3", obj_name="bridge_brick3"):
         super().__init__(
-            folder_name="bridge_brick3",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.05")]
@@ -468,7 +467,6 @@ class BridgeBrickThree(CustomXmlObject):
 class BridgeBrick(CustomXmlObject):
     def __init__(self, name="bridge_brick", obj_name="bridge_brick"):
         super().__init__(
-            folder_name="bridge_brick",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.05")]
@@ -494,7 +492,6 @@ class BridgeBrick(CustomXmlObject):
 class BridgePlatform(CustomXmlObject):
     def __init__(self, name="bridge_platform", obj_name="bridge_platform"):
         super().__init__(
-            folder_name="bridge_platform",
             name=name,
             obj_name=obj_name,
             # [关键修改] 阻尼从 2000 降为 50。
@@ -528,7 +525,6 @@ OBJECTS_DICT["bridge_platform"] = BridgePlatform
 class MazeBall(CustomXmlObject):
     def __init__(self, name="maze_ball", obj_name="maze_ball"):
         super().__init__(
-            folder_name="maze_ball",
             name=name,
             obj_name=obj_name,
             # [物理属性] 极小阻尼，保证球能顺滑滚动
@@ -556,7 +552,6 @@ class MazeBall(CustomXmlObject):
 class MazeStructure(CustomXmlObject):
     def __init__(self, name="maze_structure", obj_name="maze_structure"):
         super().__init__(
-            folder_name="maze_structure",
             name=name,
             obj_name=obj_name,
             # [物理属性] 巨大阻尼，让迷宫像固定在桌子上一样不动
@@ -593,7 +588,6 @@ OBJECTS_DICT["maze_structure"] = MazeStructure
 class TorusRing(CustomXmlObject):
     def __init__(self, name="torus_ring", obj_name="torus_ring"):
         super().__init__(
-            folder_name="torus_ring",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -622,7 +616,6 @@ class TorusRing(CustomXmlObject):
 class RingStand(CustomXmlObject):
     def __init__(self, name="ring_stand", obj_name="ring_stand"):
         super().__init__(
-            folder_name="ring_stand",
             name=name,
             obj_name=obj_name,
             # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
@@ -657,7 +650,6 @@ class RingStand(CustomXmlObject):
 class TorusRingGreen(CustomXmlObject):
     def __init__(self, name="torus_ring_green", obj_name="torus_ring_green"):
         super().__init__(
-            folder_name="torus_ring_green",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -685,7 +677,6 @@ class TorusRingGreen(CustomXmlObject):
 class TorusRingBlue(CustomXmlObject):
     def __init__(self, name="torus_ring_blue", obj_name="torus_ring_blue"):
         super().__init__(
-            folder_name="torus_ring_blue",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -713,7 +704,6 @@ class TorusRingBlue(CustomXmlObject):
 class TorusRingYellow(CustomXmlObject):
     def __init__(self, name="torus_ring_yellow", obj_name="torus_ring_yellow"):
         super().__init__(
-            folder_name="torus_ring_yellow",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -742,7 +732,6 @@ class TorusRingYellow(CustomXmlObject):
 class TorusRingPurple(CustomXmlObject):
     def __init__(self, name="torus_ring_purple", obj_name="torus_ring_purple"):
         super().__init__(
-            folder_name="torus_ring_purple",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -771,7 +760,6 @@ class TorusRingPurple(CustomXmlObject):
 class TorusRingPink(CustomXmlObject):
     def __init__(self, name="torus_ring_pink", obj_name="torus_ring_pink"):
         super().__init__(
-            folder_name="torus_ring_pink",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -800,7 +788,6 @@ class TorusRingPink(CustomXmlObject):
 class TorusRingOrange(CustomXmlObject):
     def __init__(self, name="torus_ring_orange", obj_name="torus_ring_orange"):
         super().__init__(
-            folder_name="torus_ring_orange",
             name=name,
             obj_name=obj_name,
             # [物理属性] 较小的阻尼，允许它被推动和调整，
@@ -832,7 +819,6 @@ class TorusRingOrange(CustomXmlObject):
 class RingStandTwo(CustomXmlObject):
     def __init__(self, name="ring_stand_two", obj_name="ring_stand2"):
         super().__init__(
-            folder_name="ring_stand2",
             name=name,
             obj_name=obj_name,
             # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
@@ -863,7 +849,6 @@ class RingStandTwo(CustomXmlObject):
 class RingStandThree(CustomXmlObject):
     def __init__(self, name="ring_stand_three", obj_name="ring_stand3"):
         super().__init__(
-            folder_name="ring_stand3",
             name=name,
             obj_name=obj_name,
             # [物理属性] 给予极大阻尼 (5000)，模拟沉重的底座
@@ -906,7 +891,6 @@ OBJECTS_DICT["torus_ring_blue"]=TorusRingBlue
 class RectangularObstacle(CustomXmlObject):
     def __init__(self, name="rectangular_obstacle", obj_name="rectangular_obstacle"):
         super().__init__(
-            folder_name="rectangular_obstacle",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="5.0")]
@@ -936,7 +920,6 @@ class RectangularObstacle(CustomXmlObject):
 class Seesaw(CustomXmlObject):
     def __init__(self, name="seesaw", obj_name="seesaw"):
         super().__init__(
-            folder_name="seesaw",
             name=name,
             obj_name=obj_name,
             # [关键] 阻尼大一点，防止整个底座被推走
@@ -960,7 +943,6 @@ class Seesaw(CustomXmlObject):
 class WeightSmall(CustomXmlObject):
     def __init__(self, name="weight_small", obj_name="weight_small"):
         super().__init__(
-            folder_name="weight_small",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.001")]
@@ -982,7 +964,6 @@ class WeightSmall(CustomXmlObject):
 class WeightMediumRef(CustomXmlObject):
     def __init__(self, name="weight_medium_ref", obj_name="weight_medium_ref"):
         super().__init__(
-            folder_name="weight_medium_ref",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.001")]
@@ -1004,7 +985,6 @@ class WeightMediumRef(CustomXmlObject):
 class WeightMediumTarget(CustomXmlObject):
     def __init__(self, name="weight_medium_target", obj_name="weight_medium_target"):
         super().__init__(
-            folder_name="weight_medium_target",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.001")]
@@ -1026,7 +1006,6 @@ class WeightMediumTarget(CustomXmlObject):
 class WeightLarge(CustomXmlObject):
     def __init__(self, name="weight_large", obj_name="weight_large"):
         super().__init__(
-            folder_name="weight_large",
             name=name,
             obj_name=obj_name,
             joints=[dict(type="free", damping="0.001")]
@@ -1049,4 +1028,3 @@ OBJECTS_DICT["weight_small"] = WeightSmall
 OBJECTS_DICT["weight_medium_ref"] = WeightMediumRef
 OBJECTS_DICT["weight_medium_target"] = WeightMediumTarget
 OBJECTS_DICT["weight_large"] = WeightLarge
-

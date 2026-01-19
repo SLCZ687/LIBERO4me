@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Put the block on the goal region)
+  (:language Move the block marked with the number 1 to the green area according to the rules of the number sliding puzzle)
 
   (:regions
     ;; 外部框架放置区域 (位于桌面中心稍靠前)
