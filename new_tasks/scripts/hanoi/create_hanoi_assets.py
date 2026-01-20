@@ -11,10 +11,13 @@ create_folder(ASSET_ROOT)
 # =========================================================
 # 工具函数：生成圆环的 XML body 内容
 # =========================================================
-def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, color="1 0 0 1"):
+def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, color="1 0 0 1", collision_radius=None):
     """
     使用 fromto 属性连接顶点，无需计算欧拉角，也不会有单位问题。
     """
+    if collision_radius is None:
+        collision_radius = tube_radius
+
     geoms = []
     
     for i in range(num_segments):
@@ -38,9 +41,10 @@ def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, c
         # 增加 condim="6" 以启用滚动摩擦支持
         # 增大 friction 的第三个分量 (rolling friction) 防止绕轴滚动下垂
         # 减小 density 降低重量
+        # 使用 collision_radius 避免穿模
         geoms.append(
-            f'<geom name="ring_seg_{i}" type="capsule" fromto="{x1} {y1} 0 {x2} {y2} 0" size="{tube_radius}" '
-            f'rgba="{color}" density="50" friction="2.0 0.2 0.5" condim="6" '
+            f'<geom name="ring_seg_{i}" type="capsule" fromto="{x1} {y1} 0 {x2} {y2} 0" size="{collision_radius}" '
+            f'rgba="{color}" density="50" friction="1.0 0.05 0.05" condim="6" '
             f'solref="0.001 1" solimp="0.95 0.99 0.001" group="0"/>'
         )
         
@@ -58,9 +62,11 @@ def generate_torus_body(major_radius=0.06, tube_radius=0.008, num_segments=16, c
 def create_ring_xml(name, radius, color):
     # 定义尺寸
     TUBE_RADIUS = 0.012 # 环的粗细
+    # 缩小碰撞体半径，防止初始堆叠时因为穿模而弹飞
+    COLLISION_RADIUS = TUBE_RADIUS - 0.001 
     SEGMENTS = 24 # 统一用24让它更圆滑
 
-    ring_body_str = generate_torus_body(radius, TUBE_RADIUS, SEGMENTS, color)
+    ring_body_str = generate_torus_body(radius, TUBE_RADIUS, SEGMENTS, color, collision_radius=COLLISION_RADIUS)
 
     # 抓取点 Site 的位置：放在圆环的“实体”上，而不是圆心空气处
     # 选在 X 轴正方向的那个点上
@@ -73,13 +79,6 @@ def create_ring_xml(name, radius, color):
       <body name="object">
         <!-- 组合几何体生成圆环 -->
         {ring_body_str}
-        
-        <!-- Sites -->
-        <!-- bottom_site 用于抓取逻辑，放在环的一侧实体上 -->
-        <site name="bottom_site" pos="{grasp_site_x} 0 {-TUBE_RADIUS}" size="0.002" rgba="0 0 0 0"/>
-        <site name="top_site" pos="{grasp_site_x} 0 {TUBE_RADIUS}" size="0.002" rgba="0 0 0 0"/>
-        <!-- center_site 用于判断圆环是否套进了杆子 (位于圆心) -->
-        <site name="center_site" pos="0 0 0" size="0.002" rgba="1 0 0 0.5"/>
       </body>
     </body>
   </worldbody>
@@ -99,17 +98,18 @@ def create_ring_xml(name, radius, color):
 # =========================================================
 def create_stand_xml(name, rgb, pole_height):
     # 底座 + 竖杆
-    BASE_SIZE = "0.08 0.08 0.005" # 宽底座
+    BASE_HALF_HEIGHT = 0.005
+    BASE_SIZE_VIS = f"0.08 0.08 {BASE_HALF_HEIGHT}"
+    # 碰撞几何体略小，避免悬浮
+    BASE_SIZE_COL = f"0.08 0.08 {BASE_HALF_HEIGHT - 0.001}"
     POLE_RADIUS = 0.008
     
     # 计算杆子相关参数
     # Mujoco cylinder size 是半高 (h/2)
     # Pos Z 是中心点。
-    # Base 厚度 0.01 (半高0.005)
-    # Pole 底部在 Base 顶上 (Z=0.01)
-    # Pole center Z = 0.01 + pole_height/2
+    # Pole 底部在 Base 顶上
     pole_half_height = pole_height / 2.0
-    pole_pos_z = 0.01 + pole_half_height
+    pole_pos_z = BASE_HALF_HEIGHT + pole_half_height
 
     xml_content = f"""
 <mujoco model="ring_stand">
@@ -121,16 +121,16 @@ def create_stand_xml(name, rgb, pole_height):
     <body>
       <body name="object">
         <!-- 底座 (不可移动的基座，稍微重一点) -->
-        <geom name="base_geom" type="box" size="{BASE_SIZE}" material="mat_stand" 
-              density="50000" friction="2.0 0.005 0.0001" group="0"/>
-        <geom name="base_vis" type="box" size="{BASE_SIZE}" material="mat_stand" 
+        <geom name="base_geom" type="box" size="{BASE_SIZE_COL}" material="mat_stand" 
+              density="50000" friction="0.5 0.005 0.0001" group="0"/>
+        <geom name="base_vis" type="box" size="{BASE_SIZE_VIS}" material="mat_stand" 
               contype="0" conaffinity="0" group="1"/>
               
         <!-- 竖杆 -->
-        <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
+        <!-- <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
               density="1000" friction="0.5 0.005 0.0001" group="0"/>
         <geom name="pole_vis" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
-              contype="0" conaffinity="0" group="1"/>
+              contype="0" conaffinity="0" group="1"/> -->
 
         <!-- 关键 Site: 用于判断圆环是否套到底部 -->
         <!-- 位于杆子根部 -->

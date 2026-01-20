@@ -7,16 +7,16 @@
     <body>
       <body name="object">
         <!-- 底座 (不可移动的基座，稍微重一点) -->
-        <geom name="base_geom" type="box" size="0.08 0.08 0.005" material="mat_stand" 
-              density="50000" friction="2.0 0.005 0.0001" group="0"/>
+        <geom name="base_geom" type="box" size="0.08 0.08 0.004" material="mat_stand" 
+              density="50000" friction="0.5 0.005 0.0001" group="0"/>
         <geom name="base_vis" type="box" size="0.08 0.08 0.005" material="mat_stand" 
               contype="0" conaffinity="0" group="1"/>
               
         <!-- 竖杆 -->
-        <geom name="pole_geom" type="cylinder" size="0.008 0.005" pos="0 0 0.015" material="mat_stand"
+        <!-- <geom name="pole_geom" type="cylinder" size="0.008 0.005" pos="0 0 0.01" material="mat_stand"
               density="1000" friction="0.5 0.005 0.0001" group="0"/>
-        <geom name="pole_vis" type="cylinder" size="0.008 0.005" pos="0 0 0.015" material="mat_stand"
-              contype="0" conaffinity="0" group="1"/>
+        <geom name="pole_vis" type="cylinder" size="0.008 0.005" pos="0 0 0.01" material="mat_stand"
+              contype="0" conaffinity="0" group="1"/> -->
 
         <!-- 关键 Site: 用于判断圆环是否套到底部 -->
         <!-- 位于杆子根部 -->

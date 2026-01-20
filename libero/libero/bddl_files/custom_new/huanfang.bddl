@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Push the number block into the frame)
+  (:language Place the number tiles in the correct positions so that the sum of the numbers in each row and column and diagonal is equal)
 
   (:regions
     ;; 1. 外部框架放置区域 (固定在桌面中心)
