@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Place the number blocks in the correct positions to ensure that there are no repeating numbers in any row or column or diagonal)
+  (:language Place the number blocks in the correct positions to ensure that there are no repeating numbers in any row or column)
 
 (:regions
     ;; 1. 外部框架放置区域 (固定在桌面中心)
