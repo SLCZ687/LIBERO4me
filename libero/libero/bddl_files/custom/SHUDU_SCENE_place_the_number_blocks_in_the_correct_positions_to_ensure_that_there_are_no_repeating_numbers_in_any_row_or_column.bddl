@@ -1,0 +1,355 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Place the number blocks in the correct positions to ensure that there are no repeating numbers in any row or column)
+    (:regions
+      (frame_center_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.10001 -0.15001 -0.09999000000000001 -0.14998999999999998)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_1
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24001 0.09999000000000001 -0.23998999999999998 0.10001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_2
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15001 0.09999000000000001 -0.14998999999999998 0.10001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_3
+          (:target kitchen_table)
+          (:ranges (
+              (-0.06001 0.09999000000000001 -0.059989999999999995 0.10001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_4
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24001 0.19998999999999997 -0.23998999999999998 0.20001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_5
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15001 0.19998999999999997 -0.14998999999999998 0.20001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_6
+          (:target kitchen_table)
+          (:ranges (
+              (-0.06001 0.19998999999999997 -0.059989999999999995 0.20001)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_7
+          (:target kitchen_table)
+          (:ranges (
+              (-0.24001 0.29999000000000003 -0.23998999999999998 0.30001000000000005)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_8
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15001 0.29999000000000003 -0.14998999999999998 0.30001000000000005)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (block_outside_9
+          (:target kitchen_table)
+          (:ranges (
+              (-0.06001 0.29999000000000003 -0.059989999999999995 0.30001000000000005)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_1
+          (:target kitchen_table)
+          (:ranges (
+              (-0.201 -0.251 -0.199 -0.249)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_1_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.25 -0.3 -0.15000000000000002 -0.2)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_2
+          (:target kitchen_table)
+          (:ranges (
+              (-0.201 -0.151 -0.199 -0.149)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_2_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.25 -0.2 -0.15000000000000002 -0.09999999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_3
+          (:target kitchen_table)
+          (:ranges (
+              (-0.201 -0.05099999999999999 -0.199 -0.04899999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_3_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.25 -0.09999999999999999 -0.15000000000000002 1.3877787807814457e-17)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_4
+          (:target kitchen_table)
+          (:ranges (
+              (-0.101 -0.251 -0.099 -0.249)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_4_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15000000000000002 -0.3 -0.05 -0.2)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_5
+          (:target kitchen_table)
+          (:ranges (
+              (-0.101 -0.151 -0.099 -0.149)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_5_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15000000000000002 -0.2 -0.05 -0.09999999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_6
+          (:target kitchen_table)
+          (:ranges (
+              (-0.101 -0.05099999999999999 -0.099 -0.04899999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_6_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.15000000000000002 -0.09999999999999999 -0.05 1.3877787807814457e-17)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_7
+          (:target kitchen_table)
+          (:ranges (
+              (-0.001 -0.251 0.001 -0.249)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_7_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.05 -0.3 0.05 -0.2)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_8
+          (:target kitchen_table)
+          (:ranges (
+              (-0.001 -0.151 0.001 -0.149)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_8_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.05 -0.2 0.05 -0.09999999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_9
+          (:target kitchen_table)
+          (:ranges (
+              (-0.001 -0.05099999999999999 0.001 -0.04899999999999999)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (frame_region_9_target
+          (:target kitchen_table)
+          (:ranges (
+              (-0.05 -0.09999999999999999 0.05 1.3877787807814457e-17)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    external_frame_huanfang_1 - external_frame_huanfang
+    number_block_1_1 number_block_1_2 number_block_1_3 - number_block_1
+    number_block_2_1 number_block_2_2 number_block_2_3 - number_block_2
+    number_block_3_1 number_block_3_2 number_block_3_3 - number_block_3
+  )
+
+  (:obj_of_interest
+    number_block_1_1
+    number_block_1_2
+    number_block_1_3
+    number_block_2_1
+    number_block_2_2
+    number_block_2_3
+    number_block_3_1
+    number_block_3_2
+    number_block_3_3
+  )
+
+  (:init
+    (On external_frame_huanfang_1 kitchen_table_frame_center_region)
+    (On number_block_1_1 kitchen_table_frame_region_1)
+    (On number_block_2_1 kitchen_table_frame_region_5)
+    (On number_block_1_2 kitchen_table_block_outside_1)
+    (On number_block_1_3 kitchen_table_frame_region_8)
+    (On number_block_2_2 kitchen_table_frame_region_3)
+    (On number_block_2_3 kitchen_table_block_outside_5)
+    (On number_block_3_1 kitchen_table_block_outside_7)
+    (On number_block_3_2 kitchen_table_frame_region_4)
+    (On number_block_3_3 kitchen_table_frame_region_9)
+  )
+
+  (:goal
+    (And (On number_block_1_1 kitchen_table_frame_region_1_target) (On number_block_1_2 kitchen_table_frame_region_6_target) (On number_block_1_3 kitchen_table_frame_region_8_target) (On number_block_2_1 kitchen_table_frame_region_5_target) (On number_block_2_2 kitchen_table_frame_region_3_target) (On number_block_2_3 kitchen_table_frame_region_7_target) (On number_block_3_1 kitchen_table_frame_region_2_target) (On number_block_3_2 kitchen_table_frame_region_4_target) (On number_block_3_3 kitchen_table_frame_region_9_target))
+  )
+
+)
