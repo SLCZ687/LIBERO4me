@@ -148,7 +148,7 @@ if __name__ == "__main__":
         "--robots",
         nargs="+",
         type=str,
-        default="Panda",
+        default=["Panda"],
         help="Which robot(s) to use",
     )
     
