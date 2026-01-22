@@ -7,7 +7,14 @@ python scripts/libero_100_collect_demonstrations2.py --bddl-file libero/libero/b
 ### recover hdf5
 ```bash
 python scripts/recover_demo_hdf5.py --directory /home/ubuntu/users/wyg/collected_data/move_the_block_marked_with_the_number_1_to_the_green_area_according_to_the_rules_of_the_number_sliding_puzzle/ --out-dir /home/ubuntu/users/wyg/collected_data/move_the_block_marked_with_the_number_1_to_the_green_area_according_to_the_rules_of_the_number_sliding_puzzle/demo --bddl-file libero/libero/bddl_files/custom_new/huarongdao.bddl
+```
 
+### generate init file
+```bash
+python scripts/generate_init_states.py \
+  --bddl-folder libero/libero/bddl_files/custom \
+  --save-folder libero/libero/init_files/custom \
+  --num-states 20
 ```
 
 ### replay and convert
