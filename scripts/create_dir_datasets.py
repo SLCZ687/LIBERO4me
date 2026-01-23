@@ -47,13 +47,27 @@ def create_dataset(
     demos = list(f["data"].keys())
 
     bddl_file_name = f["data"].attrs["bddl_file_name"]
+    
+    # Fix absolute path for BDDL file
+    path_pattern = r'/[^"\']*?/libero/libero/bddl_files'
+    current_bddl_root = os.path.join(os.getcwd(), "libero/libero/bddl_files")
+    if os.path.exists(current_bddl_root):
+        bddl_file_name = re.sub(path_pattern, current_bddl_root, bddl_file_name)
+    
+    if not os.path.exists(bddl_file_name):
+        print(f"[Warning] BDDL file does not exist at processed path: {bddl_file_name}")
 
-    target_hdf5_path = os.path.join(dataset_path, dataset_name, f"{dataset_name}.hdf5")
+    target_hdf5_path = os.path.join(dataset_path, f"{dataset_name}.hdf5")
 
     if os.path.exists(target_hdf5_path):
-        print(f"Skipping {dataset_name}, already exists at {target_hdf5_path}")
-        f.close()
-        return
+        file_size = os.path.getsize(target_hdf5_path)
+        # 1GB = 1 * 1024 * 1024 * 1024 bytes
+        if file_size > 1 * 1024 * 1024 * 1024:
+            print(f"Skipping {dataset_name}, valid file exists ({file_size/1024/1024:.2f} MB) at {target_hdf5_path}")
+            f.close()
+            return
+        else:
+            print(f"Overwriting {dataset_name}, file exists but size is abnormal ({file_size/1024/1024:.2f} MB < 1GB) at {target_hdf5_path}")
 
     output_parent_dir = Path(target_hdf5_path).parent
     output_parent_dir.mkdir(parents=True, exist_ok=True)
@@ -103,7 +117,7 @@ def create_dataset(
         "type": 1,
         "env_name": env_name,
         "problem_name": problem_name,
-        "bddl_file": f["data"].attrs["bddl_file_name"],
+        "bddl_file": bddl_file_name,
         "env_kwargs": env_kwargs,
     }
 
