@@ -1,0 +1,116 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Move the block marked with the number 1 to the green area according to the rules of the number sliding puzzle)
+
+  (:regions
+    ;; 外部框架放置区域 (位于桌面中心稍靠前)
+    (frame_center_region
+        (:target kitchen_table)
+        (:ranges (
+            (-0.00001 -0.00001 0.00001 0.00001)
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+    )
+    
+    ;; 方块初始化区域 (放在框架外面，方便机械臂去推)
+    (block_start_region
+        (:target kitchen_table)
+        (:ranges (
+            (-0.052 0.050 -0.050 0.052)
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+    )
+
+    (block_start_region_2
+        (:target kitchen_table)
+        (:ranges (
+            (-0.052 -0.052 -0.050 -0.050)
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+    )
+ 
+    (block_start_region_3
+        (:target kitchen_table)
+        (:ranges (
+            (0.050 -0.052 0.052 -0.050)
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+    )
+
+    ;; 目标区域 (逻辑上我们希望方块最终停在框架内部)
+    ;; 这里我们定义一个与框架中心重合的小区域
+    (block_target_region
+        (:target kitchen_table)
+        (:ranges (
+            (0 0.00001 0.06 0.06)
+          )
+        )
+        (:yaw_rotation (
+            (0.0 0.0)
+          )
+        )
+     )
+
+     (block_target_region_2
+        (:target kitchen_table)
+        (:ranges (
+            (-0.065 -0.065 -0.035 -0.035)
+          )
+        )
+        (:yaw_rotation (
+              (0.0 0.0) 
+          )       
+        )
+     )
+  )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    frame_1 - external_frame_huarongdao
+    n1 - number_block_1
+    n2 - number_block_2
+    n3 - number_block_3
+  )
+
+  (:obj_of_interest
+    n1
+    n2
+    n3
+  )
+
+  (:init
+    ;; 将框架固定在中心区域
+    (On frame_1 kitchen_table_frame_center_region)
+    ;; 将数字 1 号方块放在起始位置
+    (On n1 kitchen_table_block_start_region)
+    (On n2 kitchen_table_block_start_region_2)
+    (On n3 kitchen_table_block_start_region_3)
+  )
+
+  (:goal
+    ;; 目标：n1 进入了框架覆盖的区域
+    (And (On n1 kitchen_table_block_target_region_2)
+
+
+    )
+  )
+)

@@ -16,6 +16,8 @@ import libero.libero.envs.bddl_utils as BDDLUtils
 from libero.libero.envs import *
 from termcolor import colored
 
+CAMERA_SIZE = (1280, 960)
+
 # Robosuite 1.4.0 的 OpenCVRenderer 没有回调函数
 # 我们需要在主循环中手动捕获按键
 def manual_keyboard_capture(env, device):
@@ -62,11 +64,12 @@ def collect_human_trajectory(
         # 确保窗口已被创建（有些版本需要先 namedWindow）
         position_x = 100
         position_y = 100
-        size = 512
+        cam_w = CAMERA_SIZE[0]
+        cam_h = CAMERA_SIZE[1]
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL) 
         cv2.moveWindow(window_name, position_x, position_y)
         # 调整大小
-        cv2.resizeWindow(window_name, size, size)
+        cv2.resizeWindow(window_name, cam_w, cam_h)
         print(f"【提示】已将窗口移动到左上角 ({position_x}, {position_y})")
     except Exception as e:
         print(f"窗口调整失败: {e}")
