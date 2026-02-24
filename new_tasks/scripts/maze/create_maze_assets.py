@@ -4,7 +4,7 @@ import numpy as np
 # ==========================================
 # 1. 全局尺寸配置
 # ==========================================
-BALL_RADIUS = 0.02
+BALL_RADIUS = 0.016
 RATIO = 1.3
 CELL_SIZE = BALL_RADIUS * 2 * RATIO 
 WALL_HEIGHT = BALL_RADIUS * 0.8
@@ -78,9 +78,9 @@ for r in range(rows):
         
         # 特殊位置颜色
         if (r, c) == start_node:
-            rgba_str = "0.8 0.2 0.2 1" # 起点红
+            rgba_str = "0.2 0.8 0.2 1" # 起点绿
         elif (r, c) == end_node:
-            rgba_str = "0.2 0.8 0.2 1" # 终点绿
+            rgba_str = "0.8 0.2 0.2 1" # 终点红
 
         # --- 修改部分 START ---
         

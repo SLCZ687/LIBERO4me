@@ -8,13 +8,16 @@ from libero.libero.utils.bddl_generation_utils import get_xy_region_kwargs_list_
 # ==========================================
 # 1. 参数同步
 # ==========================================
-BALL_RADIUS = 0.02
+BALL_RADIUS = 0.016
 CELL_SIZE = BALL_RADIUS * 2 * 1.3
 
 maze_offset_x = -0.20
+maze_offset_y = 0.0
 
 def parse_maze_def(filename="maze_def.txt"):
-    if not os.path.exists(filename): return np.zeros((15,15)), (1,1), (13,13)
+    if not os.path.exists(filename): 
+        print(f"Warning: {filename} not found. Using default 15x15 layout.")
+        return np.zeros((15,15)), (1,1), (13,13)
     with open(filename, 'r') as f:
         lines = [l.strip() for l in f.readlines() if l.strip()]
     
@@ -40,8 +43,8 @@ def parse_maze_def(filename="maze_def.txt"):
     return np.array(matrix), start_pos, end_pos
 
 def grid_to_world(r, c, rows, cols, cell_size):
-    pos_x = (c - (cols - 1) / 2.0) * cell_size
-    pos_y = ((rows - 1) / 2.0 - r) * cell_size
+    pos_x = ((cols - 1) / 2.0 - c) * cell_size
+    pos_y = (r - (rows - 1) / 2.0) * cell_size
     return pos_x, pos_y
 
 @register_mu(scene_type="kitchen")
@@ -76,14 +79,17 @@ class MazeScene(InitialSceneTemplates):
 
     def define_regions(self):
         matrix, start_node, end_node = parse_maze_def()
+        print(f"Parsed Maze Layout: {matrix.shape[0]} rows x {matrix.shape[1]} cols")
+        print(f"Start Node: {start_node}, End Node: {end_node}")
         rows, cols = matrix.shape
         
         start_x, start_y = grid_to_world(start_node[0], start_node[1], rows, cols, CELL_SIZE)
         end_x, end_y = grid_to_world(end_node[0], end_node[1], rows, cols, CELL_SIZE)
+        print(f"Start Node World Coords: ({start_x:.3f}, {start_y:.3f}), End Node World Coords: ({end_x:.3f}, {end_y:.3f})")
         
         # 迷宫中心
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[maze_offset_x, 0.0],
+            region_centroid_xy=[maze_offset_x, maze_offset_y],
             region_name="maze_center_region",
             target_name=self.workspace_name,
             region_half_len=0.005
@@ -91,7 +97,7 @@ class MazeScene(InitialSceneTemplates):
         
         # Start Node
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[start_x + maze_offset_x, start_y],
+            region_centroid_xy=[start_x + maze_offset_x, start_y + maze_offset_y],
             region_name="ball_start_region",
             target_name=self.workspace_name,
             region_half_len=0.001 
@@ -99,10 +105,10 @@ class MazeScene(InitialSceneTemplates):
 
         # End Node
         self.regions.update(self.get_region_dict(
-            region_centroid_xy=[end_x + maze_offset_x, end_y],
+            region_centroid_xy=[end_x + maze_offset_x, end_y + maze_offset_y],
             region_name="ball_target_region",
             target_name=self.workspace_name,
-            region_half_len=0.02 
+            region_half_len=BALL_RADIUS * 1.3
         ))
         
         self.xy_region_kwargs_list = get_xy_region_kwargs_list_from_regions_info(self.regions)
