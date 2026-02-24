@@ -127,10 +127,10 @@ def create_stand_xml(name, rgb, pole_height):
               contype="0" conaffinity="0" group="1"/>
               
         <!-- 竖杆 -->
-        <!-- <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
+        <geom name="pole_geom" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
               density="1000" friction="0.5 0.005 0.0001" group="0"/>
         <geom name="pole_vis" type="cylinder" size="{POLE_RADIUS} {pole_half_height}" pos="0 0 {pole_pos_z}" material="mat_stand"
-              contype="0" conaffinity="0" group="1"/> -->
+              contype="0" conaffinity="0" group="1"/>
 
         <!-- 关键 Site: 用于判断圆环是否套到底部 -->
         <!-- 位于杆子根部 -->
@@ -155,7 +155,7 @@ def create_stand_xml(name, rgb, pole_height):
 # =========================================================
 # Main Generation List
 # =========================================================
-RING_STAND_HEIGHT = 0.01
+RING_STAND_HEIGHT = 0.20
 
 # 1. Ring Stands
 stands_config = [
@@ -169,13 +169,17 @@ for s in stands_config:
 
 # 2. Torus Rings
 rings_config = [
-    {"name": "torus_ring",        "radius": 0.06, "color": "0.8 0.2 0.2 1"}, # Red
-    {"name": "torus_ring_blue",   "radius": 0.04, "color": "0.2 0.2 0.8 1"},
+    {"name": "torus_ring",        "radius": 0.05, "color": "0.8 0.2 0.2 1"}, # Red
+    {"name": "torus_ring_blue",   "radius": 0.05, "color": "0.2 0.2 0.8 1"},
     {"name": "torus_ring_green",  "radius": 0.05, "color": "0.2 0.8 0.2 1"},
-    {"name": "torus_ring_orange", "radius": 0.04, "color": "0.8 0.5 0.2 1"},
-    {"name": "torus_ring_pink",   "radius": 0.04, "color": "0.8 0.4 0.6 1"},
-    {"name": "torus_ring_purple", "radius": 0.04, "color": "0.5 0.2 0.8 1"},
-    {"name": "torus_ring_yellow", "radius": 0.04, "color": "0.8 0.8 0.2 1"},
+    {"name": "torus_ring_orange", "radius": 0.05, "color": "0.8 0.5 0.2 1"},
+    {"name": "torus_ring_pink",   "radius": 0.05, "color": "0.8 0.4 0.6 1"},
+    {"name": "torus_ring_purple", "radius": 0.05, "color": "0.5 0.2 0.8 1"},
+    {"name": "torus_ring_yellow", "radius": 0.05, "color": "0.8 0.8 0.2 1"},
+    {"name": "torus_ring_size1", "radius": 0.045, "color": "0.2 0.8 0.8 1"}, # cyan
+    {"name": "torus_ring_size2", "radius": 0.050, "color": "0.2 0.8 0.8 1"},
+    {"name": "torus_ring_size3", "radius": 0.055, "color": "0.2 0.8 0.8 1"},
+    {"name": "torus_ring_size4", "radius": 0.060, "color": "0.2 0.8 0.8 1"},
 ]
 
 for r in rings_config:

@@ -810,6 +810,114 @@ class TorusRingOrange(CustomXmlObject):
     @property
     def top_offset(self):
         return np.array([0, 0, 0.008])
+
+@register_object
+class TorusRingSize1(CustomXmlObject):
+    def __init__(self, name="torus_ring_size1", obj_name="torus_ring_size1"):
+        super().__init__(
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+@register_object
+class TorusRingSize2(CustomXmlObject):
+    def __init__(self, name="torus_ring_size2", obj_name="torus_ring_size2"):
+        super().__init__(
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+
+@register_object
+class TorusRingSize3(CustomXmlObject):
+    def __init__(self, name="torus_ring_size3", obj_name="torus_ring_size3"):
+        super().__init__(
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
+    
+@register_object
+class TorusRingSize4(CustomXmlObject):
+    def __init__(self, name="torus_ring_size4", obj_name="torus_ring_size4"):
+        super().__init__(
+            name=name,
+            obj_name=obj_name,
+            # [物理属性] 较小的阻尼，允许它被推动和调整，
+            # 但不要像球那样完全无摩擦，0.005 左右比较像塑料环
+            joints=[dict(type="free", damping="0.005")]
+        )
+        self.rotation = (0, 0)
+        
+    @property
+    def horizontal_radius(self):
+        # 圆环整体半径约 0.05 + 管径 0.008 ~= 0.06
+        return 0.06
+    
+    @property
+    def bottom_offset(self):
+        # 管子半径是 0.008
+        # 为了贴合桌面，中心点需要向下偏移半径的距离
+        return np.array([0, 0, -0.008])
+
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.008])
 #-------------------------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------------------------
@@ -884,6 +992,14 @@ OBJECTS_DICT["torus_ring_green"]=TorusRingGreen
 OBJECTS_DICT["ring_stand_two"]=RingStandTwo
 OBJECTS_DICT["ring_stand_three"]=RingStandThree
 OBJECTS_DICT["torus_ring_blue"]=TorusRingBlue
+OBJECTS_DICT["torus_ring_orange"]=TorusRingOrange
+OBJECTS_DICT["torus_ring_purple"]=TorusRingPurple
+OBJECTS_DICT["torus_ring_yellow"]=TorusRingYellow
+OBJECTS_DICT["torus_ring_pink"]=TorusRingPink
+OBJECTS_DICT["torus_ring_size1"]=TorusRingSize1
+OBJECTS_DICT["torus_ring_size2"]=TorusRingSize2
+OBJECTS_DICT["torus_ring_size3"]=TorusRingSize3
+OBJECTS_DICT["torus_ring_size4"]=TorusRingSize4
 
 #--------------------------------------------------------------------------------------------------------------------------
 #---Rectangualr Obstacle

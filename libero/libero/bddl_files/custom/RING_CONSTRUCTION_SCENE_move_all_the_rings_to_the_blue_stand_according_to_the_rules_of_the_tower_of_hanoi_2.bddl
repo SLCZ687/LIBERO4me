@@ -1,6 +1,6 @@
 (define (problem LIBERO_Kitchen_Tabletop_Manipulation)
   (:domain robosuite)
-  (:language Move all the rings to the blue stand according to the rules of the Tower of Hanoi)
+  (:language Move all the rings to the blue stand according to the rules of the Tower of Hanoi 2)
     (:regions
       (stand_init_region
           (:target kitchen_table)
@@ -45,34 +45,34 @@
     ring_stand_1 - ring_stand
     ring_stand_two_1 - ring_stand_two
     ring_stand_three_1 - ring_stand_three
-    torus_ring_size1_1 - torus_ring_size1
-    torus_ring_size2_1 - torus_ring_size2
-    torus_ring_size3_1 - torus_ring_size3
-    torus_ring_size4_1 - torus_ring_size4
+    torus_ring_1 - torus_ring
+    torus_ring_green_1 - torus_ring_green
+    torus_ring_blue_1 - torus_ring_blue
+    torus_ring_orange_1 - torus_ring_orange
   )
 
   (:obj_of_interest
     ring_stand_1
     ring_stand_two_1
     ring_stand_three_1
-    torus_ring_size1_1
-    torus_ring_size2_1
-    torus_ring_size3_1
-    torus_ring_size4_1
+    torus_ring_orange_1
+    torus_ring_blue_1
+    torus_ring_green_1
+    torus_ring_1
   )
 
   (:init
     (On ring_stand_1 kitchen_table_stand_init_region)
     (On ring_stand_two_1 kitchen_table_stand_init_region_2)
     (On ring_stand_three_1 kitchen_table_stand_init_region_3)
-    (On torus_ring_size4_1 ring_stand_1)
-    (On torus_ring_size3_1 torus_ring_size4_1)
-    (On torus_ring_size2_1 torus_ring_size3_1)
-    (On torus_ring_size1_1 torus_ring_size2_1)
+    (On torus_ring_orange_1 ring_stand_1)
+    (On torus_ring_blue_1 torus_ring_orange_1)
+    (On torus_ring_green_1 torus_ring_blue_1)
+    (On torus_ring_1 torus_ring_green_1)
   )
 
   (:goal
-    (And (On torus_ring_size4_1 ring_stand_two_1) (On torus_ring_size3_1 torus_ring_size4_1) (On torus_ring_size2_1 torus_ring_size3_1) (On torus_ring_size1_1 torus_ring_size2_1))
+    (And (On torus_ring_orange_1 ring_stand_two_1) (On torus_ring_blue_1 torus_ring_orange_1) (On torus_ring_green_1 torus_ring_blue_1) (On torus_ring_1 torus_ring_green_1))
   )
 
 )

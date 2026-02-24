@@ -15,8 +15,10 @@ class RingConstructionScene(InitialSceneTemplates):
             "ring_stand": 1,      # Stand 1
             "ring_stand_two": 1,  # Stand 2
             "ring_stand_three": 1, # Stand 3
-            "torus_ring": 1,      # Ring 1 (Small)
-            "torus_ring_green": 1 # Ring 2 (Large)
+            "torus_ring_size1": 1,      # Ring 1 (Small)
+            "torus_ring_size2": 1,      # Ring 2 (Medium)
+            "torus_ring_size3": 1,      # Ring 3 (Large)
+            "torus_ring_size4": 1,      # Ring 4 (Largest)
         }
 
         super().__init__(
@@ -109,8 +111,10 @@ class RingConstructionScene(InitialSceneTemplates):
 
             # Stacked Init: Stand 1 -> Ring 2 (Green) -> Ring 1 (Red)
             # Note: The bottom object is on the stand.
-            ("On", "torus_ring_1", "ring_stand_1"),
-            ("On", "torus_ring_green_1", "torus_ring_1"),
+            ("On", "torus_ring_size4_1", "ring_stand_1"),
+            ("On", "torus_ring_size3_1", "torus_ring_size4_1"),
+            ("On", "torus_ring_size2_1", "torus_ring_size3_1"),
+            ("On", "torus_ring_size1_1", "torus_ring_size2_1"),
         ]
         return states
 
@@ -120,11 +124,13 @@ if __name__ == "__main__":
     
     register_task_info(language,
                     scene_name=scene_name,
-                    objects_of_interest=["ring_stand_1", "ring_stand_two_1", "ring_stand_three_1", "torus_ring_1", "torus_ring_green_1"],
+                    objects_of_interest=["ring_stand_1", "ring_stand_two_1", "ring_stand_three_1", "torus_ring_size1_1", "torus_ring_size2_1", "torus_ring_size3_1", "torus_ring_size4_1"],
                     goal_states=[
                         # Goal: Whole stack on Stand 2 (Blue)
-                        ("On", "torus_ring_1", "ring_stand_two_1"),
-                        ("On", "torus_ring_green_1", "torus_ring_1"),
+                        ("On", "torus_ring_size4_1", "ring_stand_two_1"),
+                        ("On", "torus_ring_size3_1", "torus_ring_size4_1"),
+                        ("On", "torus_ring_size2_1", "torus_ring_size3_1"),
+                        ("On", "torus_ring_size1_1", "torus_ring_size2_1"),
                     ],
     )
 
