@@ -118,7 +118,7 @@ class RingConstructionScene(InitialSceneTemplates):
 
 if __name__ == "__main__":
     scene_name = "ring_construction_scene" 
-    language = "Move all the rings to the blue stand according to the rules of the Tower of Hanoi, keeping the initial stacked configuration of color in mind. You can only move one ring at a time, and you cannot place a ring initially lower on top of a initially higher ring."
+    language = "Move all the rings to the blue stand according to the rules of the Tower of Hanoi, keeping the initial stacked configuration of color in mind. You can only move one ring at a time, and you cannot place a ring initially lower on top of a initially higher ring"
     
     register_task_info(language,
                     scene_name=scene_name,
