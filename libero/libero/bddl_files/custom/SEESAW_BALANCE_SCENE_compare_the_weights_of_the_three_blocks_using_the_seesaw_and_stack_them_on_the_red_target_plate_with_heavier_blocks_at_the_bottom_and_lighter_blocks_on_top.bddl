@@ -1,0 +1,94 @@
+(define (problem LIBERO_Kitchen_Tabletop_Manipulation)
+  (:domain robosuite)
+  (:language Compare the weights of the three blocks using the seesaw and stack them on the red target plate with heavier blocks at the bottom and lighter blocks on top)
+    (:regions
+      (seesaw_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.01 0.24 0.01 0.26)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (light_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.21000000000000002 -0.21000000000000002 -0.19 -0.19)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (medium_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.11 -0.21000000000000002 -0.09000000000000001 -0.19)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (heavy_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (-0.01 -0.21000000000000002 0.01 -0.19)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+      (target_plate_init_region
+          (:target kitchen_table)
+          (:ranges (
+              (0.09000000000000001 -0.21000000000000002 0.11 -0.19)
+            )
+          )
+          (:yaw_rotation (
+              (0.0 0.0)
+            )
+          )
+      )
+    )
+
+  (:fixtures
+    kitchen_table - kitchen_table
+  )
+
+  (:objects
+    seesaw_1 - seesaw
+    weight_light_1 - weight_light
+    weight_medium_1 - weight_medium
+    weight_heavy_1 - weight_heavy
+    target_plate_1 - target_plate
+  )
+
+  (:obj_of_interest
+    weight_light_1
+    weight_medium_1
+    weight_heavy_1
+    seesaw_1
+    target_plate_1
+  )
+
+  (:init
+    (On seesaw_1 kitchen_table_seesaw_init_region)
+    (On weight_light_1 kitchen_table_light_init_region)
+    (On weight_medium_1 kitchen_table_medium_init_region)
+    (On weight_heavy_1 kitchen_table_heavy_init_region)
+    (On target_plate_1 kitchen_table_target_plate_init_region)
+  )
+
+  (:goal
+    (And (on weight_heavy_1 target_plate_1) (on weight_medium_1 weight_heavy_1) (on weight_light_1 weight_medium_1))
+  )
+
+)

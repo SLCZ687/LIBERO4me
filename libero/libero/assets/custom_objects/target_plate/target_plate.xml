@@ -1,0 +1,20 @@
+
+<mujoco model="target_plate">
+  <asset>
+    <texture name="tex_plate" type="2d" builtin="flat" rgb1="1 0 0" width="512" height="512"/>
+    <material name="mat_plate" texture="tex_plate"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="plate_geom" type="box" size="0.05 0.05 0.0025" material="mat_plate" 
+              density="5000" friction="1.0 0.005 0.0001" group="0"/>
+        <geom name="plate_vis" type="box" size="0.05 0.05 0.0025" material="mat_plate" 
+              contype="0" conaffinity="0" group="1"/>
+        
+        <site name="bottom_site" pos="0 0 -0.0025" size="0.002" rgba="0 0 0 0"/>
+        <site name="top_site" pos="0 0 0.0025" size="0.002" rgba="0 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

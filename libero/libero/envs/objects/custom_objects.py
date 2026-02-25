@@ -1054,10 +1054,10 @@ class Seesaw(CustomXmlObject):
     def top_offset(self):
         return np.array([0, 0, 0.12]) 
 
-# --- 1. 小方块 (Yellow) ---
+# --- 1. 轻方块 (Yellow) ---
 @register_object
-class WeightSmall(CustomXmlObject):
-    def __init__(self, name="weight_small", obj_name="weight_small"):
+class WeightLight(CustomXmlObject):
+    def __init__(self, name="weight_light", obj_name="weight_light"):
         super().__init__(
             name=name,
             obj_name=obj_name,
@@ -1067,18 +1067,18 @@ class WeightSmall(CustomXmlObject):
 
     @property
     def horizontal_radius(self):
-        return 0.0225 # 0.015 * 1.5
+        return 0.03 # 0.02 * 1.5 (visual size vs collision) - let's keep it consistent with 4cm block
     @property
     def bottom_offset(self):
-        return np.array([0, 0, -0.015])
+        return np.array([0, 0, -0.02])
     @property
     def top_offset(self):
-        return np.array([0, 0, 0.015])
+        return np.array([0, 0, 0.02])
 
-# --- 2. 中方块参考物 (Orange) ---
+# --- 2. 中方块 (Cyan) ---
 @register_object
-class WeightMediumRef(CustomXmlObject):
-    def __init__(self, name="weight_medium_ref", obj_name="weight_medium_ref"):
+class WeightMedium(CustomXmlObject):
+    def __init__(self, name="weight_medium", obj_name="weight_medium"):
         super().__init__(
             name=name,
             obj_name=obj_name,
@@ -1096,31 +1096,10 @@ class WeightMediumRef(CustomXmlObject):
     def top_offset(self):
         return np.array([0, 0, 0.02])
 
-# --- 3. 中方块目标物 (Cyan) ---
+# --- 3. 重方块 (Purple) ---
 @register_object
-class WeightMediumTarget(CustomXmlObject):
-    def __init__(self, name="weight_medium_target", obj_name="weight_medium_target"):
-        super().__init__(
-            name=name,
-            obj_name=obj_name,
-            joints=[dict(type="free", damping="0.001")]
-        )
-        self.rotation = (0, 0)
-
-    @property
-    def horizontal_radius(self):
-        return 0.03 # 0.02 * 1.5
-    @property
-    def bottom_offset(self):
-        return np.array([0, 0, -0.02])
-    @property
-    def top_offset(self):
-        return np.array([0, 0, 0.02])
-
-# --- 4. 大方块 (Purple) ---
-@register_object
-class WeightLarge(CustomXmlObject):
-    def __init__(self, name="weight_large", obj_name="weight_large"):
+class WeightHeavy(CustomXmlObject):
+    def __init__(self, name="weight_heavy", obj_name="weight_heavy"):
         super().__init__(
             name=name,
             obj_name=obj_name,
@@ -1130,17 +1109,41 @@ class WeightLarge(CustomXmlObject):
         
     @property
     def horizontal_radius(self):
-        return 0.0375 # 0.025 * 1.5
+        return 0.03 # 0.02 * 1.5
     @property
     def bottom_offset(self):
-        return np.array([0, 0, -0.025])
+        return np.array([0, 0, -0.02]) 
     @property
     def top_offset(self):
-        return np.array([0, 0, 0.025])
+        return np.array([0, 0, 0.02])
 
-# 手动注册到字典 (虽然 @register_object 做了，但为了保险起见保持对应关系)
+# 手动注册到字典 
 OBJECTS_DICT["seesaw"] = Seesaw
-OBJECTS_DICT["weight_small"] = WeightSmall
-OBJECTS_DICT["weight_medium_ref"] = WeightMediumRef
-OBJECTS_DICT["weight_medium_target"] = WeightMediumTarget
-OBJECTS_DICT["weight_large"] = WeightLarge
+OBJECTS_DICT["weight_light"] = WeightLight
+OBJECTS_DICT["weight_medium"] = WeightMedium
+OBJECTS_DICT["weight_heavy"] = WeightHeavy
+
+# --- 目标底座 (Red Plate) ---
+@register_object
+class TargetPlate(CustomXmlObject):
+    def __init__(self, name="target_plate", obj_name="target_plate"):
+        super().__init__(
+            name=name,
+            obj_name=obj_name,
+            joints=[dict(type="free", damping="5000.0")]
+        )
+        self.rotation = (0, 0)
+    
+    @property
+    def horizontal_radius(self):
+        return 0.05
+        
+    @property
+    def bottom_offset(self):
+        return np.array([0, 0, -0.0025])
+        
+    @property
+    def top_offset(self):
+        return np.array([0, 0, 0.0025])
+
+OBJECTS_DICT["target_plate"] = TargetPlate

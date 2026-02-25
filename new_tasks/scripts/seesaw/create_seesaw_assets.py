@@ -57,14 +57,14 @@ def generate_seesaw_xml():
     <body>
       <body name="object">
         <!-- 1. 底座 (固定，重) -->
-        <geom name="base_geom" type="box" size="0.05 0.1 {base_h}" pos="0 0 {base_h}" material="mat_base" 
+        <geom name="base_geom" type="box" size="0.05 0.1 {base_h/2}" pos="0 0 {base_h/2}" material="mat_base" 
               density="50000" friction="2.0 0.005 0.0001" group="0"/>
-        <geom name="base_vis" type="box" size="0.05 0.1 {base_h}" pos="0 0 {base_h}" material="mat_base" 
+        <geom name="base_vis" type="box" size="0.05 0.1 {base_h/2}" pos="0 0 {base_h/2}" material="mat_base" 
               contype="0" conaffinity="0" group="1"/>
 
         <!-- 2. 跷跷板本体 (Hinge Joint) -->
         <!-- 支点高度在 base_h * 2 处，即 0.12m -->
-        <body name="seesaw_board" pos="0 0 {base_h * 2}">
+        <body name="seesaw_board" pos="0 0 {base_h}">
             <!-- 关键：Hinge 关节，绕 Y 轴旋转，限制角度 +/- 25度 (约0.4弧度) -->
             <!-- damping=1.0 稍微大一点，防止晃个不停 -->
             <joint name="seesaw_joint" type="hinge" axis="0 1 0" range="-{angle_range} {angle_range}" damping="0.0" frictionloss="0.1" limited="true"/>
@@ -79,8 +79,8 @@ def generate_seesaw_xml():
             {fence_str}
 
             <!-- Sites 用于定位 -->
-            <site name="left_tray_site" pos="{lx} 0 {board_h}" size="0.01" rgba="1 0 0 0.5"/>
-            <site name="right_tray_site" pos="{rx} 0 {board_h}" size="0.01" rgba="0 1 0 0.5"/>
+            <!-- <site name="left_tray_site" pos="{lx} 0 {board_h}" size="0.01" rgba="1 0 0 0.5"/>
+            <site name="right_tray_site" pos="{rx} 0 {board_h}" size="0.01" rgba="0 1 0 0.5"/> -->
         </body>
         
         <site name="bottom_site" pos="0 0 -0.01" size="0.002" rgba="0 0 0 0"/>
@@ -94,7 +94,7 @@ def generate_seesaw_xml():
 # ==========================================
 # 2. Weights XML Generator
 # ==========================================
-def generate_weight_xml(name, size, color_rgb):
+def generate_weight_xml(name, size, color_rgb, density=1000):
     # size 是半长
     xml = f"""
 <mujoco model="{name}">
@@ -102,13 +102,40 @@ def generate_weight_xml(name, size, color_rgb):
     <body>
       <body name="object">
         <geom name="block_geom" type="box" size="{size} {size} {size}" rgba="{color_rgb} 1" 
-              density="1000" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001"
+              density="{density}" friction="1.5 0.005 0.0001" solref="0.001 1" solimp="0.95 0.99 0.001"
               condim="4" group="0"/>
         <geom name="block_vis" type="box" size="{size} {size} {size}" rgba="{color_rgb} 1" 
               contype="0" conaffinity="0" group="1"/>
         
         <site name="bottom_site" pos="0 0 {-size}" size="0.002" rgba="0 0 0 0"/>
         <site name="top_site" pos="0 0 {size}" size="0.002" rgba="0 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
+"""
+    return xml
+
+# ==========================================
+# 3. Target Plate XML Generator
+# ==========================================
+def generate_plate_xml(name, size_half, height_half, color_rgb):
+    xml = f"""
+<mujoco model="{name}">
+  <asset>
+    <texture name="tex_plate" type="2d" builtin="flat" rgb1="{color_rgb}" width="512" height="512"/>
+    <material name="mat_plate" texture="tex_plate"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object">
+        <geom name="plate_geom" type="box" size="{size_half} {size_half} {height_half}" material="mat_plate" 
+              density="5000" friction="1.0 0.005 0.0001" group="0"/>
+        <geom name="plate_vis" type="box" size="{size_half} {size_half} {height_half}" material="mat_plate" 
+              contype="0" conaffinity="0" group="1"/>
+        
+        <site name="bottom_site" pos="0 0 {-height_half}" size="0.002" rgba="0 0 0 0"/>
+        <site name="top_site" pos="0 0 {height_half}" size="0.002" rgba="0 0 0 0"/>
       </body>
     </body>
   </worldbody>
@@ -125,18 +152,25 @@ create_folder(seesaw_dir)
 with open(os.path.join(seesaw_dir, "seesaw.xml"), "w") as f:
     f.write(generate_seesaw_xml())
 
-# 2. 生成 4 个方块
+# 2. 生成 3 个方块
 weights_config = [
-    ("weight_small", 0.015, "0.9 0.9 0.1"),   # 3cm, Yellow, Small
-    ("weight_medium_ref", 0.02, "1.0 0.5 0.0"), # 4cm, Orange, Medium (Reference)
-    ("weight_medium_target", 0.02, "0.0 1.0 1.0"), # 4cm, Cyan, Medium (Target)
-    ("weight_large", 0.025, "0.5 0.0 0.5"),   # 5cm, Purple, Large
+    ("weight_light", 0.02, "0.9 0.9 0.1", 500),   # 4cm, Yellow, Light
+    ("weight_medium", 0.02, "0.0 1.0 1.0", 1000), # 4cm, Cyan, Medium
+    ("weight_heavy", 0.02, "0.5 0.0 0.5", 3000),   # 4cm, Purple, Heavy
 ]
 
-for name, size, rgb in weights_config:
+for name, size, rgb, density in weights_config:
     w_dir = os.path.join(ASSET_ROOT, name)
     create_folder(w_dir)
     with open(os.path.join(w_dir, f"{name}.xml"), "w") as f:
-        f.write(generate_weight_xml(name, size, rgb))
+        f.write(generate_weight_xml(name, size, rgb, density))
 
-print("\n✅ Seesaw and Weight Assets Generated.")
+# 3. 生成目标底座 (红色)
+plate_name = "target_plate"
+plate_dir = os.path.join(ASSET_ROOT, plate_name)
+create_folder(plate_dir)
+# 10cm x 10cm, 厚度 0.5cm
+with open(os.path.join(plate_dir, f"{plate_name}.xml"), "w") as f:
+    f.write(generate_plate_xml(plate_name, 0.05, 0.0025, "1 0 0"))
+
+print("\n✅ Seesaw, Weights, and Plate Assets Generated.")
